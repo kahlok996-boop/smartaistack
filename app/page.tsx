@@ -1,145 +1,141 @@
-const categories = [
-  {
-    title: "AI Website Builders",
-    desc: "Build landing pages, business websites, and SaaS ideas faster with AI.",
-    tools: "Framer, Lovable, Replit, Hostinger AI",
-  },
-  {
-    title: "AI Coding Tools",
-    desc: "Code faster, debug better, and ship real projects with AI coding assistants.",
-    tools: "Cursor, Claude, GitHub Copilot",
-  },
-  {
-    title: "AI Business Tools",
-    desc: "Automate marketing, sales, content, customer support, and business workflows.",
-    tools: "ChatGPT, Zapier AI, Notion AI",
-  },
-];
-
 const tools = [
-  "Cursor",
-  "Claude",
-  "ChatGPT",
-  "Gemini",
-  "Framer",
-  "Lovable",
-  "Replit",
+  {
+    name: "ChatGPT",
+    desc: "Best AI assistant for writing, coding and productivity.",
+    link: "/chatgpt-review",
+    category: "AI Assistant",
+  },
+  {
+    name: "Claude",
+    desc: "Powerful AI for long-form reasoning and analysis.",
+    link: "/claude-review",
+    category: "Writing",
+  },
+  {
+    name: "Gemini",
+    desc: "Google AI assistant with multimodal capabilities.",
+    link: "/gemini-review",
+    category: "Research",
+  },
+  {
+    name: "Cursor",
+    desc: "AI code editor for developers.",
+    link: "/cursor-review",
+    category: "Coding",
+  },
+  
+  {
+    name: "Perplexity",
+    desc: "AI search engine for research and answers.",
+    link: "/perplexity-review",
+    category: "Research",
+  },
+  
+  {
+    name: "Lovable",
+    desc: "AI website builder for startups.",
+    link: "/lovable-review",
+    category: "Website Builders",
+  },
+  
+  {
+    name: "Replit",
+    desc: "Online AI coding workspace.",
+    link: "/replit-review",
+    category: "Coding",
+  },
 ];
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-black text-white">
-      <nav className="flex items-center justify-between px-8 py-6 border-b border-white/10">
-        <h1 className="text-2xl font-bold">SmartAIStack</h1>
-        <div className="hidden md:flex gap-6 text-sm text-gray-300">
-          <a href="#tools">Tools</a>
-          <a href="#categories">Categories</a>
-          <a href="#newsletter">Newsletter</a>
-        </div>
-      </nav>
+    <main className="min-h-screen bg-black text-white p-10">
+      <div className="max-w-6xl mx-auto">
+      <nav className="flex justify-between items-center mb-16">
+  <h2 className="text-2xl font-bold text-cyan-400">
+    SmartAIStack
+  </h2>
 
-      <section className="px-8 py-24 max-w-6xl mx-auto">
-        <div className="max-w-3xl">
-          <p className="mb-4 text-sm text-cyan-400 font-semibold">
-            AI Tools Directory for Builders
-          </p>
+  <div className="flex gap-6 text-gray-300">
+    <a href="#">Tools</a>
+    <a href="#">Categories</a>
+    <a href="#">Newsletter</a>
+  </div>
+</nav>
+        <h1 className="text-6xl font-bold mb-6">
+          SmartAIStack
+        </h1>
 
-          <h2 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-            Discover the Best AI Tools to Build, Code, and Grow Faster.
-          </h2>
+        <p className="text-gray-400 text-xl mb-14">
+          Discover the best AI tools for coding, business,
+          productivity and website building.
+        </p>
+        <div className="mb-10">
+  <input
+    type="text"
+    placeholder="Search AI tools..."
+    className="w-full max-w-xl bg-zinc-900 border border-zinc-700 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
+  />
+</div>
 
-          <p className="text-xl text-gray-300 mb-10">
-            SmartAIStack helps entrepreneurs, creators, and beginners compare the best AI tools for websites, coding, business, and productivity.
-          </p>
+<div className="flex flex-wrap gap-3 mb-12">
+  {["AI Assistants", "Coding", "Website Builders", "Business", "Productivity"].map(
+    (category) => (
+      <button
+        key={category}
+        className="bg-zinc-900 border border-zinc-700 text-gray-300 px-5 py-3 rounded-full hover:border-cyan-400 hover:text-cyan-400 transition"
+      >
+        {category}
+      </button>
+    )
+  )}
+</div>
+<section className="mb-16">
+  <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl p-10">
+    <p className="text-sm uppercase tracking-widest mb-4">
+      Featured Tool
+    </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="#tools"
-              className="bg-white text-black px-6 py-3 rounded-full font-semibold text-center"
-            >
-              Explore AI Tools
-            </a>
-            <a
-              href="#newsletter"
-              className="border border-white/20 px-6 py-3 rounded-full font-semibold text-center"
-            >
-              Get Weekly AI Picks
-            </a>
-          </div>
-        </div>
-      </section>
+    <h2 className="text-5xl font-bold mb-5">
+      ChatGPT
+    </h2>
 
-      <section id="categories" className="px-8 py-16 max-w-6xl mx-auto">
-        <h3 className="text-3xl font-bold mb-8">Featured Categories</h3>
+    <p className="text-lg text-cyan-100 max-w-2xl mb-8">
+      One of the most powerful AI assistants for coding,
+      writing, business planning and productivity.
+    </p>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {categories.map((item) => (
-            <div
-              key={item.title}
-              className="bg-zinc-900 border border-white/10 p-6 rounded-3xl"
-            >
-              <h4 className="text-2xl font-bold mb-3">{item.title}</h4>
-              <p className="text-gray-400 mb-5">{item.desc}</p>
-              <p className="text-sm text-cyan-400">{item.tools}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="tools" className="px-8 py-16 max-w-6xl mx-auto">
-        <h3 className="text-3xl font-bold mb-8">Top AI Tools</h3>
-
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
+    <a
+      href="/chatgpt-review"
+      className="inline-block bg-white text-black px-6 py-3 rounded-2xl font-bold"
+    >
+      Explore ChatGPT
+    </a>
+  </div>
+</section>
+        <div className="grid md:grid-cols-3 gap-8">
           {tools.map((tool) => (
             <a
-            href={
-              tool === "Cursor"
-                ? "/cursor-review"
-                : tool === "Claude"
-                ? "/claude-review"
-                : tool === "ChatGPT"
-                ? "/chatgpt-review"
-                : tool === "Gemini"
-                ? "/gemini-review"
-                : "#"
-            }
-              key={tool}
-              className="bg-white text-black p-6 rounded-2xl"
+              key={tool.name}
+              href={tool.link}
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 hover:border-cyan-400 transition"
             >
-              <h4 className="text-xl font-bold mb-2">{tool}</h4>
-              <p className="text-gray-700">
-                Coming soon: full review, pricing, pros, cons, and best use cases.
+              <h2 className="text-3xl font-bold mb-4">
+                {tool.name}
+              </h2>
+              <p className="text-cyan-400 text-sm mb-3">
+  {tool.category}
+</p>
+
+              <p className="text-gray-400 mb-6">
+                {tool.desc}
               </p>
-              </a>
+
+              <div className="inline-block bg-cyan-400 text-black px-4 py-2 rounded-xl font-semibold">
+                Read Review
+              </div>
+            </a>
           ))}
         </div>
-      </section>
-
-      <section id="newsletter" className="px-8 py-20 max-w-6xl mx-auto">
-        <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8 md:p-12">
-          <h3 className="text-3xl font-bold mb-4">
-            Get the best AI tools every week
-          </h3>
-          <p className="text-gray-400 mb-6">
-            Join the SmartAIStack newsletter for AI tools, website ideas, and business workflows.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="px-5 py-3 rounded-full text-black flex-1"
-            />
-            <button className="bg-cyan-400 text-black px-6 py-3 rounded-full font-semibold">
-              Join Free
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <footer className="px-8 py-8 border-t border-white/10 text-gray-500 text-sm">
-        © 2026 SmartAIStack. Built with AI.
-      </footer>
+      </div>
     </main>
   );
 }
