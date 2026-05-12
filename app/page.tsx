@@ -20,6 +20,7 @@ const tools = [
   "Cursor",
   "Claude",
   "ChatGPT",
+  "Gemini",
   "Framer",
   "Lovable",
   "Replit",
@@ -96,6 +97,10 @@ export default function Home() {
                 ? "/cursor-review"
                 : tool === "Claude"
                 ? "/claude-review"
+                : tool === "ChatGPT"
+                ? "/chatgpt-review"
+                : tool === "Gemini"
+                ? "/gemini-review"
                 : "#"
             }
               key={tool}
