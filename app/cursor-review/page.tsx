@@ -9,8 +9,7 @@ export default function CursorReviewPage() {
         </h1>
 
         <p className="text-xl text-gray-300 mb-10">
-          Cursor is a powerful AI assistant for writing, coding, research,
-          business planning, and long-form reasoning.
+        Cursor is an AI-powered code editor built for developers, beginners, startups, and makers who want to build apps, websites, and software faster.
         </p>
 
         <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8 mb-12">
@@ -19,7 +18,7 @@ export default function CursorReviewPage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <p className="text-gray-400 mb-2">Best For</p>
-              <p className="font-semibold">Writing, coding, research, planning</p>
+              <p className="font-semibold">Coding, debugging, website building, app development</p>
             </div>
 
             <div>
@@ -42,9 +41,7 @@ export default function CursorReviewPage() {
         <section className="mb-14">
           <h2 className="text-3xl font-bold mb-5">What is Cursor AI?</h2>
           <p className="text-gray-300 leading-8">
-            Cursor is an AI assistant created by Cursor. It is especially
-            strong for long-form writing, reasoning, coding help, summarizing
-            documents, and business workflows.
+          Cursor is a coding editor that combines AI chat, autocomplete, code generation, debugging, and project understanding in one workspace. It helps users write code, fix errors, understand files, and build real projects faster than using a normal code editor.
           </p>
         </section>
 
