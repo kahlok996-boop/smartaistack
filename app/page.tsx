@@ -1,7 +1,7 @@
-import { tools } from "@/data/tools";
 "use client";
 
 import { useState } from "react";
+import { tools } from "@/data/tools";
 
 export default function HomePage() {
   const [search, setSearch] = useState("");
