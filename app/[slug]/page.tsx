@@ -1,72 +1,74 @@
-export function generateMetadata({
+import { tools } from "@/data/tools";
+import { notFound } from "next/navigation";
+
+export default async function ToolPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const tool = tools.find((item) => item.slug === params.slug);
+  const { slug } = await params;
+
+  const tool = tools.find((item) => item.slug === slug);
 
   if (!tool) {
-    return {
-      title: "AI Tool Review | SmartAIStack",
-      description:
-        "Discover and compare the best AI tools on SmartAIStack.",
-
-      openGraph: {
-        title: "AI Tool Review | SmartAIStack",
-        description:
-          "Discover and compare the best AI tools on SmartAIStack.",
-        url: "https://smartaistack.vercel.app",
-        siteName: "SmartAIStack",
-        images: [
-          {
-            url: "https://smartaistack.vercel.app/opengraph-image.png",
-            width: 1200,
-            height: 630,
-          },
-        ],
-        locale: "en_US",
-        type: "website",
-      },
-
-      twitter: {
-        card: "summary_large_image",
-        title: "AI Tool Review | SmartAIStack",
-        description:
-          "Discover and compare the best AI tools on SmartAIStack.",
-        images: [
-          "https://smartaistack.vercel.app/opengraph-image.png",
-        ],
-      },
-    };
+    notFound();
   }
 
-  return {
-    title: `${tool.name} Review 2026 | SmartAIStack`,
-    description: `${tool.description} Compare ${tool.name} pricing, features, pros, cons, alternatives, and use cases.`,
+  return (
+    <main className="min-h-screen bg-black text-white px-8 py-16">
+      <div className="max-w-5xl mx-auto">
 
-    openGraph: {
-      title: `${tool.name} Review 2026 | SmartAIStack`,
-      description: tool.description,
-      url: `https://smartaistack.vercel.app/${tool.slug}`,
-      siteName: "SmartAIStack",
-      images: [
-        {
-          url: "https://smartaistack.vercel.app/opengraph-image.png",
-          width: 1200,
-          height: 630,
-        },
-      ],
-      locale: "en_US",
-      type: "website",
-    },
+        <p className="text-cyan-400 font-semibold mb-4">
+          {tool.category}
+        </p>
 
-    twitter: {
-      card: "summary_large_image",
-      title: `${tool.name} Review 2026`,
-      description: tool.description,
-      images: [
-        "https://smartaistack.vercel.app/opengraph-image.png",
-      ],
-    },
-  };
+        <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+          {tool.name} Review 2026
+        </h1>
+
+        <p className="text-xl text-gray-300 leading-9 mb-14">
+          {tool.description}
+        </p>
+
+        <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-10 mb-16">
+          <h2 className="text-4xl font-bold mb-10">
+            Quick Verdict
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-10">
+
+            <div>
+              <p className="text-gray-500 mb-2">Best For</p>
+              <p className="text-2xl font-bold">
+                {tool.bestFor}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-gray-500 mb-2">Pricing</p>
+              <p className="text-2xl font-bold">
+                {tool.pricing}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-gray-500 mb-2">Difficulty</p>
+              <p className="text-2xl font-bold">
+                Beginner Friendly
+              </p>
+            </div>
+
+            <div>
+              <p className="text-gray-500 mb-2">Rating</p>
+              <p className="text-2xl font-bold">
+                ★★★★★ {tool.rating}
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+  );
 }
