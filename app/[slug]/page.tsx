@@ -19,7 +19,7 @@ export function generateMetadata({
         siteName: "SmartAIStack",
         images: [
           {
-            url: "https://smartaistack.vercel.app/og-image.png",
+            url: "https://smartaistack.vercel.app/opengraph-image.png",
             width: 1200,
             height: 630,
           },
@@ -34,7 +34,7 @@ export function generateMetadata({
         description:
           "Discover and compare the best AI tools on SmartAIStack.",
         images: [
-          "https://smartaistack.vercel.app/og-image.png",
+          "https://smartaistack.vercel.app/opengraph-image.png",
         ],
       },
     };
@@ -51,7 +51,7 @@ export function generateMetadata({
       siteName: "SmartAIStack",
       images: [
         {
-          url: "https://smartaistack.vercel.app/og-image.png",
+          url: "https://smartaistack.vercel.app/opengraph-image.png",
           width: 1200,
           height: 630,
         },
@@ -65,7 +65,7 @@ export function generateMetadata({
       title: `${tool.name} Review 2026`,
       description: tool.description,
       images: [
-        "https://smartaistack.vercel.app/og-image.png",
+        "https://smartaistack.vercel.app/opengraph-image.png",
       ],
     },
   };
