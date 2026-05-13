@@ -1,53 +1,8 @@
+import { tools } from "@/data/tools";
 "use client";
 
 import { useState } from "react";
-const tools = [
-  {
-    name: "ChatGPT",
-    desc: "Best AI assistant for writing, coding and productivity.",
-    link: "/chatgpt-review",
-    category: "AI Assistant",
-  },
-  {
-    name: "Claude",
-    desc: "Powerful AI for long-form reasoning and analysis.",
-    link: "/claude-review",
-    category: "Writing",
-  },
-  {
-    name: "Gemini",
-    desc: "Google AI assistant with multimodal capabilities.",
-    link: "/gemini-review",
-    category: "Research",
-  },
-  {
-    name: "Cursor",
-    desc: "AI code editor for developers.",
-    link: "/cursor-review",
-    category: "Coding",
-  },
-  
-  {
-    name: "Perplexity",
-    desc: "AI search engine for research and answers.",
-    link: "/perplexity-review",
-    category: "Research",
-  },
-  
-  {
-    name: "Lovable",
-    desc: "AI website builder for startups.",
-    link: "/lovable-review",
-    category: "Website Builders",
-  },
-  
-  {
-    name: "Replit",
-    desc: "Online AI coding workspace.",
-    link: "/replit-review",
-    category: "Coding",
-  },
-];
+
 export default function HomePage() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
