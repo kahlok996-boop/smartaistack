@@ -9,7 +9,7 @@ export default function HomePage() {
   const filteredTools = tools.filter((tool) => {
     const matchesSearch =
         tool.name.toLowerCase().includes(search.toLowerCase()) ||
-        tool.descriptionription.toLowerCase().includes(search.toLowerCase()) ||
+        tool.description.toLowerCase().includes(search.toLowerCase()) ||
         tool.category.toLowerCase().includes(search.toLowerCase());
     
       const matchesCategory =
