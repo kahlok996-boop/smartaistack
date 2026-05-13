@@ -1,4 +1,5 @@
 import { tools } from "@/data/tools";
+import { comparisons } from "@/data/comparisons";
 
 export default function sitemap() {
   const baseUrl = "https://smartaistack.vercel.app";
@@ -8,10 +9,14 @@ export default function sitemap() {
     lastModified: new Date(),
   }));
 
+  const comparisonPages = comparisons.map((item) => ({
+    url: `${baseUrl}/compare/${item.slug}`,
+    lastModified: new Date(),
+  }));
+
   const seoPages = [
     "best-ai-tools",
     "compare",
-    "compare/chatgpt-vs-claude",
     "alternatives",
     "alternatives/chatgpt-alternatives",
   ].map((slug) => ({
@@ -25,6 +30,7 @@ export default function sitemap() {
       lastModified: new Date(),
     },
     ...toolPages,
+    ...comparisonPages,
     ...seoPages,
   ];
 }
