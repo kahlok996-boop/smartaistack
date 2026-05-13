@@ -91,7 +91,7 @@ export default function HomePage() {
         {filteredTools.map((tool) => (
             <a
               key={tool.name}
-              href={tool.link}
+              href={tool.slug}
               className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 hover:border-cyan-400 transition"
             >
               <h2 className="text-3xl font-bold mb-4">
