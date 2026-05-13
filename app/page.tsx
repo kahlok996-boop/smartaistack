@@ -9,7 +9,7 @@ export default function HomePage() {
   const filteredTools = tools.filter((tool) => {
     const matchesSearch =
         tool.name.toLowerCase().includes(search.toLowerCase()) ||
-        tool.desc.toLowerCase().includes(search.toLowerCase()) ||
+        tool.descriptionription.toLowerCase().includes(search.toLowerCase()) ||
         tool.category.toLowerCase().includes(search.toLowerCase());
     
       const matchesCategory =
@@ -102,7 +102,7 @@ export default function HomePage() {
 </p>
 
               <p className="text-gray-400 mb-6">
-                {tool.desc}
+                {tool.description}
               </p>
 
               <div className="inline-block bg-cyan-400 text-black px-4 py-2 rounded-xl font-semibold">
