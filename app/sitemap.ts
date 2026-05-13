@@ -8,11 +8,23 @@ export default function sitemap() {
     lastModified: new Date(),
   }));
 
+  const seoPages = [
+    "best-ai-tools",
+    "compare",
+    "compare/chatgpt-vs-claude",
+    "alternatives",
+    "alternatives/chatgpt-alternatives",
+  ].map((slug) => ({
+    url: `${baseUrl}/${slug}`,
+    lastModified: new Date(),
+  }));
+
   return [
     {
       url: baseUrl,
       lastModified: new Date(),
     },
     ...toolPages,
+    ...seoPages,
   ];
 }
