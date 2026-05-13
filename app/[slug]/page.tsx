@@ -40,7 +40,7 @@ export default async function ToolPage({
             <div>
               <p className="text-gray-500 mb-2">Best For</p>
               <p className="text-2xl font-bold">
-              {tool.category}
+                {tool.category}
               </p>
             </div>
 
@@ -67,6 +67,95 @@ export default async function ToolPage({
 
           </div>
         </div>
+
+        <section className="mb-16">
+          <h2 className="text-4xl font-bold mb-8">
+            What is {tool.name}?
+          </h2>
+
+          <p className="text-gray-300 text-lg leading-9">
+            {tool.name} is one of the best AI tools in the {tool.category} category.
+            It helps users improve productivity, automate workflows,
+            save time, and build smarter digital experiences using AI.
+          </p>
+        </section>
+
+        <section className="mb-20">
+          <h2 className="text-4xl font-bold mb-8">
+            Pros & Cons
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+              <h3 className="text-3xl font-bold text-green-400 mb-6">
+                Pros
+              </h3>
+
+              <ul className="space-y-4 text-gray-300 text-lg">
+                <li>✅ Beginner friendly</li>
+                <li>✅ Fast AI workflow</li>
+                <li>✅ Improves productivity</li>
+                <li>✅ Popular among creators</li>
+              </ul>
+            </div>
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+              <h3 className="text-3xl font-bold text-red-400 mb-6">
+                Cons
+              </h3>
+
+              <ul className="space-y-4 text-gray-300 text-lg">
+                <li>❌ Some features are paid</li>
+                <li>❌ May require learning curve</li>
+                <li>❌ AI output may need editing</li>
+              </ul>
+            </div>
+
+          </div>
+        </section>
+
+        <section className="mb-20">
+          <h2 className="text-4xl font-bold mb-8">
+            Related AI Tools
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {tools
+              .filter((item) => item.slug !== tool.slug)
+              .slice(0, 3)
+              .map((item) => (
+                <a
+                  key={item.slug}
+                  href={`/${item.slug}`}
+                  className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 hover:border-cyan-400 transition"
+                >
+                  <p className="text-cyan-400 text-sm mb-3">
+                    {item.category}
+                  </p>
+
+                  <h3 className="text-2xl font-bold mb-3">
+                    {item.name}
+                  </h3>
+
+                  <p className="text-gray-400 mb-5">
+                    {item.description}
+                  </p>
+
+                  <span className="text-cyan-400 font-semibold">
+                    Read Review →
+                  </span>
+                </a>
+              ))}
+          </div>
+        </section>
+
+        <a
+          href="/best-ai-tools"
+          className="inline-block bg-cyan-400 text-black px-8 py-4 rounded-full font-bold"
+        >
+          Back to Best AI Tools
+        </a>
 
       </div>
     </main>
