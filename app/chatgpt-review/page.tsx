@@ -2,9 +2,27 @@ export default function ChatGPTReviewPage() {
   return (
     <main className="min-h-screen bg-black text-white px-8 py-16">
       <div className="max-w-4xl mx-auto">
+        <div className="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border border-zinc-800 rounded-2xl px-4 py-3 mb-10 flex flex-wrap gap-3">
+          <a href="#quick-verdict" className="text-sm text-cyan-400 hover:text-white">
+            Quick Verdict
+          </a>
+          <a href="#pricing" className="text-sm text-cyan-400 hover:text-white">
+            Pricing
+          </a>
+          <a href="#features" className="text-sm text-cyan-400 hover:text-white">
+            Features
+          </a>
+          <a href="#faq" className="text-sm text-cyan-400 hover:text-white">
+            FAQ
+          </a>
+          <a href="#alternatives" className="text-sm text-cyan-400 hover:text-white">
+            Alternatives
+          </a>
+        </div>
+
         <p className="text-cyan-400 font-semibold mb-4">AI Assistant Tools</p>
 
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+        <h1 className="text-3xl md:text-4xl font-bold mb-6">
           ChatGPT Review 2026
         </h1>
 
@@ -14,8 +32,11 @@ export default function ChatGPTReviewPage() {
           problem solving.
         </p>
 
-        <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8 mb-12">
-          <h2 className="text-2xl font-bold mb-6">Quick Verdict</h2>
+        <div
+          id="quick-verdict"
+          className="bg-zinc-900 border border-white/10 rounded-3xl p-8 mb-12"
+        >
+          <h2 className="text-xl md:text-2xl font-bold mb-6">Quick Verdict</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div>
@@ -43,7 +64,7 @@ export default function ChatGPTReviewPage() {
         </div>
 
         <section className="mb-14">
-          <h2 className="text-2xl font-bold mb-5">What is ChatGPT?</h2>
+          <h2 className="text-xl md:text-2xl font-bold mb-5">What is ChatGPT?</h2>
           <p className="text-gray-300 leading-8">
             ChatGPT is an AI assistant created by OpenAI. It helps users write
             content, answer questions, summarize information, generate ideas,
@@ -53,11 +74,13 @@ export default function ChatGPTReviewPage() {
         </section>
 
         <section className="mb-14">
-          <h2 className="text-2xl font-bold mb-6">ChatGPT Pros & Cons</h2>
+          <h2 className="text-xl md:text-2xl font-bold mb-6">
+            ChatGPT Pros & Cons
+          </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-bold text-green-400 mb-4">Pros</h3>
+              <h3 className="text-lg font-semibold text-green-400 mb-4">Pros</h3>
 
               <ul className="space-y-3 text-gray-300">
                 <li>✅ Very easy for beginners to use</li>
@@ -69,7 +92,7 @@ export default function ChatGPTReviewPage() {
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-bold text-red-400 mb-4">Cons</h3>
+              <h3 className="text-lg font-semibold text-red-400 mb-4">Cons</h3>
 
               <ul className="space-y-3 text-gray-300">
                 <li>❌ Can still make mistakes</li>
@@ -82,13 +105,12 @@ export default function ChatGPTReviewPage() {
           </div>
         </section>
 
-        <section className="mb-14">
-          <h2 className="text-2xl font-bold mb-6">ChatGPT Pricing</h2>
+        <section id="pricing" className="mb-14">
+          <h2 className="text-xl md:text-2xl font-bold mb-6">ChatGPT Pricing</h2>
 
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-semibold mb-3">Free</h3>
-
+              <h3 className="text-lg font-semibold mb-3">Free</h3>
               <p className="text-cyan-400 text-2xl font-semibold mb-4">$0</p>
 
               <ul className="space-y-3 text-gray-300">
@@ -100,9 +122,7 @@ export default function ChatGPTReviewPage() {
 
             <div className="bg-cyan-500 text-black rounded-3xl p-6">
               <p className="font-bold mb-2">MOST POPULAR</p>
-
-              <h3 className="text-xl font-semibold mb-3">Plus</h3>
-
+              <h3 className="text-lg font-semibold mb-3">Plus</h3>
               <p className="text-2xl font-semibold mb-4">$20/mo</p>
 
               <ul className="space-y-3">
@@ -113,11 +133,8 @@ export default function ChatGPTReviewPage() {
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-semibold mb-3">Team</h3>
-
-              <p className="text-cyan-400 text-2xl font-semibold mb-4">
-                Paid
-              </p>
+              <h3 className="text-lg font-semibold mb-3">Team</h3>
+              <p className="text-cyan-400 text-2xl font-semibold mb-4">Paid</p>
 
               <ul className="space-y-3 text-gray-300">
                 <li>Team collaboration</li>
@@ -128,15 +145,14 @@ export default function ChatGPTReviewPage() {
           </div>
         </section>
 
-        <section className="mb-14">
-          <h2 className="text-2xl font-bold mb-6">
+        <section id="features" className="mb-14">
+          <h2 className="text-xl md:text-2xl font-bold mb-6">
             Key Features of ChatGPT
           </h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-bold mb-3">AI Writing Assistant</h3>
-
+              <h3 className="text-lg font-semibold mb-3">AI Writing Assistant</h3>
               <p className="text-gray-300 leading-7">
                 ChatGPT can help write emails, blog posts, scripts, social
                 content, product descriptions, and business documents.
@@ -144,8 +160,7 @@ export default function ChatGPTReviewPage() {
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-bold mb-3">Coding Help</h3>
-
+              <h3 className="text-lg font-semibold mb-3">Coding Help</h3>
               <p className="text-gray-300 leading-7">
                 Users can ask ChatGPT to explain code, generate components,
                 debug errors, and learn programming concepts faster.
@@ -153,8 +168,7 @@ export default function ChatGPTReviewPage() {
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-bold mb-3">Research & Learning</h3>
-
+              <h3 className="text-lg font-semibold mb-3">Research & Learning</h3>
               <p className="text-gray-300 leading-7">
                 ChatGPT can summarize complex topics, explain ideas clearly,
                 compare options, and help users learn new skills.
@@ -162,8 +176,7 @@ export default function ChatGPTReviewPage() {
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-bold mb-3">Business Productivity</h3>
-
+              <h3 className="text-lg font-semibold mb-3">Business Productivity</h3>
               <p className="text-gray-300 leading-7">
                 ChatGPT can support planning, marketing, customer support,
                 automation ideas, sales copy, and daily business tasks.
@@ -172,15 +185,12 @@ export default function ChatGPTReviewPage() {
           </div>
         </section>
 
-        <section className="mb-14">
-          <h2 className="text-2xl font-bold mb-6">ChatGPT FAQ</h2>
+        <section id="faq" className="mb-14">
+          <h2 className="text-xl md:text-2xl font-bold mb-6">ChatGPT FAQ</h2>
 
           <div className="space-y-6">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-semibold mb-3">
-                Is ChatGPT free?
-              </h3>
-
+              <h3 className="text-lg font-semibold mb-3">Is ChatGPT free?</h3>
               <p className="text-gray-300 leading-7">
                 Yes. ChatGPT offers a free plan, while paid plans provide more
                 advanced features, higher limits, and access to stronger models.
@@ -188,10 +198,9 @@ export default function ChatGPTReviewPage() {
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-semibold mb-3">
+              <h3 className="text-lg font-semibold mb-3">
                 Is ChatGPT good for beginners?
               </h3>
-
               <p className="text-gray-300 leading-7">
                 Yes. ChatGPT is very beginner-friendly because users can ask
                 questions in normal language and receive step-by-step answers.
@@ -199,10 +208,9 @@ export default function ChatGPTReviewPage() {
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-semibold mb-3">
+              <h3 className="text-lg font-semibold mb-3">
                 Can ChatGPT help with coding?
               </h3>
-
               <p className="text-gray-300 leading-7">
                 Yes. ChatGPT can explain code, generate examples, debug errors,
                 and help users understand programming concepts more quickly.
@@ -211,46 +219,40 @@ export default function ChatGPTReviewPage() {
           </div>
         </section>
 
-        <section className="mb-14">
-          <h2 className="text-2xl font-bold mb-6">
+        <section id="alternatives" className="mb-14">
+          <h2 className="text-xl md:text-2xl font-bold mb-6">
             Best ChatGPT Alternatives
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-bold mb-3">Claude AI</h3>
-
+              <h3 className="text-lg font-semibold mb-3">Claude AI</h3>
               <p className="text-gray-300 leading-7 mb-4">
                 Great for long-form reasoning, writing, document analysis, and
                 structured thinking.
               </p>
-
               <a href="/claude-review" className="text-cyan-400 font-semibold">
                 Read Review →
               </a>
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-bold mb-3">Gemini AI</h3>
-
+              <h3 className="text-lg font-semibold mb-3">Gemini AI</h3>
               <p className="text-gray-300 leading-7 mb-4">
                 Google's AI assistant with strong search integration and
                 productivity use cases.
               </p>
-
               <a href="/gemini-review" className="text-cyan-400 font-semibold">
                 Read Review →
               </a>
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
-              <h3 className="text-xl font-bold mb-3">Cursor AI</h3>
-
+              <h3 className="text-lg font-semibold mb-3">Cursor AI</h3>
               <p className="text-gray-300 leading-7 mb-4">
                 Best for developers who want an AI-powered coding editor and
                 faster software development workflow.
               </p>
-
               <a href="/cursor-review" className="text-cyan-400 font-semibold">
                 Read Review →
               </a>
@@ -259,41 +261,46 @@ export default function ChatGPTReviewPage() {
         </section>
 
         <section className="mb-14">
-          <h2 className="text-2xl font-bold mb-6">Related AI Tools</h2>
+          <h2 className="text-xl md:text-2xl font-bold mb-6">Related AI Tools</h2>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="grid md:grid-cols-3 gap-6">
             <a
               href="/claude-review"
-              className="bg-zinc-900 border border-zinc-700 px-5 py-3 rounded-full hover:bg-zinc-800"
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 hover:border-cyan-400 transition"
             >
-              Claude Review
+              <h3 className="text-lg font-semibold mb-3">Claude Review</h3>
+              <p className="text-gray-400 leading-7">
+                AI assistant focused on reasoning, long-form writing, and
+                document analysis.
+              </p>
             </a>
 
             <a
               href="/gemini-review"
-              className="bg-zinc-900 border border-zinc-700 px-5 py-3 rounded-full hover:bg-zinc-800"
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 hover:border-cyan-400 transition"
             >
-              Gemini Review
+              <h3 className="text-lg font-semibold mb-3">Gemini Review</h3>
+              <p className="text-gray-400 leading-7">
+                Google's AI assistant for productivity, research, and multimodal
+                AI workflows.
+              </p>
             </a>
 
             <a
               href="/cursor-review"
-              className="bg-zinc-900 border border-zinc-700 px-5 py-3 rounded-full hover:bg-zinc-800"
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 hover:border-cyan-400 transition"
             >
-              Cursor Review
-            </a>
-
-            <a
-              href="/lovable-review"
-              className="bg-zinc-900 border border-zinc-700 px-5 py-3 rounded-full hover:bg-zinc-800"
-            >
-              Lovable Review
+              <h3 className="text-lg font-semibold mb-3">Cursor Review</h3>
+              <p className="text-gray-400 leading-7">
+                AI-powered coding editor for developers, startups, and software
+                teams.
+              </p>
             </a>
           </div>
         </section>
 
         <section className="mb-14">
-          <h2 className="text-2xl font-bold mb-5">Final Verdict</h2>
+          <h2 className="text-xl md:text-2xl font-bold mb-5">Final Verdict</h2>
 
           <p className="text-gray-300 leading-8">
             ChatGPT is one of the best AI assistants in 2026 for students,
@@ -302,8 +309,8 @@ export default function ChatGPTReviewPage() {
           </p>
 
           <p className="text-gray-300 leading-8 mt-6">
-            If you want a flexible AI tool that can support many different
-            tasks in one place, ChatGPT is absolutely worth trying.
+            If you want a flexible AI tool that can support many different tasks
+            in one place, ChatGPT is absolutely worth trying.
           </p>
         </section>
 
