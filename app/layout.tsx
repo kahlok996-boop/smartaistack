@@ -16,6 +16,10 @@ export const metadata = {
   title: "SmartAIStack - Best AI Tools for Coding, Business and Website Building",
   description:
     "Discover and compare the best AI tools for coding, website building, business automation, productivity, and AI-powered workflows.",
+
+    verification: {
+      google: "uikshEcnmLs7sBMB5bE00wEor7tB1PGdQe_NE4zpWuA",
+    },
 };
 
 export default function RootLayout({
