@@ -40,7 +40,7 @@ export default async function ToolPage({
             <div>
               <p className="text-gray-500 mb-2">Best For</p>
               <p className="text-2xl font-bold">
-                {tool.bestFor}
+              {tool.category}
               </p>
             </div>
 
