@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 const tools = [
   {
     name: "ChatGPT",
@@ -46,6 +49,21 @@ const tools = [
   },
 ];
 export default function HomePage() {
+  const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const filteredTools = tools.filter((tool) => {
+    const matchesSearch =
+        tool.name.toLowerCase().includes(search.toLowerCase()) ||
+        tool.desc.toLowerCase().includes(search.toLowerCase()) ||
+        tool.category.toLowerCase().includes(search.toLowerCase());
+    
+      const matchesCategory =
+        selectedCategory === "All" ||
+        tool.category === selectedCategory;
+    
+      return matchesSearch && matchesCategory;
+    });
+
   return (
     <main className="min-h-screen bg-black text-white p-10">
       <div className="max-w-6xl mx-auto">
@@ -70,6 +88,8 @@ export default function HomePage() {
         </p>
         <div className="mb-10">
   <input
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
     type="text"
     placeholder="Search AI tools..."
     className="w-full max-w-xl bg-zinc-900 border border-zinc-700 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
@@ -77,16 +97,17 @@ export default function HomePage() {
 </div>
 
 <div className="flex flex-wrap gap-3 mb-12">
-  {["AI Assistants", "Coding", "Website Builders", "Business", "Productivity"].map(
-    (category) => (
+{["All", "AI Assistant", "Writing", "Research", "Coding"].map(
+  (category) => (
       <button
+       onClick={() => setSelectedCategory(category)}
         key={category}
         className="bg-zinc-900 border border-zinc-700 text-gray-300 px-5 py-3 rounded-full hover:border-cyan-400 hover:text-cyan-400 transition"
       >
         {category}
       </button>
-    )
-  )}
+      )
+    )}
 </div>
 <section className="mb-16">
   <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl p-10">
@@ -112,7 +133,7 @@ export default function HomePage() {
   </div>
 </section>
         <div className="grid md:grid-cols-3 gap-8">
-          {tools.map((tool) => (
+        {filteredTools.map((tool) => (
             <a
               key={tool.name}
               href={tool.link}
