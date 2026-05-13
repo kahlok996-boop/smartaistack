@@ -40,32 +40,52 @@ export const tools = [
   },
 
   {
-    slug: "perplexity-review",
-    name: "Perplexity AI",
-    category: "AI Search Tool",
+    slug: "midjourney-review",
+    name: "Midjourney",
+    category: "AI Image Generator",
     description:
-      "AI-powered search and research assistant for accurate answers and deep research.",
+      "AI image generation tool for cinematic art, concept design, and creative visuals.",
+    pricing: "Paid",
+    rating: "9.4/10",
+  },
+
+  {
+    slug: "runway-review",
+    name: "Runway",
+    category: "AI Video Generator",
+    description:
+      "AI video editing and generation platform for creators and filmmakers.",
     pricing: "Free + Paid",
     rating: "9.1/10",
   },
 
   {
-    slug: "lovable-review",
-    name: "Lovable",
-    category: "AI Website Builder",
+    slug: "notebooklm-review",
+    name: "NotebookLM",
+    category: "AI Research Tool",
     description:
-      "AI website builder for startups, SaaS landing pages, and modern UI generation.",
-    pricing: "Paid",
-    rating: "8.8/10",
+      "Google AI notebook assistant for document analysis, summaries, and research workflows.",
+    pricing: "Free",
+    rating: "8.9/10",
   },
 
   {
-    slug: "framer-review",
-    name: "Framer AI",
-    category: "AI Website Builder",
+    slug: "bolt-review",
+    name: "Bolt.new",
+    category: "AI Coding Tool",
     description:
-      "Modern website builder with AI tools, CMS, animations, and responsive design.",
+      "AI-powered app builder for instant full-stack web applications.",
     pricing: "Free + Paid",
     rating: "9.0/10",
+  },
+
+  {
+    slug: "v0-review",
+    name: "v0",
+    category: "AI UI Generator",
+    description:
+      "AI UI generation tool by Vercel for React and Tailwind interfaces.",
+    pricing: "Free + Paid",
+    rating: "9.2/10",
   },
 ];
