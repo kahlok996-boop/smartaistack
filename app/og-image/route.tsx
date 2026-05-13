@@ -18,17 +18,38 @@ export async function GET() {
           fontFamily: "Arial",
         }}
       >
-        <div style={{ fontSize: 42, color: "#22d3ee", marginBottom: 30 }}>
+        <div
+          style={{
+            display: "flex",
+            fontSize: "42px",
+            color: "#22d3ee",
+            marginBottom: "30px",
+          }}
+        >
           SmartAIStack
         </div>
 
-        <div style={{ fontSize: 88, fontWeight: 800, lineHeight: 1.05 }}>
-          Best AI Tools
-          <br />
-          Reviews 2026
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            fontSize: "88px",
+            fontWeight: 800,
+            lineHeight: 1.05,
+          }}
+        >
+          <span>Best AI Tools</span>
+          <span>Reviews 2026</span>
         </div>
 
-        <div style={{ fontSize: 32, color: "#a1a1aa", marginTop: 40 }}>
+        <div
+          style={{
+            display: "flex",
+            fontSize: "32px",
+            color: "#a1a1aa",
+            marginTop: "40px",
+          }}
+        >
           ChatGPT • Claude • Gemini • Cursor • Perplexity
         </div>
       </div>
