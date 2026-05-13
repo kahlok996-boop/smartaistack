@@ -4,7 +4,7 @@ export default function CursorReviewPage() {
       <div className="max-w-4xl mx-auto">
         <p className="text-cyan-400 font-semibold mb-4">AI Assistant Tools</p>
 
-        <h1 className="text-5xl md:text-6xl font-bold mb-6">
+        <h1 className="text-3xl md:text-6xl font-bold mb-6">
           Cursor AI Review 2026
         </h1>
 
@@ -46,24 +46,199 @@ export default function CursorReviewPage() {
         </section>
 
         <section className="mb-14">
-          <h2 className="text-3xl font-bold mb-5">Pros</h2>
-          <ul className="space-y-3 text-gray-300">
-            <li>✅ Great for long answers and reasoning</li>
-            <li>✅ Strong writing quality</li>
-            <li>✅ Useful for coding and debugging</li>
-            <li>✅ Good for business planning</li>
-            <li>✅ Easy for beginners to use</li>
-          </ul>
-        </section>
+  <h2 className="text-3xl font-bold mb-6">
+    Cursor AI Pros & Cons
+    <section className="mb-14">
+  <h2 className="text-3xl font-bold mb-6">
+    Cursor AI Pricing
+  </h2>
 
-        <section className="mb-14">
-          <h2 className="text-3xl font-bold mb-5">Cons</h2>
-          <ul className="space-y-3 text-gray-300">
-            <li>❌ Some features require paid plan</li>
-            <li>❌ Can still make mistakes</li>
-            <li>❌ Not a full replacement for human judgment</li>
-          </ul>
-        </section>
+  <div className="grid lg:grid-cols-3 gap-6">
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+      <h3 className="text-xl font-bold mb-3">
+        Free
+      </h3>
+
+      <p className="text-cyan-400 text-2xl font-bold mb-4">
+        $0
+      </p>
+
+      <ul className="space-y-3 text-gray-300">
+        <li>Basic AI features</li>
+        <li>Limited AI requests</li>
+        <li>Beginner-friendly</li>
+      </ul>
+    </div>
+
+    <div className="bg-cyan-500 text-black rounded-3xl p-6">
+      <p className="font-bold mb-2">
+        MOST POPULAR
+      </p>
+
+      <h3 className="text-xl font-semibold mb-3">
+        Pro
+      </h3>
+
+      <p className="text-2xl font-semibold mb-4">
+        $20/mo
+      </p>
+
+      <ul className="space-y-3">
+        <li>Unlimited AI coding</li>
+        <li>Advanced AI models</li>
+        <li>Faster performance</li>
+      </ul>
+    </div>
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+    <h3 className="text-xl font-semibold mb-3">
+        Business
+      </h3>
+
+      <p className="text-cyan-400 text-3xl font-bold mb-4">
+        Custom
+      </p>
+
+      <ul className="space-y-3 text-gray-300">
+        <li>Team management</li>
+        <li>Enterprise support</li>
+        <li>Security features</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section className="mb-14">
+  <h2 className="text-3xl font-bold mb-6">
+    Key Features of Cursor AI
+  </h2>
+
+  <div className="grid md:grid-cols-2 gap-6">
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+      <h3 className="text-2xl font-bold mb-3">
+        AI Code Generation
+      </h3>
+
+      <p className="text-gray-300 leading-7">
+        Cursor can generate full code blocks, components, functions,
+        and project structures using natural language prompts.
+      </p>
+    </div>
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+      <h3 className="text-2xl font-bold mb-3">
+        Smart Debugging
+      </h3>
+
+      <p className="text-gray-300 leading-7">
+        Developers can quickly fix bugs, errors, and broken code
+        using AI-assisted debugging suggestions.
+      </p>
+    </div>
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+      <h3 className="text-2xl font-bold mb-3">
+        Project Understanding
+      </h3>
+
+      <p className="text-gray-300 leading-7">
+        Cursor understands your entire codebase and provides context-aware
+        coding assistance across multiple files.
+      </p>
+    </div>
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+      <h3 className="text-2xl font-bold mb-3">
+        AI Chat Inside Editor
+      </h3>
+
+      <p className="text-gray-300 leading-7">
+        Users can chat directly with AI inside the coding editor to
+        ask questions, explain code, and generate solutions instantly.
+      </p>
+    </div>
+
+  </div>
+</section>
+<section className="mb-14">
+  <h2 className="text-3xl font-bold mb-6">
+    Cursor AI FAQ
+  </h2>
+
+  <div className="space-y-6">
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+      <h3 className="text-xl font-semibold mb-3">
+        Is Cursor AI free?
+      </h3>
+
+      <p className="text-gray-300 leading-7">
+        Cursor AI offers a free plan with limited usage and also
+        provides paid plans for advanced AI features and higher limits.
+      </p>
+    </div>
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+      <h3 className="text-xl font-semibold mb-3">
+        Is Cursor AI good for beginners?
+      </h3>
+
+      <p className="text-gray-300 leading-7">
+        Yes. Cursor AI is beginner-friendly and helps new developers
+        learn coding faster with AI-generated suggestions and debugging help.
+      </p>
+    </div>
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+      <h3 className="text-xl font-semibold mb-3">
+        Which AI model does Cursor use?
+      </h3>
+
+      <p className="text-gray-300 leading-7">
+        Cursor supports multiple AI models including GPT-4 and Claude
+        for coding assistance and intelligent code generation.
+      </p>
+    </div>
+
+  </div>
+</section>
+  </h2>
+
+  <div className="grid md:grid-cols-2 gap-6">
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+      <h3 className="text-2xl font-bold text-green-400 mb-4">
+        Pros
+      </h3>
+
+      <ul className="space-y-3 text-gray-300">
+        <li>✅ Powerful AI code generation</li>
+        <li>✅ Beginner-friendly coding workflow</li>
+        <li>✅ Understands full project context</li>
+        <li>✅ Fast debugging and refactoring</li>
+        <li>✅ Great for startups and indie hackers</li>
+      </ul>
+    </div>
+
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+      <h3 className="text-2xl font-bold text-red-400 mb-4">
+        Cons
+      </h3>
+
+      <ul className="space-y-3 text-gray-300">
+        <li>❌ Requires internet connection</li>
+        <li>❌ Some advanced features are paid</li>
+        <li>❌ Can generate incorrect code sometimes</li>
+        <li>❌ Heavy AI usage may feel overwhelming</li>
+        <li>❌ Not ideal for very low-end computers</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
 
         <section className="mb-14">
           <h2 className="text-3xl font-bold mb-5">Is Cursor Worth It?</h2>
