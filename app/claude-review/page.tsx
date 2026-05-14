@@ -22,15 +22,21 @@ export default function ClaudeReviewPage() {
               </h1>
 
               <p className="text-xl text-gray-300 leading-9 mb-8">
-                Claude is an advanced AI assistant built by Anthropic for
+                Claude is an advanced AI assistant created by Anthropic for
                 reasoning, long-form writing, document analysis, research
                 workflows, and business productivity.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-8">
-                <span className="bg-zinc-900 border border-zinc-800 rounded-full px-5 py-3 text-sm text-cyan-400">⭐ 9.2/10 Rating</span>
-                <span className="bg-zinc-900 border border-zinc-800 rounded-full px-5 py-3 text-sm text-cyan-400">Great for Reasoning</span>
-                <span className="bg-zinc-900 border border-zinc-800 rounded-full px-5 py-3 text-sm text-cyan-400">Free + Paid Plans</span>
+                <span className="bg-zinc-900 border border-zinc-800 rounded-full px-5 py-3 text-sm text-cyan-400">
+                  ⭐ 9.2/10 Rating
+                </span>
+                <span className="bg-zinc-900 border border-zinc-800 rounded-full px-5 py-3 text-sm text-cyan-400">
+                  Great for Reasoning
+                </span>
+                <span className="bg-zinc-900 border border-zinc-800 rounded-full px-5 py-3 text-sm text-cyan-400">
+                  Free + Paid Plans
+                </span>
               </div>
 
               <div className="flex flex-wrap gap-4">
@@ -102,14 +108,11 @@ export default function ClaudeReviewPage() {
         </section>
 
         <section className="mb-14">
-          <h2 className="text-xl md:text-2xl font-bold mb-6">
-            Claude Pros & Cons
-          </h2>
+          <h2 className="text-xl md:text-2xl font-bold mb-6">Claude Pros & Cons</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
               <h3 className="text-lg font-semibold text-green-400 mb-4">Pros</h3>
-
               <ul className="space-y-3 text-gray-300">
                 <li>✅ Excellent for long-form reasoning</li>
                 <li>✅ Great for document analysis</li>
@@ -121,7 +124,6 @@ export default function ClaudeReviewPage() {
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
               <h3 className="text-lg font-semibold text-red-400 mb-4">Cons</h3>
-
               <ul className="space-y-3 text-gray-300">
                 <li>❌ Some advanced features require a paid plan</li>
                 <li>❌ May not be ideal for image generation workflows</li>
@@ -140,7 +142,6 @@ export default function ClaudeReviewPage() {
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
               <h3 className="text-lg font-semibold mb-3">Free</h3>
               <p className="text-cyan-400 text-2xl font-semibold mb-4">$0</p>
-
               <ul className="space-y-3 text-gray-300">
                 <li>Basic Claude access</li>
                 <li>Good for casual writing and research</li>
@@ -152,18 +153,16 @@ export default function ClaudeReviewPage() {
               <p className="font-bold mb-2">MOST POPULAR</p>
               <h3 className="text-lg font-semibold mb-3">Claude Pro</h3>
               <p className="text-2xl font-semibold mb-4">Paid</p>
-
               <ul className="space-y-3">
                 <li>Higher usage limits</li>
-                <li>Better for daily work</li>
-                <li>Useful for professionals</li>
+                <li>Better for daily writing and research</li>
+                <li>Useful for professionals and creators</li>
               </ul>
             </div>
 
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
               <h3 className="text-lg font-semibold mb-3">Team</h3>
               <p className="text-cyan-400 text-2xl font-semibold mb-4">Paid</p>
-
               <ul className="space-y-3 text-gray-300">
                 <li>Team collaboration</li>
                 <li>Business workflows</li>
@@ -174,9 +173,7 @@ export default function ClaudeReviewPage() {
         </section>
 
         <section id="features" className="mb-14">
-          <h2 className="text-xl md:text-2xl font-bold mb-6">
-            Key Features of Claude
-          </h2>
+          <h2 className="text-xl md:text-2xl font-bold mb-6">Key Features of Claude</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
@@ -244,9 +241,7 @@ export default function ClaudeReviewPage() {
         </section>
 
         <section id="alternatives" className="mb-14">
-          <h2 className="text-xl md:text-2xl font-bold mb-6">
-            Best Claude Alternatives
-          </h2>
+          <h2 className="text-xl md:text-2xl font-bold mb-6">Best Claude Alternatives</h2>
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
