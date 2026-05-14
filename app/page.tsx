@@ -50,6 +50,20 @@ export default function HomePage() {
             >
               Alternatives
             </a>
+
+            <a
+              href="/about"
+              className="hover:text-cyan-400 transition"
+            >
+              About
+            </a>
+
+            <a
+              href="/contact"
+              className="hover:text-cyan-400 transition"
+            >
+              Contact
+            </a>
           </div>
         </nav>
 
@@ -92,7 +106,6 @@ export default function HomePage() {
 
         <section className="mb-16">
           <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl p-10">
-
             <p className="text-sm uppercase tracking-widest mb-4">
               Featured Tool
             </p>
@@ -112,7 +125,6 @@ export default function HomePage() {
             >
               Explore ChatGPT
             </a>
-
           </div>
         </section>
 
