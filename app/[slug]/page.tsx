@@ -7,23 +7,18 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   const tool = tools.find((item) => item.slug === slug);
 
-  if (!tool) {
-    return {};
-  }
+  if (!tool) return {};
 
   return {
     title: `${tool.name} Review 2026 | SmartAIStack`,
     description: tool.description,
-
     openGraph: {
       title: `${tool.name} Review 2026 | SmartAIStack`,
       description: tool.description,
       images: ["https://smartaistack.vercel.app/og-image"],
     },
-
     twitter: {
       card: "summary_large_image",
       title: `${tool.name} Review 2026 | SmartAIStack`,
@@ -39,12 +34,9 @@ export default async function ToolPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   const tool = tools.find((item) => item.slug === slug);
 
-  if (!tool) {
-    notFound();
-  }
+  if (!tool) notFound();
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -132,6 +124,99 @@ export default async function ToolPage({
               It helps users improve productivity, automate workflows, save time,
               and build smarter digital experiences using AI.
             </p>
+          </section>
+
+          <section className="mb-20">
+            <h2 className="text-4xl font-bold mb-8">Best Features</h2>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold mb-4">
+                  AI Writing & Content Creation
+                </h3>
+                <p className="text-gray-400 text-lg leading-8">
+                  Generate blog posts, landing pages, social media content,
+                  emails, marketing copy, and business documents using AI.
+                </p>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold mb-4">
+                  AI Coding Assistance
+                </h3>
+                <p className="text-gray-400 text-lg leading-8">
+                  Use {tool.name} for debugging, coding help, full-stack
+                  development, React apps, automation, and AI workflows.
+                </p>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold mb-4">
+                  Research & Productivity
+                </h3>
+                <p className="text-gray-400 text-lg leading-8">
+                  Summarize documents, brainstorm ideas, analyze information,
+                  and improve productivity using AI assistance.
+                </p>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold mb-4">
+                  Creative Workflows
+                </h3>
+                <p className="text-gray-400 text-lg leading-8">
+                  Support creative concepts, marketing workflows, content
+                  planning, product ideas, and business strategy.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mb-20">
+            <h2 className="text-4xl font-bold mb-8">Pricing Plans</h2>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold mb-4">Free Plan</h3>
+
+                <p className="text-cyan-400 text-3xl font-bold mb-6">$0</p>
+
+                <ul className="space-y-3 text-gray-300">
+                  <li>✅ Basic AI access</li>
+                  <li>✅ Writing assistance</li>
+                  <li>✅ General productivity</li>
+                  <li>✅ Beginner friendly</li>
+                </ul>
+              </div>
+
+              <div className="bg-cyan-400 text-black rounded-3xl p-8">
+                <p className="font-bold mb-4 uppercase">Most Popular</p>
+
+                <h3 className="text-2xl font-bold mb-4">Pro Plan</h3>
+
+                <p className="text-3xl font-bold mb-6">$20/month</p>
+
+                <ul className="space-y-3">
+                  <li>✅ Advanced AI features</li>
+                  <li>✅ Faster responses</li>
+                  <li>✅ Better productivity workflows</li>
+                  <li>✅ More powerful AI access</li>
+                </ul>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold mb-4">Team / Enterprise</h3>
+
+                <p className="text-cyan-400 text-3xl font-bold mb-6">Custom</p>
+
+                <ul className="space-y-3 text-gray-300">
+                  <li>✅ Team collaboration</li>
+                  <li>✅ Workflow automation</li>
+                  <li>✅ Business productivity</li>
+                  <li>✅ Advanced team support</li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <section className="mb-20">
