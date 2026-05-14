@@ -26,6 +26,7 @@ export default function sitemap() {
     "categories/ai-image-generators",
     "categories/ai-writing-tools",
     "categories/ai-video-tools",
+    "best-ai-coding-tools",
   ].map((slug) => ({
     url: `${baseUrl}/${slug}`,
     lastModified: new Date(),
