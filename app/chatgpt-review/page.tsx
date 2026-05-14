@@ -2,23 +2,29 @@ export default function ChatGPTReviewPage() {
   return (
     <main className="min-h-screen bg-black text-white px-8 py-16">
       <div className="max-w-6xl mx-auto">
-        <div className="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border border-zinc-800 rounded-2xl px-4 py-3 mb-10 flex flex-wrap gap-3">
-          <a href="#quick-verdict" className="text-sm text-cyan-400 hover:text-white">
-            Quick Verdict
-          </a>
-          <a href="#pricing" className="text-sm text-cyan-400 hover:text-white">
-            Pricing
-          </a>
-          <a href="#features" className="text-sm text-cyan-400 hover:text-white">
-            Features
-          </a>
-          <a href="#faq" className="text-sm text-cyan-400 hover:text-white">
-            FAQ
-          </a>
-          <a href="#alternatives" className="text-sm text-cyan-400 hover:text-white">
-            Alternatives
-          </a>
-        </div>
+      <div className="sticky top-4 z-50 mb-12">
+  <div className="bg-black/70 backdrop-blur-2xl border border-white/10 rounded-2xl px-6 py-4 flex flex-wrap gap-4 shadow-2xl">
+    <a href="#quick-verdict" className="text-sm text-cyan-400 hover:text-white transition">
+      Quick Verdict
+    </a>
+
+    <a href="#pricing" className="text-sm text-cyan-400 hover:text-white transition">
+      Pricing
+    </a>
+
+    <a href="#features" className="text-sm text-cyan-400 hover:text-white transition">
+      Features
+    </a>
+
+    <a href="#faq" className="text-sm text-cyan-400 hover:text-white transition">
+      FAQ
+    </a>
+
+    <a href="#alternatives" className="text-sm text-cyan-400 hover:text-white transition">
+      Alternatives
+    </a>
+  </div>
+</div>
 
         <section className="mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
