@@ -36,7 +36,9 @@ export default async function ToolPage({
   const { slug } = await params;
   const tool = tools.find((item) => item.slug === slug);
 
-  if (!tool) notFound();
+  if (!tool) {
+    notFound();
+  }
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -178,7 +180,6 @@ export default async function ToolPage({
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
                 <h3 className="text-2xl font-bold mb-4">Free Plan</h3>
-
                 <p className="text-cyan-400 text-3xl font-bold mb-6">$0</p>
 
                 <ul className="space-y-3 text-gray-300">
@@ -191,9 +192,7 @@ export default async function ToolPage({
 
               <div className="bg-cyan-400 text-black rounded-3xl p-8">
                 <p className="font-bold mb-4 uppercase">Most Popular</p>
-
                 <h3 className="text-2xl font-bold mb-4">Pro Plan</h3>
-
                 <p className="text-3xl font-bold mb-6">$20/month</p>
 
                 <ul className="space-y-3">
@@ -206,7 +205,6 @@ export default async function ToolPage({
 
               <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
                 <h3 className="text-2xl font-bold mb-4">Team / Enterprise</h3>
-
                 <p className="text-cyan-400 text-3xl font-bold mb-6">Custom</p>
 
                 <ul className="space-y-3 text-gray-300">
@@ -216,6 +214,90 @@ export default async function ToolPage({
                   <li>✅ Advanced team support</li>
                 </ul>
               </div>
+            </div>
+          </section>
+
+          <section className="mb-20">
+            <h2 className="text-4xl font-bold mb-8">Best Use Cases</h2>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold mb-4">For Creators</h3>
+                <p className="text-gray-400 text-lg leading-8">
+                  Use {tool.name} to create content ideas, social posts,
+                  scripts, campaigns, and creative workflows faster.
+                </p>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold mb-4">For Businesses</h3>
+                <p className="text-gray-400 text-lg leading-8">
+                  Use {tool.name} for marketing, customer support, research,
+                  automation planning, and productivity workflows.
+                </p>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold mb-4">For Developers</h3>
+                <p className="text-gray-400 text-lg leading-8">
+                  Use {tool.name} for coding help, debugging, app building,
+                  documentation, and technical problem solving.
+                </p>
+              </div>
+
+              <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+                <h3 className="text-2xl font-bold mb-4">For Beginners</h3>
+                <p className="text-gray-400 text-lg leading-8">
+                  Use {tool.name} to learn new skills, understand complex topics,
+                  explore AI workflows, and improve daily productivity.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="mb-20">
+            <h2 className="text-4xl font-bold mb-8">AI Tool Comparison</h2>
+
+            <div className="overflow-x-auto">
+              <table className="w-full border border-zinc-800 rounded-3xl overflow-hidden">
+                <thead className="bg-zinc-900">
+                  <tr>
+                    <th className="p-5 text-left">Tool</th>
+                    <th className="p-5 text-left">Best For</th>
+                    <th className="p-5 text-left">Pricing</th>
+                    <th className="p-5 text-left">Rating</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr className="border-t border-zinc-800">
+                    <td className="p-5 font-bold">ChatGPT</td>
+                    <td className="p-5 text-gray-400">
+                      Productivity & AI workflows
+                    </td>
+                    <td className="p-5 text-gray-400">Free + Paid</td>
+                    <td className="p-5 text-cyan-400 font-bold">9.5/10</td>
+                  </tr>
+
+                  <tr className="border-t border-zinc-800">
+                    <td className="p-5 font-bold">Claude</td>
+                    <td className="p-5 text-gray-400">
+                      Long-form writing & reasoning
+                    </td>
+                    <td className="p-5 text-gray-400">Free + Paid</td>
+                    <td className="p-5 text-cyan-400 font-bold">9.2/10</td>
+                  </tr>
+
+                  <tr className="border-t border-zinc-800">
+                    <td className="p-5 font-bold">Gemini</td>
+                    <td className="p-5 text-gray-400">
+                      Google ecosystem workflows
+                    </td>
+                    <td className="p-5 text-gray-400">Free + Paid</td>
+                    <td className="p-5 text-cyan-400 font-bold">8.9/10</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </section>
 
