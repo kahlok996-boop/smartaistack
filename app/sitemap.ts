@@ -19,6 +19,8 @@ export default function sitemap() {
     "compare",
     "alternatives",
     "alternatives/chatgpt-alternatives",
+    "about",
+    "contact",
   ].map((slug) => ({
     url: `${baseUrl}/${slug}`,
     lastModified: new Date(),
