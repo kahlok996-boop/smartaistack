@@ -30,38 +30,23 @@ export default function HomePage() {
           </h2>
 
           <div className="flex gap-6 text-gray-300">
-            <a
-              href="/best-ai-tools"
-              className="hover:text-cyan-400 transition"
-            >
+            <a href="/best-ai-tools" className="hover:text-cyan-400 transition">
               Tools
             </a>
 
-            <a
-              href="/compare"
-              className="hover:text-cyan-400 transition"
-            >
+            <a href="/compare" className="hover:text-cyan-400 transition">
               Compare
             </a>
 
-            <a
-              href="/alternatives"
-              className="hover:text-cyan-400 transition"
-            >
+            <a href="/alternatives" className="hover:text-cyan-400 transition">
               Alternatives
             </a>
 
-            <a
-              href="/about"
-              className="hover:text-cyan-400 transition"
-            >
+            <a href="/about" className="hover:text-cyan-400 transition">
               About
             </a>
 
-            <a
-              href="/contact"
-              className="hover:text-cyan-400 transition"
-            >
+            <a href="/contact" className="hover:text-cyan-400 transition">
               Contact
             </a>
           </div>
@@ -124,6 +109,79 @@ export default function HomePage() {
               className="inline-block bg-white text-black px-6 py-3 rounded-2xl font-bold"
             >
               Explore ChatGPT
+            </a>
+          </div>
+        </section>
+
+        <section className="mb-20">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-4xl font-bold">
+              Featured Categories
+            </h2>
+
+            <a
+              href="/categories/ai-coding-tools"
+              className="text-cyan-400 font-semibold"
+            >
+              View All →
+            </a>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a
+              href="/categories/ai-coding-tools"
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-cyan-400 transition"
+            >
+              <h3 className="text-2xl font-bold mb-4">
+                AI Coding Tools
+              </h3>
+
+              <p className="text-gray-400 leading-7">
+                AI tools for developers, debugging,
+                software engineering, and coding workflows.
+              </p>
+            </a>
+
+            <a
+              href="/categories/ai-writing-tools"
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-cyan-400 transition"
+            >
+              <h3 className="text-2xl font-bold mb-4">
+                AI Writing Tools
+              </h3>
+
+              <p className="text-gray-400 leading-7">
+                AI writing assistants for content,
+                blogging, copywriting, and productivity.
+              </p>
+            </a>
+
+            <a
+              href="/categories/ai-image-generators"
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-cyan-400 transition"
+            >
+              <h3 className="text-2xl font-bold mb-4">
+                AI Image Generators
+              </h3>
+
+              <p className="text-gray-400 leading-7">
+                Generate AI art, images,
+                creative visuals, and concept designs.
+              </p>
+            </a>
+
+            <a
+              href="/categories/ai-video-tools"
+              className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-cyan-400 transition"
+            >
+              <h3 className="text-2xl font-bold mb-4">
+                AI Video Tools
+              </h3>
+
+              <p className="text-gray-400 leading-7">
+                AI video generation,
+                editing, avatars, and content workflows.
+              </p>
             </a>
           </div>
         </section>
