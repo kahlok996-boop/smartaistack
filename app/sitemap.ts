@@ -22,6 +22,10 @@ export default function sitemap() {
     "about",
     "contact",
     "categories/ai-assistant",
+    "categories/ai-coding-tools",
+    "categories/ai-image-generators",
+    "categories/ai-writing-tools",
+    "categories/ai-video-tools",
   ].map((slug) => ({
     url: `${baseUrl}/${slug}`,
     lastModified: new Date(),
