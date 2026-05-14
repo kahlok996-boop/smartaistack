@@ -117,6 +117,51 @@ export default async function ToolPage({
 
         <section className="mb-20">
           <h2 className="text-4xl font-bold mb-8">
+            Frequently Asked Questions
+          </h2>
+
+          <div className="space-y-6">
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+              <h3 className="text-2xl font-bold mb-4">
+                What is {tool.name}?
+              </h3>
+
+              <p className="text-gray-400 text-lg leading-8">
+                {tool.name} is an AI tool designed for {tool.category.toLowerCase()} workflows,
+                helping users improve productivity, automate tasks,
+                and build smarter digital experiences.
+              </p>
+            </div>
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+              <h3 className="text-2xl font-bold mb-4">
+                Is {tool.name} free?
+              </h3>
+
+              <p className="text-gray-400 text-lg leading-8">
+                {tool.name} offers {tool.pricing.toLowerCase()} pricing plans
+                depending on the features and workflow requirements.
+              </p>
+            </div>
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+              <h3 className="text-2xl font-bold mb-4">
+                Is {tool.name} worth using in 2026?
+              </h3>
+
+              <p className="text-gray-400 text-lg leading-8">
+                Yes. {tool.name} is considered one of the best AI tools
+                for modern AI workflows, productivity,
+                and automation in 2026.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        <section className="mb-20">
+          <h2 className="text-4xl font-bold mb-8">
             Related AI Tools
           </h2>
 
