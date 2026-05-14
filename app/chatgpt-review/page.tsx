@@ -1,7 +1,7 @@
 export default function ChatGPTReviewPage() {
   return (
     <main className="min-h-screen bg-black text-white px-8 py-16">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border border-zinc-800 rounded-2xl px-4 py-3 mb-10 flex flex-wrap gap-3">
           <a href="#quick-verdict" className="text-sm text-cyan-400 hover:text-white">
             Quick Verdict
@@ -20,17 +20,73 @@ export default function ChatGPTReviewPage() {
           </a>
         </div>
 
-        <p className="text-cyan-400 font-semibold mb-4">AI Assistant Tools</p>
+        <section className="mb-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-cyan-400 font-semibold mb-4">
+                AI Assistant Tools
+              </p>
 
-        <h1 className="text-3xl md:text-4xl font-bold mb-6">
-          ChatGPT Review 2026
-        </h1>
+              <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+                ChatGPT Review 2026
+              </h1>
 
-        <p className="text-lg text-gray-300 mb-10 leading-8">
-          ChatGPT is an AI assistant built for writing, coding, research,
-          productivity, business planning, content creation, and everyday
-          problem solving.
-        </p>
+              <p className="text-xl text-gray-300 leading-9 mb-8">
+                ChatGPT is an AI assistant built for writing, coding,
+                research, productivity, business planning, content creation,
+                and everyday problem solving.
+              </p>
+
+              <div className="flex flex-wrap gap-4 mb-8">
+                <span className="bg-zinc-900 border border-zinc-800 rounded-full px-5 py-3 text-sm text-cyan-400">
+                  ⭐ 9.5/10 Rating
+                </span>
+                <span className="bg-zinc-900 border border-zinc-800 rounded-full px-5 py-3 text-sm text-cyan-400">
+                  Beginner Friendly
+                </span>
+                <span className="bg-zinc-900 border border-zinc-800 rounded-full px-5 py-3 text-sm text-cyan-400">
+                  Free + Paid Plans
+                </span>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="https://chatgpt.com"
+                  target="_blank"
+                  className="inline-block bg-cyan-400 text-black px-8 py-4 rounded-full font-bold"
+                >
+                  Visit Official Website
+                </a>
+
+                <a
+                  href="#quick-verdict"
+                  className="inline-block bg-zinc-900 border border-zinc-800 text-white px-8 py-4 rounded-full font-bold hover:border-cyan-400 transition"
+                >
+                  Read Review
+                </a>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-cyan-400/20 to-blue-600/10 border border-cyan-400/30 rounded-3xl p-8">
+              <div className="bg-black/60 border border-zinc-800 rounded-3xl p-8">
+                <p className="text-cyan-400 font-semibold mb-4">
+                  Quick Summary
+                </p>
+
+                <h2 className="text-3xl font-bold mb-6">
+                  Best for productivity, coding, writing and business workflows.
+                </h2>
+
+                <div className="space-y-4 text-gray-300">
+                  <p>✅ Great for beginners</p>
+                  <p>✅ Strong for coding help</p>
+                  <p>✅ Useful for business planning</p>
+                  <p>✅ One of the most popular AI tools</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <div
           id="quick-verdict"
