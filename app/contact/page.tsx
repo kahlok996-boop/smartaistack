@@ -40,9 +40,12 @@ export default function ContactPage() {
                   Email
                 </p>
   
-                <p className="font-semibold">
-                  contact@smartaistack.com
-                </p>
+                <a
+                  href="mailto:kahlok996@gmail.com"
+                  className="font-semibold text-cyan-400 hover:text-white transition"
+                >
+                  kahlok996@gmail.com
+                </a>
               </div>
   
               <div>
