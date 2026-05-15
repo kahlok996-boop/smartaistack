@@ -6,6 +6,9 @@ import Footer from "@/app/components/Footer";
 
 export default function GeneratorPage() {
   const [loading, setLoading] = useState(false);
+  const [industry, setIndustry] = useState("Agency");
+  const [style, setStyle] = useState("Premium");
+  const [vibe, setVibe] = useState("Cinematic");
 
   const [result, setResult] = useState({
     title: "Premium Agency Landing Page",
@@ -19,39 +22,76 @@ export default function GeneratorPage() {
     setLoading(true);
 
     setTimeout(() => {
-      const results = [
-        {
-          title: "Luxury SaaS Experience",
+      let generated = {
+        title: "",
+        headline: "",
+        score: 92,
+        cta: "",
+      };
+
+      if (industry === "Agency") {
+        generated = {
+          title: `${style} Agency Experience`,
+          headline:
+            "Transform Your Agency Into A Premium Client-Closing Machine",
+          score: 94,
+          cta: "Generate Agency Direction",
+        };
+      }
+
+      if (industry === "SaaS") {
+        generated = {
+          title: `${style} SaaS Platform`,
           headline:
             "Build A SaaS Website That Feels Like A Billion-Dollar Startup",
           score: 96,
           cta: "Generate SaaS Direction",
-        },
+        };
+      }
 
-        {
-          title: "Cinematic Ecommerce Brand",
+      if (industry === "Ecommerce") {
+        generated = {
+          title: `${style} Ecommerce Brand`,
           headline:
-            "Turn Your Ecommerce Brand Into A Premium Shopping Experience",
-          score: 94,
+            "Turn Your Ecommerce Store Into A Luxury Shopping Experience",
+          score: 95,
           cta: "Generate Ecommerce Direction",
-        },
+        };
+      }
 
-        {
-          title: "Modern AI Startup",
+      if (industry === "AI Startup") {
+        generated = {
+          title: `${vibe} AI Startup`,
           headline:
-            "Create An AI Startup Website That Looks Investor-Ready",
+            "Create An Investor-Ready AI Startup Website Experience",
           score: 97,
           cta: "Generate AI Startup Direction",
-        },
-      ];
+        };
+      }
 
-      const random =
-        results[Math.floor(Math.random() * results.length)];
+      if (industry === "Real Estate") {
+        generated = {
+          title: `${style} Real Estate Experience`,
+          headline:
+            "Build A Luxury Property Website That Feels High-End And Trustworthy",
+          score: 93,
+          cta: "Generate Real Estate Direction",
+        };
+      }
 
-      setResult(random);
+      if (industry === "Fitness") {
+        generated = {
+          title: `${vibe} Fitness Brand`,
+          headline:
+            "Create A High-Energy Fitness Website That Drives Conversions",
+          score: 91,
+          cta: "Generate Fitness Direction",
+        };
+      }
 
+      setResult(generated);
       setLoading(false);
-    }, 3500);
+    }, 3000);
   };
 
   return (
@@ -59,10 +99,8 @@ export default function GeneratorPage() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#00d2ff22,transparent_30%),radial-gradient(circle_at_bottom_right,#7c3aed33,transparent_35%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
-
         <Navbar />
 
-        {/* HERO */}
         <section className="mb-24">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 text-xs md:text-sm font-semibold mb-8">
             <div className="w-2 h-2 rounded-full bg-cyan-400" />
@@ -81,12 +119,8 @@ export default function GeneratorPage() {
           </p>
         </section>
 
-        {/* GENERATOR */}
         <section className="grid lg:grid-cols-2 gap-8 items-start mb-28">
-
-          {/* LEFT */}
           <div className="rounded-[32px] border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 md:p-10">
-
             <div className="flex items-center justify-between mb-10">
               <h2 className="text-3xl font-black">
                 Create Your Direction
@@ -98,13 +132,16 @@ export default function GeneratorPage() {
             </div>
 
             <div className="space-y-7">
-
               <div>
                 <label className="block text-sm text-gray-400 mb-3">
                   Industry
                 </label>
 
-                <select className="w-full h-16 rounded-2xl bg-black border border-white/10 px-5 text-lg outline-none focus:border-cyan-400">
+                <select
+                  value={industry}
+                  onChange={(e) => setIndustry(e.target.value)}
+                  className="w-full h-16 rounded-2xl bg-black border border-white/10 px-5 text-lg outline-none focus:border-cyan-400"
+                >
                   <option>Agency</option>
                   <option>SaaS</option>
                   <option>Ecommerce</option>
@@ -119,7 +156,11 @@ export default function GeneratorPage() {
                   Style
                 </label>
 
-                <select className="w-full h-16 rounded-2xl bg-black border border-white/10 px-5 text-lg outline-none focus:border-cyan-400">
+                <select
+                  value={style}
+                  onChange={(e) => setStyle(e.target.value)}
+                  className="w-full h-16 rounded-2xl bg-black border border-white/10 px-5 text-lg outline-none focus:border-cyan-400"
+                >
                   <option>Premium</option>
                   <option>Luxury</option>
                   <option>Minimal</option>
@@ -133,7 +174,11 @@ export default function GeneratorPage() {
                   Vibe
                 </label>
 
-                <select className="w-full h-16 rounded-2xl bg-black border border-white/10 px-5 text-lg outline-none focus:border-cyan-400">
+                <select
+                  value={vibe}
+                  onChange={(e) => setVibe(e.target.value)}
+                  className="w-full h-16 rounded-2xl bg-black border border-white/10 px-5 text-lg outline-none focus:border-cyan-400"
+                >
                   <option>Cinematic</option>
                   <option>Corporate</option>
                   <option>Startup</option>
@@ -150,13 +195,10 @@ export default function GeneratorPage() {
                   ? "Generating Premium Direction..."
                   : "Generate Premium Direction"}
               </button>
-
             </div>
           </div>
 
-          {/* RIGHT */}
           <div className="rounded-[32px] border border-cyan-400/30 bg-cyan-400/[0.05] backdrop-blur-xl p-8 md:p-10">
-
             <div className="flex items-center justify-between mb-8">
               <span className="text-cyan-400 text-sm font-semibold">
                 AI Generated Result Preview
@@ -175,17 +217,15 @@ export default function GeneratorPage() {
 
                 <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
                   <div className="h-6 bg-zinc-800 rounded-full w-1/2 mb-5"></div>
-
                   <div className="h-4 bg-zinc-800 rounded-full w-full mb-3"></div>
-
                   <div className="h-4 bg-zinc-800 rounded-full w-4/5"></div>
                 </div>
 
                 <div className="space-y-3">
                   {[
-                    "Analyzing design hierarchy...",
-                    "Generating premium direction...",
-                    "Building cinematic structure...",
+                    "Analyzing selected industry...",
+                    "Matching premium style direction...",
+                    "Building cinematic website structure...",
                   ].map((item) => (
                     <div
                       key={item}
@@ -203,8 +243,9 @@ export default function GeneratorPage() {
                 </h2>
 
                 <p className="text-gray-300 text-lg leading-8 mb-8">
-                  A cinematic website direction designed to make your brand look
-                  more premium, modern, trustworthy, and conversion-focused.
+                  A {vibe.toLowerCase()} website direction designed for the{" "}
+                  {industry.toLowerCase()} industry with a {style.toLowerCase()} visual system,
+                  stronger trust flow, and conversion-focused structure.
                 </p>
 
                 <div className="rounded-3xl border border-white/10 bg-black/40 p-6 mb-6">
@@ -229,7 +270,6 @@ export default function GeneratorPage() {
                 </div>
 
                 <div className="space-y-5">
-
                   <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
                     <p className="text-gray-500 text-sm mb-3">
                       Headline
@@ -260,8 +300,8 @@ export default function GeneratorPage() {
                         "Cinematic Hero",
                         "Trust Section",
                         "Before / After",
-                        "Pricing CTA",
-                        "Testimonials",
+                        `${industry} Offer`,
+                        `${style} CTA`,
                       ].map((item) => (
                         <div
                           key={item}
@@ -273,6 +313,18 @@ export default function GeneratorPage() {
                     </div>
                   </div>
 
+                  <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
+                    <p className="text-gray-500 text-sm mb-4">
+                      Recommended Direction
+                    </p>
+
+                    <p className="text-gray-300 leading-8 text-lg">
+                      Use a {style.toLowerCase()} design system with a{" "}
+                      {vibe.toLowerCase()} mood, strong hero messaging,
+                      premium spacing, trust-building sections, and a clear
+                      conversion path for {industry.toLowerCase()} visitors.
+                    </p>
+                  </div>
                 </div>
               </>
             )}
@@ -280,7 +332,6 @@ export default function GeneratorPage() {
         </section>
 
         <Footer />
-
       </div>
     </main>
   );
