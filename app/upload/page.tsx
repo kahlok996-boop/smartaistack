@@ -65,7 +65,7 @@ export default function UploadPage() {
         </p>
 
         <section className="grid lg:grid-cols-2 gap-6 md:gap-10 mb-14">
-          <div className="bg-zinc-900/70 border border-zinc-800 rounded-[28px] p-4 md:p-10 backdrop-blur-xl"
+        <div className="bg-zinc-900/70 border border-zinc-800 rounded-[28px] p-4 md:p-10 backdrop-blur-xl">
           <div className="grid grid-cols-2 gap-3 mb-6">
               <button
                 onClick={() => setMode("url")}
