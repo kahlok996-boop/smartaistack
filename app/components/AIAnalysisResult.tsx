@@ -30,7 +30,7 @@ export default function AIAnalysisResult() {
           <div className="flex items-center gap-4 mb-8">
             <div className="w-4 h-4 rounded-full bg-cyan-400 animate-pulse"></div>
             <p className="text-2xl font-black">
-              SmartAIStack is scanning your website screenshot...
+              SmartAIStack is scanning your website...
             </p>
           </div>
 
@@ -88,7 +88,33 @@ export default function AIAnalysisResult() {
         ))}
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-6">
+      <div className="grid lg:grid-cols-2 gap-6 mb-8">
+        <div className="rounded-3xl border border-white/10 bg-black/40 p-7">
+          <h3 className="text-2xl font-black mb-5">
+            Before Summary
+          </h3>
+
+          <p className="text-gray-300 leading-8">
+            The current website feels functional, but the visual hierarchy,
+            spacing, CTA flow, and trust-building sections can be improved to
+            make the brand feel more premium and conversion-focused.
+          </p>
+        </div>
+
+        <div className="rounded-3xl border border-white/10 bg-black/40 p-7">
+          <h3 className="text-2xl font-black mb-5">
+            After Direction
+          </h3>
+
+          <p className="text-gray-300 leading-8">
+            Redesign the page with a cinematic hero, clearer headline, stronger
+            CTA placement, premium contrast, trust proof, before/after visual
+            storytelling, and a sharper lead-generation section.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-6 mb-8">
         <div className="rounded-3xl border border-white/10 bg-black/40 p-7">
           <h3 className="text-2xl font-black mb-5">
             Main Problems Found
@@ -100,6 +126,7 @@ export default function AIAnalysisResult() {
               "CTA placement could be more direct and conversion-focused.",
               "Visual hierarchy needs stronger contrast and spacing.",
               "Trust elements should appear earlier on the page.",
+              "The page needs a clearer premium brand story.",
             ].map((item) => (
               <p key={item} className="text-gray-300 leading-7">
                 ✦ {item}
@@ -110,32 +137,89 @@ export default function AIAnalysisResult() {
 
         <div className="rounded-3xl border border-white/10 bg-black/40 p-7">
           <h3 className="text-2xl font-black mb-5">
-            Suggested Premium Direction
+            Recommended Fixes
           </h3>
 
-          <p className="text-gray-300 leading-8 mb-6">
-            Redesign the page with a stronger cinematic hero, clearer headline,
-            premium spacing, trust proof, visual before/after section, and a
-            sharper lead-generation CTA.
-          </p>
-
-          <div className="flex flex-wrap gap-3">
+          <div className="space-y-4">
             {[
-              "Cinematic Hero",
-              "Premium CTA",
-              "Trust Layer",
-              "Before / After",
-              "Lead Form",
+              "Rewrite the hero headline around a stronger transformation promise.",
+              "Move the main CTA higher and make it visually dominant.",
+              "Add social proof, testimonials, or trust signals above the fold.",
+              "Use stronger section spacing and premium card hierarchy.",
+              "Add a before/after preview to make the value instantly visible.",
             ].map((item) => (
-              <span
-                key={item}
-                className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-cyan-300 text-sm"
-              >
-                {item}
-              </span>
+              <p key={item} className="text-gray-300 leading-7">
+                ✓ {item}
+              </p>
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="rounded-3xl border border-white/10 bg-black/40 p-7 mb-8">
+        <h3 className="text-2xl font-black mb-5">
+          Suggested Premium Sections
+        </h3>
+
+        <div className="flex flex-wrap gap-3">
+          {[
+            "Cinematic Hero",
+            "Premium CTA",
+            "Trust Layer",
+            "Before / After",
+            "Lead Form",
+            "Case Study",
+            "Pricing Offer",
+            "Testimonials",
+          ].map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-cyan-300 text-sm"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-[32px] border border-cyan-400/20 bg-gradient-to-br from-cyan-500/20 to-blue-500/10 p-8">
+        <p className="text-cyan-400 font-semibold mb-4">
+          Ready for the next step?
+        </p>
+
+        <h3 className="text-3xl md:text-4xl font-black mb-5">
+          Get a Premium Website Direction
+        </h3>
+
+        <p className="text-gray-300 leading-8 mb-6 max-w-3xl">
+          Turn this AI analysis into a full redesign plan with premium layout
+          direction, CTA structure, visual hierarchy improvements, and a
+          conversion-focused website proposal.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
+          />
+
+          <input
+            type="email"
+            placeholder="Your Email"
+            className="bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
+          />
+
+          <input
+            type="text"
+            placeholder="Website URL"
+            className="bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
+          />
+        </div>
+
+        <button className="w-full md:w-auto bg-cyan-400 text-black px-8 py-4 rounded-2xl font-black hover:scale-[1.02] transition">
+          Request Premium Direction
+        </button>
       </div>
     </section>
   );

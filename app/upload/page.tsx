@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import AIAnalysisResult from "@/app/components/AIAnalysisResult";
+import BeforeAfterPreview from "@/app/components/BeforeAfterPreview";
 
 export default function UploadPage() {
   const [mode, setMode] = useState<"url" | "upload">("url");
@@ -27,6 +28,7 @@ export default function UploadPage() {
 
     const imageUrl = URL.createObjectURL(file);
     setPreview(imageUrl);
+
     startAnalysis();
   };
 
@@ -39,6 +41,7 @@ export default function UploadPage() {
   return (
     <main className="min-h-screen bg-black text-white overflow-hidden relative px-6 md:px-8 py-16">
       <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-cyan-500/20 blur-[160px] rounded-full"></div>
+
       <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-blue-500/10 blur-[180px] rounded-full"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -126,6 +129,7 @@ export default function UploadPage() {
 
                     <label className="inline-block bg-cyan-400 text-black px-8 py-4 rounded-2xl font-bold cursor-pointer hover:scale-105 transition">
                       Replace Screenshot
+
                       <input
                         type="file"
                         accept="image/*"
@@ -150,6 +154,7 @@ export default function UploadPage() {
 
                     <label className="inline-block bg-cyan-400 text-black px-8 py-4 rounded-2xl font-bold cursor-pointer hover:scale-105 transition">
                       Choose Screenshot
+
                       <input
                         type="file"
                         accept="image/*"
@@ -192,6 +197,7 @@ export default function UploadPage() {
                   className="bg-black/40 border border-zinc-800 rounded-3xl p-6"
                 >
                   <p className="text-gray-500 mb-2">{title}</p>
+
                   <p className="text-gray-300 leading-7">{desc}</p>
                 </div>
               ))}
@@ -221,15 +227,13 @@ export default function UploadPage() {
                   "Generating premium redesign direction...",
                   "Building cinematic UI structure...",
                   "Optimizing CTA placement...",
-                ].map((item, index) => (
+                ].map((item) => (
                   <div
                     key={item}
                     className="bg-black/40 border border-white/10 rounded-2xl px-6 py-5 flex items-center gap-4"
-                    style={{
-                      animationDelay: `${index * 0.3}s`,
-                    }}
                   >
                     <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
+
                     <p className="text-gray-300 text-lg">{item}</p>
                   </div>
                 ))}
@@ -238,7 +242,12 @@ export default function UploadPage() {
           </section>
         )}
 
-        {submitted && !loading && <AIAnalysisResult />}
+        {submitted && !loading && (
+          <>
+            <AIAnalysisResult />
+            <BeforeAfterPreview />
+          </>
+        )}
       </div>
     </main>
   );
