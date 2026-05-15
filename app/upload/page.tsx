@@ -4,7 +4,10 @@ import { useState } from "react";
 import AIAnalysisResult from "@/app/components/AIAnalysisResult";
 
 export default function UploadPage() {
+  const [mode, setMode] = useState<"url" | "upload">("url");
+  const [websiteUrl, setWebsiteUrl] = useState("");
   const [preview, setPreview] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -13,6 +16,12 @@ export default function UploadPage() {
 
     const imageUrl = URL.createObjectURL(file);
     setPreview(imageUrl);
+    setSubmitted(true);
+  };
+
+  const handleAnalyzeUrl = () => {
+    if (!websiteUrl.trim()) return;
+    setSubmitted(true);
   };
 
   return (
@@ -27,69 +36,118 @@ export default function UploadPage() {
         </div>
 
         <h1 className="text-5xl md:text-7xl font-black mb-8 leading-[0.95] max-w-5xl">
-          Upload Your Website
+          Analyze Your Website
           <br />
-          Screenshot
+          With AI
         </h1>
 
         <p className="text-lg md:text-xl text-gray-400 leading-9 mb-14 max-w-3xl">
-          Upload your current website screenshot and preview how SmartAIStack
-          can turn it into a more premium, cinematic, and conversion-focused
-          website direction.
+          Paste your website link or upload a screenshot. SmartAIStack will
+          simulate a premium redesign direction, conversion review, and visual
+          improvement analysis.
         </p>
 
         <section className="grid lg:grid-cols-2 gap-10 mb-14">
           <div className="bg-zinc-900/70 border border-zinc-800 rounded-[32px] p-6 md:p-10 backdrop-blur-xl">
-            <p className="text-cyan-400 font-semibold mb-4">
-              Upload Screenshot
-            </p>
+            <div className="flex gap-3 mb-8">
+              <button
+                onClick={() => setMode("url")}
+                className={`px-5 py-3 rounded-full font-bold transition ${
+                  mode === "url"
+                    ? "bg-cyan-400 text-black"
+                    : "bg-black border border-zinc-700 text-gray-300"
+                }`}
+              >
+                Website Link
+              </button>
 
-            <div className="border-2 border-dashed border-cyan-400/30 rounded-[32px] p-6 md:p-12 text-center bg-black/40">
-              {preview ? (
-                <div className="space-y-6">
-                  <img
-                    src={preview}
-                    alt="Uploaded Website Screenshot"
-                    className="w-full rounded-3xl border border-cyan-400/20"
-                  />
-
-                  <label className="inline-block bg-cyan-400 text-black px-8 py-4 rounded-2xl font-bold cursor-pointer hover:scale-105 transition shadow-[0_0_40px_rgba(34,211,238,0.25)]">
-                    Replace Screenshot
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleUpload}
-                      className="hidden"
-                    />
-                  </label>
-                </div>
-              ) : (
-                <>
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
-                    <span className="text-4xl">⬆</span>
-                  </div>
-
-                  <p className="text-3xl font-black mb-4">
-                    Drop your screenshot here
-                  </p>
-
-                  <p className="text-gray-400 mb-8 leading-7">
-                    Upload a PNG, JPG, or website screenshot.
-                    This MVP will simulate a premium redesign direction.
-                  </p>
-
-                  <label className="inline-block bg-cyan-400 text-black px-8 py-4 rounded-2xl font-bold cursor-pointer hover:scale-105 transition shadow-[0_0_40px_rgba(34,211,238,0.25)]">
-                    Choose Screenshot
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleUpload}
-                      className="hidden"
-                    />
-                  </label>
-                </>
-              )}
+              <button
+                onClick={() => setMode("upload")}
+                className={`px-5 py-3 rounded-full font-bold transition ${
+                  mode === "upload"
+                    ? "bg-cyan-400 text-black"
+                    : "bg-black border border-zinc-700 text-gray-300"
+                }`}
+              >
+                Upload Screenshot
+              </button>
             </div>
+
+            {mode === "url" ? (
+              <div className="border border-cyan-400/20 rounded-[32px] p-6 md:p-10 bg-black/40">
+                <p className="text-cyan-400 font-semibold mb-4">
+                  Paste Website Link
+                </p>
+
+                <input
+                  value={websiteUrl}
+                  onChange={(e) => setWebsiteUrl(e.target.value)}
+                  type="url"
+                  placeholder="https://example.com"
+                  className="w-full bg-black border border-zinc-700 rounded-2xl px-5 py-5 text-white outline-none focus:border-cyan-400 mb-6"
+                />
+
+                <button
+                  onClick={handleAnalyzeUrl}
+                  className="w-full bg-cyan-400 text-black px-8 py-5 rounded-2xl font-black hover:scale-[1.02] transition"
+                >
+                  Analyze Website Link
+                </button>
+
+                {websiteUrl && (
+                  <p className="text-gray-400 mt-6 leading-7">
+                    Ready to analyze:{" "}
+                    <span className="text-cyan-300">{websiteUrl}</span>
+                  </p>
+                )}
+              </div>
+            ) : (
+              <div className="border-2 border-dashed border-cyan-400/30 rounded-[32px] p-6 md:p-12 text-center bg-black/40">
+                {preview ? (
+                  <div className="space-y-6">
+                    <img
+                      src={preview}
+                      alt="Uploaded Website Screenshot"
+                      className="w-full rounded-3xl border border-cyan-400/20"
+                    />
+
+                    <label className="inline-block bg-cyan-400 text-black px-8 py-4 rounded-2xl font-bold cursor-pointer hover:scale-105 transition">
+                      Replace Screenshot
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleUpload}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+                ) : (
+                  <>
+                    <div className="w-20 h-20 mx-auto mb-6 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+                      <span className="text-4xl">⬆</span>
+                    </div>
+
+                    <p className="text-3xl font-black mb-4">
+                      Drop your screenshot here
+                    </p>
+
+                    <p className="text-gray-400 mb-8 leading-7">
+                      Upload a PNG, JPG, or website screenshot.
+                    </p>
+
+                    <label className="inline-block bg-cyan-400 text-black px-8 py-4 rounded-2xl font-bold cursor-pointer hover:scale-105 transition">
+                      Choose Screenshot
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleUpload}
+                        className="hidden"
+                      />
+                    </label>
+                  </>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="bg-gradient-to-br from-cyan-500/20 to-blue-500/10 border border-cyan-400/20 rounded-[32px] p-6 md:p-10 backdrop-blur-xl">
@@ -128,36 +186,7 @@ export default function UploadPage() {
           </div>
         </section>
 
-        <section className="grid md:grid-cols-3 gap-6">
-          {[
-            [
-              "Step 1",
-              "Upload",
-              "Add a screenshot of your current website or landing page.",
-            ],
-            [
-              "Step 2",
-              "Preview Direction",
-              "SmartAIStack simulates premium redesign ideas and conversion flow.",
-            ],
-            [
-              "Step 3",
-              "Leave Contact",
-              "Users can submit contact details for a real redesign quote later.",
-            ],
-          ].map(([step, title, desc]) => (
-            <div
-              key={step}
-              className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-7"
-            >
-              <p className="text-cyan-400 font-semibold mb-3">{step}</p>
-              <h2 className="text-2xl font-bold mb-3">{title}</h2>
-              <p className="text-gray-400 leading-7">{desc}</p>
-            </div>
-          ))}
-        </section>
-
-        {preview && <AIAnalysisResult />}
+        {submitted && <AIAnalysisResult />}
       </div>
     </main>
   );
