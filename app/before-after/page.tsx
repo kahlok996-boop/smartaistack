@@ -46,18 +46,33 @@ export default function BeforeAfterPage() {
                 </h2>
   
                 <p className="text-gray-300 leading-8 mb-8">
-                  Strong visual hierarchy, premium spacing, modern CTA flow,
-                  trust-driven sections, and conversion-focused storytelling.
+                  Strong visual hierarchy, premium spacing, modern conversion
+                  flow, trust-driven sections, and premium storytelling designed
+                  to increase perceived brand value.
                 </p>
   
-                <div className="flex gap-4">
-                  <div className="bg-cyan-400 text-black px-5 py-3 rounded-2xl font-bold">
-                    Book a Call
-                  </div>
+                <div className="space-y-4">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full bg-black border border-zinc-700 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
+                  />
   
-                  <div className="border border-zinc-700 px-5 py-3 rounded-2xl font-bold">
-                    View Work
-                  </div>
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    className="w-full bg-black border border-zinc-700 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
+                  />
+  
+                  <textarea
+                    placeholder="Tell us about your website..."
+                    rows={4}
+                    className="w-full bg-black border border-zinc-700 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
+                  />
+  
+                  <button className="w-full bg-cyan-400 text-black px-6 py-4 rounded-2xl font-bold hover:scale-[1.02] transition">
+                    Get Premium Direction
+                  </button>
                 </div>
               </div>
             </div>
