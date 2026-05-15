@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Navbar from "@/app/components/Navbar";
+import Footer from "@/app/components/Footer";
 
 export default function GeneratorPage() {
   const [loading, setLoading] = useState(false);
@@ -57,6 +59,8 @@ export default function GeneratorPage() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#00d2ff22,transparent_30%),radial-gradient(circle_at_bottom_right,#7c3aed33,transparent_35%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24">
+
+        <Navbar />
 
         {/* HERO */}
         <section className="mb-24">
@@ -274,6 +278,9 @@ export default function GeneratorPage() {
             )}
           </div>
         </section>
+
+        <Footer />
+
       </div>
     </main>
   );
