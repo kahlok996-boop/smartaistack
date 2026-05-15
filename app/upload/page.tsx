@@ -6,6 +6,7 @@ import Footer from "@/app/components/Footer";
 import AIAnalysisResult from "@/app/components/AIAnalysisResult";
 import BeforeAfterPreview from "@/app/components/BeforeAfterPreview";
 import PricingSection from "@/app/components/PricingSection";
+import LeadCapture from "@/app/components/LeadCapture";
 
 export default function UploadPage() {
   const [mode, setMode] = useState<"url" | "upload">("url");
@@ -247,6 +248,7 @@ export default function UploadPage() {
             <AIAnalysisResult />
             <BeforeAfterPreview />
             <PricingSection />
+            <LeadCapture />
           </>
         )}
 
