@@ -64,65 +64,89 @@ export default function HomePage() {
         </nav>
 
         <section className="pt-8 md:pt-20 mb-20 md:mb-28 relative text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] md:w-[900px] h-[700px] md:h-[900px] bg-purple-500/10 blur-[180px] rounded-full"></div>
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] md:w-[900px] h-[700px] md:h-[900px] bg-purple-500/10 blur-[180px] rounded-full"></div>
 
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-5 md:px-6 py-3 text-sm text-gray-300 mb-8 md:mb-10 backdrop-blur-xl">
-              <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-              AI Website Generation Platform
-            </div>
+  <div className="relative z-10">
+    <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 rounded-full px-5 md:px-6 py-3 text-sm text-gray-300 mb-8 md:mb-10 backdrop-blur-xl">
+      <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+      AI Website Transformation Platform
+    </div>
 
-            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black leading-[1] tracking-tight max-w-6xl mx-auto mb-8">
-              Generate
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
-                Premium AI Websites
-              </span>
-              In Minutes
-            </h1>
+    <h1 className="text-5xl sm:text-6xl md:text-8xl font-black leading-[1] tracking-tight max-w-6xl mx-auto mb-8">
+      Transform
+      <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
+        Websites Into
+      </span>
+      Premium AI Experiences
+    </h1>
 
-            <p className="text-lg md:text-2xl text-gray-400 leading-8 md:leading-10 max-w-2xl mx-auto mb-10 md:mb-14">
-              Generate cinematic landing page directions, AI-powered redesign concepts,
-              startup-inspired UI inspiration, and premium website experiences.
-            </p>
+    <p className="text-lg md:text-2xl text-gray-400 leading-8 md:leading-10 max-w-3xl mx-auto mb-10 md:mb-14">
+      Analyze websites, generate cinematic redesign directions,
+      create startup-inspired UI concepts, and turn ordinary websites
+      into premium conversion-focused experiences.
+    </p>
 
-            <div className="max-w-5xl mx-auto mb-14 md:mb-16">
-              <div className="bg-white/5 border border-white/10 rounded-[28px] md:rounded-[32px] p-4 md:p-5 backdrop-blur-2xl shadow-2xl premium-hover soft-glow">
-                <div className="bg-black/60 border border-white/10 rounded-[24px] md:rounded-[28px] p-5 md:p-6">
-                  <textarea
-                    value={heroPrompt}
-                    onChange={(e) => setHeroPrompt(e.target.value)}
-                    placeholder="Describe your website idea..."
-                    rows={5}
-                    className="w-full bg-transparent text-white text-lg md:text-xl outline-none resize-none placeholder:text-gray-500"
-                  />
+    <div className="max-w-5xl mx-auto mb-14 md:mb-16">
+      <div className="bg-white/5 border border-white/10 rounded-[28px] md:rounded-[32px] p-4 md:p-5 backdrop-blur-2xl shadow-2xl premium-hover soft-glow">
+        <div className="bg-black/60 border border-white/10 rounded-[24px] md:rounded-[28px] p-5 md:p-6">
+          <textarea
+            value={heroPrompt}
+            onChange={(e) => setHeroPrompt(e.target.value)}
+            placeholder="Describe your website idea..."
+            rows={5}
+            className="w-full bg-transparent text-white text-lg md:text-xl outline-none resize-none placeholder:text-gray-500"
+          />
 
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-6 mt-6">
-                    <div className="flex flex-wrap gap-3">
-                      <div className="bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
-                        AI Website
-                      </div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-6 mt-6">
+            <div className="flex flex-wrap gap-3">
+              <div className="bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
+                AI Website
+              </div>
 
-                      <div className="bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
-                        SaaS UI
-                      </div>
+              <div className="bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
+                SaaS UI
+              </div>
 
-                      <div className="bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
-                        Premium Landing Page
-                      </div>
-                    </div>
-
-                    <a
-                      href="/generator"
-                      className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black px-6 md:px-8 py-4 rounded-2xl font-bold hover:scale-105 transition premium-hover gradient-motion text-center"
-                    >
-                      Generate Website
-                    </a>
-                  </div>
-                </div>
+              <div className="bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
+                Premium Landing Page
               </div>
             </div>
+
+            <a
+              href="/generator"
+              className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black px-6 md:px-8 py-4 rounded-2xl font-bold hover:scale-105 transition premium-hover gradient-motion text-center"
+            >
+              Generate Website
+            </a>
           </div>
-        </section>
+        </div>
+      </div>
+    </div>
+
+    {/* SOCIAL PROOF */}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-5xl mx-auto mt-16">
+      {[
+        ["12,000+", "Websites Analyzed"],
+        ["450+", "Premium Directions"],
+        ["92%", "Conversion Improvement"],
+        ["24/7", "AI Website Generation"],
+      ].map(([number, label]) => (
+        <div
+          key={label}
+          className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 premium-hover"
+        >
+          <p className="text-4xl md:text-5xl font-black text-cyan-400 mb-3">
+            {number}
+          </p>
+
+          <p className="text-gray-400 leading-7">
+            {label}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
         <section className="mb-20 md:mb-24">
           <div className="relative overflow-hidden rounded-[32px] md:rounded-[40px] border border-white/10 bg-white/[0.03] p-5 md:p-14 backdrop-blur-2xl premium-hover soft-glow">

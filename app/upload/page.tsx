@@ -56,19 +56,19 @@ export default function UploadPage() {
           AI Website Screenshot Analysis
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-black mb-8 leading-[0.95] max-w-5xl">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl
           Analyze Your Website
           <br />
           With AI
         </h1>
 
-        <p className="text-lg md:text-xl text-gray-400 leading-9 mb-14 max-w-3xl">
+        <p className="text-base md:text-xl
           Paste your website link or upload a screenshot. SmartAIStack will
           simulate a premium redesign direction, conversion review, and visual
           improvement analysis.
         </p>
 
-        <section className="grid lg:grid-cols-2 gap-10 mb-14">
+        <section className="grid lg:grid-cols-2 gap-6 md:gap-10 mb-14">
           <div className="bg-zinc-900/70 border border-zinc-800 rounded-[32px] p-6 md:p-10 backdrop-blur-xl">
             <div className="flex flex-wrap gap-3 mb-8">
               <button
