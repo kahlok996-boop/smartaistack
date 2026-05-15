@@ -65,11 +65,11 @@ export default function UploadPage() {
         </p>
 
         <section className="grid lg:grid-cols-2 gap-6 md:gap-10 mb-14">
-          <div className="bg-zinc-900/70 border border-zinc-800 rounded-[32px] p-6 md:p-10 backdrop-blur-xl">
-          <div className="flex gap-3 mb-8 overflow-x-auto">
+          <div className="bg-zinc-900/70 border border-zinc-800 rounded-[28px] p-4 md:p-10 backdrop-blur-xl"
+          <div className="grid grid-cols-2 gap-3 mb-6">
               <button
                 onClick={() => setMode("url")}
-                className={`px-4 md:px-5 py-2 md:py-3 rounded-full font-bold text-sm md:text-base transition ${
+                className={`px-3 md:px-5 py-3 md:py-3 rounded-full font-bold text-sm md:text-base transition ${
                   mode === "url"
                     ? "bg-cyan-400 text-black"
                     : "bg-black border border-zinc-700 text-gray-300"
@@ -80,7 +80,7 @@ export default function UploadPage() {
 
               <button
                 onClick={() => setMode("upload")}
-                className={`px-4 md:px-5 py-2 md:py-3 rounded-full font-bold text-sm md:text-base transition ${
+                className={`px-3 md:px-5 py-3 md:py-3 rounded-full font-bold text-sm md:text-base transition ${
                   mode === "upload"
                     ? "bg-cyan-400 text-black"
                     : "bg-black border border-zinc-700 text-gray-300"
@@ -91,7 +91,7 @@ export default function UploadPage() {
             </div>
 
             {mode === "url" ? (
-              <div className="border border-cyan-400/20 rounded-[32px] p-6 md:p-10 bg-black/40">
+              <div className="border border-cyan-400/20 rounded-[28px] p-5 md:p-10 bg-black/40">
                 <p className="text-cyan-400 font-semibold mb-4">
                   Paste Website Link
                 </p>
@@ -107,7 +107,7 @@ export default function UploadPage() {
                 <button
                   onClick={handleAnalyzeUrl}
                   disabled={loading}
-                  className="w-full bg-cyan-400 text-black px-6 md:px-8 py-4 md:py-5 rounded-2xl font-black hover:scale-[1.02] transition disabled:opacity-60"
+                  className="w-full bg-cyan-400 text-black px-5 md:px-8 py-3.5 md:py-5 rounded-2xl font-black text-sm md:text-base hover:scale-[1.02] transition disabled:opacity-60"
                 >
                   {loading ? "Analyzing Website..." : "Analyze Website Link"}
                 </button>
