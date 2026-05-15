@@ -31,24 +31,20 @@ export default function UploadPage() {
 
     const imageUrl = URL.createObjectURL(file);
     setPreview(imageUrl);
-
     startAnalysis();
   };
 
   const handleAnalyzeUrl = () => {
     if (!websiteUrl.trim()) return;
-
     startAnalysis();
   };
 
   return (
-    <main className="min-h-screen bg-black text-white overflow-hidden relative px-6 md:px-8 py-16">
+    <main className="min-h-screen bg-black text-white overflow-hidden relative px-5 md:px-8 py-8 md:py-16">
       <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-cyan-500/20 blur-[160px] rounded-full"></div>
-
       <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-blue-500/10 blur-[180px] rounded-full"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-
         <Navbar />
 
         <div className="inline-flex items-center gap-3 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-5 py-3 text-cyan-300 text-sm font-semibold mb-8">
@@ -56,13 +52,13 @@ export default function UploadPage() {
           AI Website Screenshot Analysis
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-8 leading-[0.95] max-w-5xl">
           Analyze Your Website
           <br />
           With AI
         </h1>
 
-        <p className="text-base md:text-xl
+        <p className="text-base md:text-xl text-gray-400 leading-8 md:leading-9 mb-12 md:mb-14 max-w-3xl">
           Paste your website link or upload a screenshot. SmartAIStack will
           simulate a premium redesign direction, conversion review, and visual
           improvement analysis.
@@ -73,7 +69,7 @@ export default function UploadPage() {
             <div className="flex flex-wrap gap-3 mb-8">
               <button
                 onClick={() => setMode("url")}
-                className={`px-5 py-3 rounded-full font-bold transition ${
+                className={`px-4 md:px-5 py-2 md:py-3 rounded-full font-bold text-sm md:text-base transition ${
                   mode === "url"
                     ? "bg-cyan-400 text-black"
                     : "bg-black border border-zinc-700 text-gray-300"
@@ -84,7 +80,7 @@ export default function UploadPage() {
 
               <button
                 onClick={() => setMode("upload")}
-                className={`px-5 py-3 rounded-full font-bold transition ${
+                className={`px-4 md:px-5 py-2 md:py-3 rounded-full font-bold text-sm md:text-base transition ${
                   mode === "upload"
                     ? "bg-cyan-400 text-black"
                     : "bg-black border border-zinc-700 text-gray-300"
@@ -105,13 +101,13 @@ export default function UploadPage() {
                   onChange={(e) => setWebsiteUrl(e.target.value)}
                   type="url"
                   placeholder="https://example.com"
-                  className="w-full bg-black border border-zinc-700 rounded-2xl px-5 py-5 text-white outline-none focus:border-cyan-400 mb-6"
+                  className="w-full bg-black border border-zinc-700 rounded-2xl px-5 py-4 md:py-5 text-white outline-none focus:border-cyan-400 mb-6"
                 />
 
                 <button
                   onClick={handleAnalyzeUrl}
                   disabled={loading}
-                  className="w-full bg-cyan-400 text-black px-8 py-5 rounded-2xl font-black hover:scale-[1.02] transition disabled:opacity-60"
+                  className="w-full bg-cyan-400 text-black px-6 md:px-8 py-4 md:py-5 rounded-2xl font-black hover:scale-[1.02] transition disabled:opacity-60"
                 >
                   {loading ? "Analyzing Website..." : "Analyze Website Link"}
                 </button>
@@ -133,9 +129,8 @@ export default function UploadPage() {
                       className="w-full rounded-3xl border border-cyan-400/20"
                     />
 
-                    <label className="inline-block bg-cyan-400 text-black px-8 py-4 rounded-2xl font-bold cursor-pointer hover:scale-105 transition">
+                    <label className="inline-block bg-cyan-400 text-black px-6 md:px-8 py-4 rounded-2xl font-bold cursor-pointer hover:scale-105 transition">
                       Replace Screenshot
-
                       <input
                         type="file"
                         accept="image/*"
@@ -150,7 +145,7 @@ export default function UploadPage() {
                       <span className="text-4xl">⬆</span>
                     </div>
 
-                    <p className="text-3xl font-black mb-4">
+                    <p className="text-2xl md:text-3xl font-black mb-4">
                       Drop your screenshot here
                     </p>
 
@@ -158,9 +153,8 @@ export default function UploadPage() {
                       Upload a PNG, JPG, or website screenshot.
                     </p>
 
-                    <label className="inline-block bg-cyan-400 text-black px-8 py-4 rounded-2xl font-bold cursor-pointer hover:scale-105 transition">
+                    <label className="inline-block bg-cyan-400 text-black px-6 md:px-8 py-4 rounded-2xl font-bold cursor-pointer hover:scale-105 transition">
                       Choose Screenshot
-
                       <input
                         type="file"
                         accept="image/*"
@@ -179,7 +173,7 @@ export default function UploadPage() {
               Premium Direction Preview
             </p>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight">
               What SmartAIStack Will Analyze
             </h2>
 
@@ -203,7 +197,6 @@ export default function UploadPage() {
                   className="bg-black/40 border border-zinc-800 rounded-3xl p-6"
                 >
                   <p className="text-gray-500 mb-2">{title}</p>
-
                   <p className="text-gray-300 leading-7">{desc}</p>
                 </div>
               ))}
@@ -212,7 +205,7 @@ export default function UploadPage() {
         </section>
 
         {loading && (
-          <section className="mt-16 rounded-[40px] border border-cyan-400/20 bg-cyan-400/[0.04] p-10 md:p-14 overflow-hidden relative">
+          <section className="mt-16 rounded-[40px] border border-cyan-400/20 bg-cyan-400/[0.04] p-8 md:p-14 overflow-hidden relative">
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 animate-pulse"></div>
 
             <div className="relative z-10">
@@ -220,7 +213,7 @@ export default function UploadPage() {
                 AI Generation In Progress
               </p>
 
-              <h2 className="text-4xl md:text-6xl font-black leading-tight mb-8">
+              <h2 className="text-3xl md:text-6xl font-black leading-tight mb-8">
                 Creating Your
                 <br />
                 Premium Website Direction
@@ -236,11 +229,12 @@ export default function UploadPage() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="bg-black/40 border border-white/10 rounded-2xl px-6 py-5 flex items-center gap-4"
+                    className="bg-black/40 border border-white/10 rounded-2xl px-5 md:px-6 py-4 md:py-5 flex items-center gap-4"
                   >
                     <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
-
-                    <p className="text-gray-300 text-lg">{item}</p>
+                    <p className="text-gray-300 text-base md:text-lg">
+                      {item}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -257,7 +251,6 @@ export default function UploadPage() {
         )}
 
         <Footer />
-
       </div>
     </main>
   );
