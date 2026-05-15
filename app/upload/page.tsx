@@ -66,7 +66,7 @@ export default function UploadPage() {
 
         <section className="grid lg:grid-cols-2 gap-6 md:gap-10 mb-14">
           <div className="bg-zinc-900/70 border border-zinc-800 rounded-[32px] p-6 md:p-10 backdrop-blur-xl">
-            <div className="flex flex-wrap gap-3 mb-8">
+          <div className="flex gap-3 mb-8 overflow-x-auto">
               <button
                 onClick={() => setMode("url")}
                 className={`px-4 md:px-5 py-2 md:py-3 rounded-full font-bold text-sm md:text-base transition ${
