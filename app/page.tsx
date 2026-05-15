@@ -4,6 +4,7 @@ import { useState } from "react";
 import { tools } from "@/data/tools";
 
 export default function HomePage() {
+  const [heroPrompt, setHeroPrompt] = useState("");
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
@@ -47,89 +48,100 @@ export default function HomePage() {
         </nav>
 
         <section className="relative overflow-hidden mb-24">
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10 blur-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-transparent to-blue-500/20 blur-3xl"></div>
 
           <div className="relative z-10">
             <div className="inline-flex items-center gap-3 bg-zinc-900/80 border border-cyan-400/20 rounded-full px-5 py-3 mb-8 backdrop-blur-xl">
               <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
 
               <p className="text-sm text-cyan-300 tracking-wide">
-                Discover the Future of AI Tools
+                AI Creative Platform for Premium Websites
               </p>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black leading-tight mb-8 max-w-5xl">
-              The Modern Platform
+            <h1 className="text-6xl md:text-8xl font-black leading-tight mb-8 max-w-6xl">
+              Transform Your Website
               <br />
-              for Discovering
-              <span className="text-cyan-400"> AI Tools</span>
+              Into a
+              <span className="text-cyan-400"> Premium AI Experience</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-400 leading-10 max-w-3xl mb-12">
-              Explore the best AI tools for coding, productivity,
-              writing, image generation, startups, automation,
-              and next-generation software workflows.
+              Generate premium landing page directions,
+              cinematic redesign concepts, AI-generated
+              UI inspiration, before/after previews,
+              and modern conversion-focused website ideas.
             </p>
 
             <div className="flex flex-wrap gap-5 mb-14">
               <a
-                href="/best-ai-tools"
-                className="inline-flex items-center gap-3 bg-cyan-400 text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition duration-300"
+                href="/generator"
+                className="inline-flex items-center gap-3 bg-cyan-400 text-black px-8 py-5 rounded-2xl font-bold hover:scale-105 transition duration-300 shadow-[0_0_40px_rgba(34,211,238,0.25)]"
               >
-                Explore AI Tools
+                Generate AI Landing Page
               </a>
 
               <a
-                href="/best-ai-coding-tools"
-                className="inline-flex items-center gap-3 bg-zinc-900 border border-zinc-700 text-white px-8 py-4 rounded-2xl font-bold hover:border-cyan-400 hover:text-cyan-400 transition"
+                href="/before-after"
+                className="inline-flex items-center gap-3 bg-zinc-900 border border-zinc-700 text-white px-8 py-5 rounded-2xl font-bold hover:border-cyan-400 hover:text-cyan-400 transition"
               >
-                Best AI Coding Tools
+                View Before / After
               </a>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 mb-14">
-              <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 backdrop-blur-xl">
-                <p className="text-4xl font-black text-cyan-400 mb-3">
-                  100+
-                </p>
-
-                <p className="text-gray-400 leading-7">
-                  AI tools, comparisons,
-                  and reviews curated for modern workflows.
-                </p>
-              </div>
-
-              <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 backdrop-blur-xl">
-                <p className="text-4xl font-black text-cyan-400 mb-3">
-                  2026
-                </p>
-
-                <p className="text-gray-400 leading-7">
-                  Updated AI rankings,
-                  comparisons, and industry trends.
-                </p>
-              </div>
-
-              <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-6 backdrop-blur-xl">
+              <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-7 backdrop-blur-xl">
                 <p className="text-4xl font-black text-cyan-400 mb-3">
                   AI
                 </p>
 
                 <p className="text-gray-400 leading-7">
-                  Coding, productivity,
-                  automation, startups, and business tools.
+                  AI-generated landing page directions
+                  and cinematic redesign concepts.
+                </p>
+              </div>
+
+              <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-7 backdrop-blur-xl">
+                <p className="text-4xl font-black text-cyan-400 mb-3">
+                  Before
+                </p>
+
+                <p className="text-gray-400 leading-7">
+                  Upload your website screenshot
+                  and preview premium redesign directions.
+                </p>
+              </div>
+
+              <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-7 backdrop-blur-xl">
+                <p className="text-4xl font-black text-cyan-400 mb-3">
+                  Premium
+                </p>
+
+                <p className="text-gray-400 leading-7">
+                  Built for startups, agencies,
+                  creators, and modern brands.
                 </p>
               </div>
             </div>
 
-            <div className="max-w-2xl">
-              <input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                type="text"
-                placeholder="Search AI tools..."
-                className="w-full bg-zinc-900/80 border border-zinc-700 rounded-3xl px-7 py-5 text-lg text-white outline-none focus:border-cyan-400 backdrop-blur-xl"
-              />
+            <div className="max-w-3xl">
+              <div className="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-4 backdrop-blur-xl">
+                <div className="flex flex-col md:flex-row gap-4">
+                  <input
+                    value={heroPrompt}
+                    onChange={(e) => setHeroPrompt(e.target.value)}
+                    type="text"
+                    placeholder="Describe your website or brand..."
+                    className="flex-1 bg-black/40 border border-zinc-700 rounded-2xl px-6 py-5 text-lg text-white outline-none focus:border-cyan-400"
+                  />
+
+                  <button
+                    className="bg-cyan-400 text-black px-8 py-5 rounded-2xl font-bold hover:scale-105 transition"
+                  >
+                    Generate
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
