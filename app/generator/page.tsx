@@ -1,4 +1,57 @@
+"use client";
+
+import { useState } from "react";
+
 export default function GeneratorPage() {
+  const [loading, setLoading] = useState(false);
+
+  const [result, setResult] = useState({
+    title: "Premium Agency Landing Page",
+    headline:
+      "Transform Your Agency Brand Into a Premium Digital Experience",
+    score: 92,
+    cta: "Get Premium Website Direction",
+  });
+
+  const handleGenerate = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      const results = [
+        {
+          title: "Luxury SaaS Experience",
+          headline:
+            "Build A SaaS Website That Feels Like A Billion-Dollar Startup",
+          score: 96,
+          cta: "Generate SaaS Direction",
+        },
+
+        {
+          title: "Cinematic Ecommerce Brand",
+          headline:
+            "Turn Your Ecommerce Brand Into A Premium Shopping Experience",
+          score: 94,
+          cta: "Generate Ecommerce Direction",
+        },
+
+        {
+          title: "Modern AI Startup",
+          headline:
+            "Create An AI Startup Website That Looks Investor-Ready",
+          score: 97,
+          cta: "Generate AI Startup Direction",
+        },
+      ];
+
+      const random =
+        results[Math.floor(Math.random() * results.length)];
+
+      setResult(random);
+
+      setLoading(false);
+    }, 3500);
+  };
+
   return (
     <main className="min-h-screen bg-black text-white overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#00d2ff22,transparent_30%),radial-gradient(circle_at_bottom_right,#7c3aed33,transparent_35%)] pointer-events-none" />
@@ -42,7 +95,6 @@ export default function GeneratorPage() {
 
             <div className="space-y-7">
 
-              {/* INDUSTRY */}
               <div>
                 <label className="block text-sm text-gray-400 mb-3">
                   Industry
@@ -58,7 +110,6 @@ export default function GeneratorPage() {
                 </select>
               </div>
 
-              {/* STYLE */}
               <div>
                 <label className="block text-sm text-gray-400 mb-3">
                   Style
@@ -73,7 +124,6 @@ export default function GeneratorPage() {
                 </select>
               </div>
 
-              {/* VIBE */}
               <div>
                 <label className="block text-sm text-gray-400 mb-3">
                   Vibe
@@ -87,9 +137,14 @@ export default function GeneratorPage() {
                 </select>
               </div>
 
-              {/* BUTTON */}
-              <button className="w-full h-16 rounded-2xl bg-cyan-400 text-black text-lg font-black hover:scale-[1.02] transition-all duration-300 shadow-[0_0_40px_rgba(34,211,238,0.4)]">
-                Generate Premium Direction
+              <button
+                onClick={handleGenerate}
+                disabled={loading}
+                className="w-full h-16 rounded-2xl bg-cyan-400 text-black text-lg font-black hover:scale-[1.02] transition-all duration-300 shadow-[0_0_40px_rgba(34,211,238,0.4)] disabled:opacity-60"
+              >
+                {loading
+                  ? "Generating Premium Direction..."
+                  : "Generate Premium Direction"}
               </button>
 
             </div>
@@ -108,250 +163,117 @@ export default function GeneratorPage() {
               </span>
             </div>
 
-            <h2 className="text-5xl md:text-6xl font-black leading-[1] mb-6">
-              Premium Agency
-              <br />
-              Landing Page
-            </h2>
+            {loading ? (
+              <div className="space-y-6 animate-pulse">
+                <div className="h-16 bg-zinc-800 rounded-2xl w-3/4"></div>
+                <div className="h-5 bg-zinc-800 rounded-full w-full"></div>
+                <div className="h-5 bg-zinc-800 rounded-full w-5/6"></div>
 
-            <p className="text-gray-300 text-lg leading-8 mb-8">
-              A cinematic website direction designed to make your brand look
-              more premium, modern, trustworthy, and conversion-focused.
-            </p>
+                <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
+                  <div className="h-6 bg-zinc-800 rounded-full w-1/2 mb-5"></div>
 
-            {/* SCORE */}
-            <div className="rounded-3xl border border-white/10 bg-black/40 p-6 mb-6">
-              <div className="flex justify-between mb-4">
-                <span className="text-gray-400">
-                  AI Premium Score
-                </span>
+                  <div className="h-4 bg-zinc-800 rounded-full w-full mb-3"></div>
 
-                <span className="text-cyan-400 font-black text-3xl">
-                  92%
-                </span>
-              </div>
+                  <div className="h-4 bg-zinc-800 rounded-full w-4/5"></div>
+                </div>
 
-              <div className="h-4 bg-white/10 rounded-full overflow-hidden">
-                <div className="h-full w-[92%] bg-cyan-400 rounded-full" />
-              </div>
-            </div>
-
-            {/* BLOCKS */}
-            <div className="space-y-5">
-
-              <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-                <p className="text-gray-500 text-sm mb-3">
-                  Headline
-                </p>
-
-                <p className="text-2xl font-bold leading-9">
-                  Transform Your Agency Brand Into a Premium Digital Experience
-                </p>
-              </div>
-
-              <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-                <p className="text-gray-500 text-sm mb-3">
-                  CTA
-                </p>
-
-                <p className="text-2xl font-bold">
-                  Get Premium Website Direction
-                </p>
-              </div>
-
-              <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-                <p className="text-gray-500 text-sm mb-4">
-                  Design Direction
-                </p>
-
-                <p className="text-gray-300 leading-8 text-lg">
-                  Use cinematic spacing, premium typography, high-contrast hero
-                  sections, startup-inspired UI layouts, glowing CTA blocks,
-                  trust sections, and modern conversion flow.
-                </p>
-              </div>
-
-              {/* SUGGESTED SECTIONS */}
-              <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-                <p className="text-gray-500 text-sm mb-4">
-                  Suggested Sections
-                </p>
-
-                <div className="flex flex-wrap gap-3">
+                <div className="space-y-3">
                   {[
-                    "Cinematic Hero",
-                    "Trust Section",
-                    "Before / After",
-                    "Pricing CTA",
-                    "Testimonials",
+                    "Analyzing design hierarchy...",
+                    "Generating premium direction...",
+                    "Building cinematic structure...",
                   ].map((item) => (
                     <div
                       key={item}
-                      className="px-4 py-2 rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 text-sm"
+                      className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-5 py-4 text-cyan-300"
                     >
                       {item}
                     </div>
                   ))}
                 </div>
               </div>
+            ) : (
+              <>
+                <h2 className="text-5xl md:text-6xl font-black leading-[1] mb-6">
+                  {result.title}
+                </h2>
 
-              {/* COLORS */}
-              <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
-                <p className="text-gray-500 text-sm mb-4">
-                  Suggested Color Palette
+                <p className="text-gray-300 text-lg leading-8 mb-8">
+                  A cinematic website direction designed to make your brand look
+                  more premium, modern, trustworthy, and conversion-focused.
                 </p>
 
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-black border border-white/10" />
-                  <div className="w-12 h-12 rounded-xl bg-cyan-400" />
-                  <div className="w-12 h-12 rounded-xl bg-white" />
-                  <div className="w-12 h-12 rounded-xl bg-zinc-700" />
-                </div>
-              </div>
+                <div className="rounded-3xl border border-white/10 bg-black/40 p-6 mb-6">
+                  <div className="flex justify-between mb-4">
+                    <span className="text-gray-400">
+                      AI Premium Score
+                    </span>
 
-            </div>
-          </div>
-        </section>
+                    <span className="text-cyan-400 font-black text-3xl">
+                      {result.score}%
+                    </span>
+                  </div>
 
-        {/* SCREENSHOT ANALYSIS */}
-        <section className="rounded-[40px] border border-cyan-400/20 bg-cyan-400/[0.04] p-6 md:p-12 mb-28">
-
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 text-xs md:text-sm font-semibold mb-8">
-            <div className="w-2 h-2 rounded-full bg-cyan-400" />
-            AI Website Screenshot Analysis
-          </div>
-
-          <h2 className="text-5xl md:text-6xl font-black leading-[0.95] mb-6">
-            Upload Your Website
-            <br />
-            Screenshot
-          </h2>
-
-          <p className="text-gray-400 text-lg md:text-xl leading-9 max-w-3xl mb-12">
-            Upload your current website screenshot and preview how SmartAIStack
-            can turn it into a more premium, cinematic, and conversion-focused
-            website direction.
-          </p>
-
-          <div className="grid lg:grid-cols-2 gap-8 mb-10">
-
-            {/* LEFT */}
-            <div className="rounded-[32px] border border-white/10 bg-black/40 p-6 md:p-8">
-
-              <p className="text-cyan-400 text-sm font-semibold mb-5">
-                Upload Screenshot
-              </p>
-
-              <div className="rounded-[28px] border border-dashed border-cyan-400/30 bg-black/40 p-12 flex flex-col items-center justify-center text-center min-h-[450px]">
-
-                <div className="w-24 h-24 rounded-3xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-5xl text-cyan-400 mb-8">
-                  ↑
+                  <div className="h-4 bg-white/10 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-cyan-400 rounded-full transition-all duration-700"
+                      style={{
+                        width: `${result.score}%`,
+                      }}
+                    />
+                  </div>
                 </div>
 
-                <h3 className="text-4xl font-black mb-6">
-                  Drop your screenshot here
-                </h3>
+                <div className="space-y-5">
 
-                <p className="text-gray-400 text-lg leading-8 max-w-md mb-8">
-                  Upload a PNG, JPG, or website screenshot. This MVP will
-                  simulate a premium redesign direction.
-                </p>
-
-                <button className="h-16 px-10 rounded-2xl bg-cyan-400 text-black font-black text-lg hover:scale-105 transition-all">
-                  Choose Screenshot
-                </button>
-
-              </div>
-            </div>
-
-            {/* RIGHT */}
-            <div className="rounded-[32px] border border-white/10 bg-black/40 p-6 md:p-8">
-
-              <p className="text-cyan-400 text-sm font-semibold mb-6">
-                Premium Direction Preview
-              </p>
-
-              <h3 className="text-5xl font-black leading-tight mb-8">
-                What SmartAIStack
-                <br />
-                Will Analyze
-              </h3>
-
-              <div className="space-y-5">
-
-                {[
-                  {
-                    title: "Visual Hierarchy",
-                    desc: "Is the hero section clear, premium, and easy to understand?",
-                  },
-                  {
-                    title: "Conversion Flow",
-                    desc: "Are the CTAs, trust sections, and offer structure strong enough?",
-                  },
-                  {
-                    title: "Premium Look",
-                    desc: "Does the design feel modern, cinematic, expensive, and credible?",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-3xl border border-white/10 bg-black/40 p-6"
-                  >
+                  <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
                     <p className="text-gray-500 text-sm mb-3">
-                      {item.title}
+                      Headline
                     </p>
 
-                    <p className="text-gray-300 text-lg leading-8">
-                      {item.desc}
+                    <p className="text-2xl font-bold leading-9">
+                      {result.headline}
                     </p>
                   </div>
-                ))}
 
-              </div>
-            </div>
-          </div>
+                  <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
+                    <p className="text-gray-500 text-sm mb-3">
+                      CTA
+                    </p>
 
-          {/* STEPS */}
-          <div className="grid md:grid-cols-3 gap-5">
+                    <p className="text-2xl font-bold">
+                      {result.cta}
+                    </p>
+                  </div>
 
-            {[
-              {
-                step: "Step 1",
-                title: "Upload",
-                desc: "Add a screenshot of your current website or landing page.",
-              },
-              {
-                step: "Step 2",
-                title: "Preview Direction",
-                desc: "SmartAIStack simulates premium redesign ideas and conversion flow.",
-              },
-              {
-                step: "Step 3",
-                title: "Leave Contact",
-                desc: "Users can submit contact details for a real redesign quote later.",
-              },
-            ].map((item) => (
-              <div
-                key={item.step}
-                className="rounded-3xl border border-white/10 bg-black/40 p-8"
-              >
-                <p className="text-cyan-400 text-sm font-semibold mb-4">
-                  {item.step}
-                </p>
+                  <div className="rounded-3xl border border-white/10 bg-black/40 p-6">
+                    <p className="text-gray-500 text-sm mb-4">
+                      Suggested Sections
+                    </p>
 
-                <h4 className="text-3xl font-black mb-4">
-                  {item.title}
-                </h4>
+                    <div className="flex flex-wrap gap-3">
+                      {[
+                        "Cinematic Hero",
+                        "Trust Section",
+                        "Before / After",
+                        "Pricing CTA",
+                        "Testimonials",
+                      ].map((item) => (
+                        <div
+                          key={item}
+                          className="px-4 py-2 rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-cyan-300 text-sm"
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-                <p className="text-gray-400 text-lg leading-8">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-
+                </div>
+              </>
+            )}
           </div>
         </section>
-
       </div>
     </main>
   );
