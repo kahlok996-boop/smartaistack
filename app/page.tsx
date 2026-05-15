@@ -60,82 +60,109 @@ export default function HomePage() {
           </div>
         </nav>
 
-        <section className="pt-10 md:pt-20 mb-24">
-          <div className="inline-flex items-center gap-3 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-5 py-3 text-cyan-300 text-sm font-semibold mb-8">
-            <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-            AI-Powered Website Direction Platform
+        <section className="pt-8 md:pt-16 mb-28 relative">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-purple-600/20 blur-[180px] rounded-full"></div>
+            <div className="absolute top-[200px] right-[10%] w-[400px] h-[400px] bg-cyan-500/10 blur-[140px] rounded-full"></div>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-black leading-[0.95] tracking-tight max-w-6xl mb-8">
-            Build Premium
-            <br />
-            AI Website
-            <br />
-            Experiences
-          </h1>
-
-          <p className="text-xl md:text-2xl text-gray-400 leading-10 max-w-4xl mb-12">
-            Generate premium landing page directions, cinematic redesign concepts,
-            AI-generated UI inspiration, before/after previews, and conversion-focused
-            website experiences for modern brands.
-          </p>
-
-          <div className="flex flex-wrap gap-5 mb-16">
-            <a
-              href="/generator"
-              className="bg-cyan-400 text-black px-8 py-5 rounded-2xl font-bold hover:scale-105 transition"
-            >
-              Start AI Generator
-            </a>
-
-            <a
-              href="/before-after"
-              className="bg-zinc-900 border border-zinc-700 text-white px-8 py-5 rounded-2xl font-bold hover:border-cyan-400 transition"
-            >
-              View Before / After
-            </a>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-14">
-            <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-7 backdrop-blur-xl">
-              <p className="text-4xl font-black text-cyan-400 mb-3">120+</p>
-              <p className="text-gray-400">
-                AI tools, generators, and premium workflows.
-              </p>
+          <div className="relative z-10 text-center">
+            <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-xl rounded-full px-6 py-3 text-sm text-gray-300 mb-10">
+              <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+              AI Website Generation Platform
             </div>
 
-            <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-7 backdrop-blur-xl">
-              <p className="text-4xl font-black text-cyan-400 mb-3">AI</p>
-              <p className="text-gray-400">
-                Landing page direction and redesign previews.
-              </p>
+            <h1 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tight max-w-6xl mx-auto mb-8">
+              Generate
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-400">
+                Premium AI Websites
+              </span>
+              In Minutes
+            </h1>
+
+            <p className="text-xl md:text-2xl text-gray-400 leading-10 max-w-4xl mx-auto mb-14">
+              Generate cinematic landing page directions, AI-powered redesign concepts,
+              startup-style UI inspiration, and premium website experiences for modern brands.
+            </p>
+
+            <div className="max-w-5xl mx-auto mb-16">
+              <div className="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[32px] p-5 shadow-2xl">
+                <div className="bg-black/60 border border-white/10 rounded-[28px] p-6">
+                  <textarea
+                    value={heroPrompt}
+                    onChange={(e) => setHeroPrompt(e.target.value)}
+                    placeholder="Describe your website idea... e.g. A cinematic AI agency website with dark luxury visuals and futuristic UI..."
+                    rows={5}
+                    className="w-full bg-transparent text-white text-xl outline-none resize-none placeholder:text-gray-500"
+                  />
+
+                  <div className="flex flex-wrap items-center justify-between gap-6 mt-6">
+                    <div className="flex flex-wrap gap-3">
+                      <div className="bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
+                        AI Website
+                      </div>
+
+                      <div className="bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
+                        SaaS UI
+                      </div>
+
+                      <div className="bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
+                        Premium Landing Page
+                      </div>
+                    </div>
+
+                    <a
+                      href="/generator"
+                      className="bg-gradient-to-r from-purple-500 to-cyan-400 text-white px-8 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-2xl"
+                    >
+                      Generate Website
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-zinc-900/70 border border-zinc-800 rounded-3xl p-7 backdrop-blur-xl">
-              <p className="text-4xl font-black text-cyan-400 mb-3">2026</p>
-              <p className="text-gray-400">
-                Modern AI startup UI and cinematic SaaS design.
-              </p>
-            </div>
-          </div>
+            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-8 text-left">
+                <p className="text-5xl font-black text-purple-400 mb-4">
+                  AI
+                </p>
 
-          <div className="max-w-3xl">
-            <div className="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-4 backdrop-blur-xl">
-              <div className="flex flex-col md:flex-row gap-4">
-                <input
-                  value={heroPrompt}
-                  onChange={(e) => setHeroPrompt(e.target.value)}
-                  type="text"
-                  placeholder="Describe your website or brand..."
-                  className="flex-1 bg-black/40 border border-zinc-700 rounded-2xl px-6 py-5 text-lg text-white outline-none focus:border-cyan-400"
-                />
+                <h3 className="text-2xl font-bold mb-4">
+                  AI Website Direction
+                </h3>
 
-                <a
-                  href="/generator"
-                  className="bg-cyan-400 text-black px-8 py-5 rounded-2xl font-bold hover:scale-105 transition text-center"
-                >
-                  Generate
-                </a>
+                <p className="text-gray-400 leading-8">
+                  Generate premium landing page concepts, layouts, and redesign directions instantly.
+                </p>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-8 text-left">
+                <p className="text-5xl font-black text-cyan-400 mb-4">
+                  UI
+                </p>
+
+                <h3 className="text-2xl font-bold mb-4">
+                  Cinematic UI Experience
+                </h3>
+
+                <p className="text-gray-400 leading-8">
+                  Explore startup-inspired visual systems with premium modern aesthetics.
+                </p>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-8 text-left">
+                <p className="text-5xl font-black text-fuchsia-400 mb-4">
+                  2026
+                </p>
+
+                <h3 className="text-2xl font-bold mb-4">
+                  Modern AI Startup Feel
+                </h3>
+
+                <p className="text-gray-400 leading-8">
+                  Inspired by the latest AI SaaS products, startup platforms, and futuristic UI trends.
+                </p>
               </div>
             </div>
           </div>
@@ -175,6 +202,68 @@ export default function HomePage() {
                 Compare basic websites with premium AI-inspired redesign directions.
               </p>
             </a>
+          </div>
+        </section>
+
+        <section className="mb-24">
+          <div className="bg-zinc-900/70 border border-zinc-800 rounded-[32px] p-10 backdrop-blur-xl">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
+              <div className="max-w-3xl">
+                <p className="text-cyan-400 font-semibold mb-4 uppercase tracking-widest">
+                  Trusted by Modern Creators
+                </p>
+
+                <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                  Built for Agencies,
+                  Startups, and
+                  Modern Brands
+                </h2>
+
+                <p className="text-gray-400 text-lg leading-8">
+                  SmartAIStack helps creators, agencies, and businesses explore
+                  premium website directions faster with AI-powered visual concepts,
+                  cinematic UI inspiration, and conversion-focused redesign workflows.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 min-w-[320px]">
+                <div className="bg-black/40 border border-zinc-800 rounded-3xl p-6">
+                  <p className="text-5xl font-black text-cyan-400 mb-3">
+                    120+
+                  </p>
+                  <p className="text-gray-400">
+                    AI workflows and premium inspirations
+                  </p>
+                </div>
+
+                <div className="bg-black/40 border border-zinc-800 rounded-3xl p-6">
+                  <p className="text-5xl font-black text-cyan-400 mb-3">
+                    2026
+                  </p>
+                  <p className="text-gray-400">
+                    Modern AI startup-inspired direction
+                  </p>
+                </div>
+
+                <div className="bg-black/40 border border-zinc-800 rounded-3xl p-6">
+                  <p className="text-5xl font-black text-cyan-400 mb-3">
+                    AI
+                  </p>
+                  <p className="text-gray-400">
+                    Landing page direction workflows
+                  </p>
+                </div>
+
+                <div className="bg-black/40 border border-zinc-800 rounded-3xl p-6">
+                  <p className="text-5xl font-black text-cyan-400 mb-3">
+                    SaaS
+                  </p>
+                  <p className="text-gray-400">
+                    Premium UI and cinematic experiences
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
