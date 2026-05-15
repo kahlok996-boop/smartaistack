@@ -8,6 +8,17 @@ export default function UploadPage() {
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [preview, setPreview] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const startAnalysis = () => {
+    setSubmitted(false);
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+    }, 3500);
+  };
 
   const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -16,12 +27,13 @@ export default function UploadPage() {
 
     const imageUrl = URL.createObjectURL(file);
     setPreview(imageUrl);
-    setSubmitted(true);
+    startAnalysis();
   };
 
   const handleAnalyzeUrl = () => {
     if (!websiteUrl.trim()) return;
-    setSubmitted(true);
+
+    startAnalysis();
   };
 
   return (
@@ -49,7 +61,7 @@ export default function UploadPage() {
 
         <section className="grid lg:grid-cols-2 gap-10 mb-14">
           <div className="bg-zinc-900/70 border border-zinc-800 rounded-[32px] p-6 md:p-10 backdrop-blur-xl">
-            <div className="flex gap-3 mb-8">
+            <div className="flex flex-wrap gap-3 mb-8">
               <button
                 onClick={() => setMode("url")}
                 className={`px-5 py-3 rounded-full font-bold transition ${
@@ -89,9 +101,10 @@ export default function UploadPage() {
 
                 <button
                   onClick={handleAnalyzeUrl}
-                  className="w-full bg-cyan-400 text-black px-8 py-5 rounded-2xl font-black hover:scale-[1.02] transition"
+                  disabled={loading}
+                  className="w-full bg-cyan-400 text-black px-8 py-5 rounded-2xl font-black hover:scale-[1.02] transition disabled:opacity-60"
                 >
-                  Analyze Website Link
+                  {loading ? "Analyzing Website..." : "Analyze Website Link"}
                 </button>
 
                 {websiteUrl && (
@@ -186,7 +199,46 @@ export default function UploadPage() {
           </div>
         </section>
 
-        {submitted && <AIAnalysisResult />}
+        {loading && (
+          <section className="mt-16 rounded-[40px] border border-cyan-400/20 bg-cyan-400/[0.04] p-10 md:p-14 overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 animate-pulse"></div>
+
+            <div className="relative z-10">
+              <p className="text-cyan-400 font-semibold mb-6">
+                AI Generation In Progress
+              </p>
+
+              <h2 className="text-4xl md:text-6xl font-black leading-tight mb-8">
+                Creating Your
+                <br />
+                Premium Website Direction
+              </h2>
+
+              <div className="space-y-5 max-w-2xl">
+                {[
+                  "Analyzing visual hierarchy...",
+                  "Detecting conversion issues...",
+                  "Generating premium redesign direction...",
+                  "Building cinematic UI structure...",
+                  "Optimizing CTA placement...",
+                ].map((item, index) => (
+                  <div
+                    key={item}
+                    className="bg-black/40 border border-white/10 rounded-2xl px-6 py-5 flex items-center gap-4"
+                    style={{
+                      animationDelay: `${index * 0.3}s`,
+                    }}
+                  >
+                    <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
+                    <p className="text-gray-300 text-lg">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {submitted && !loading && <AIAnalysisResult />}
       </div>
     </main>
   );
