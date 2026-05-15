@@ -23,7 +23,7 @@ export default function LeadCapture() {
     setLoading(true);
 
     await fetch(
-      "https://script.google.com/macros/s/AKfycbzemDn7FYDGxj7wN0xki_-iPN--sFOTOZ1HbSIcJcBRXEBVhT6Esj5dytgRTIQR2jQZ1A/exec",
+      "https://script.google.com/macros/s/AKfycbyPiPzFebibfl7gEpxIYIeFmH29MiuEL57z7GtWcX2fJ92Ztd1ScsdXXjmxZVAARSOYsA/exec",
       {
         method: "POST",
         mode: "no-cors",
