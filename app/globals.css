@@ -28,3 +28,35 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.premium-hover {
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.premium-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(34, 211, 238, 0.55);
+  box-shadow: 0 30px 80px rgba(34, 211, 238, 0.12);
+}
+
+.soft-glow {
+  box-shadow: 0 0 80px rgba(34, 211, 238, 0.08);
+}
+
+.gradient-motion {
+  background-size: 200% 200%;
+  animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
