@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Navbar from "@/app/components/Navbar";
+import Footer from "@/app/components/Footer";
 import AIAnalysisResult from "@/app/components/AIAnalysisResult";
 import BeforeAfterPreview from "@/app/components/BeforeAfterPreview";
+import PricingSection from "@/app/components/PricingSection";
 
 export default function UploadPage() {
   const [mode, setMode] = useState<"url" | "upload">("url");
@@ -45,6 +48,9 @@ export default function UploadPage() {
       <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-blue-500/10 blur-[180px] rounded-full"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
+
+        <Navbar />
+
         <div className="inline-flex items-center gap-3 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-5 py-3 text-cyan-300 text-sm font-semibold mb-8">
           <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
           AI Website Screenshot Analysis
@@ -246,8 +252,12 @@ export default function UploadPage() {
           <>
             <AIAnalysisResult />
             <BeforeAfterPreview />
+            <PricingSection />
           </>
         )}
+
+        <Footer />
+
       </div>
     </main>
   );
