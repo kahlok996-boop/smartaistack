@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import AIAnalysisResult from "@/app/components/AIAnalysisResult";
@@ -14,12 +14,36 @@ export default function UploadPage() {
   const [preview, setPreview] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [processingStep, setProcessingStep] = useState(0);
+  const [analysisTarget, setAnalysisTarget] = useState("");
 
-  const startAnalysis = () => {
+  const processingSteps = [
+    "Scanning layout hierarchy",
+    "Analyzing conversion flow",
+    "Checking trust signals",
+    "Evaluating mobile UX",
+    "Generating redesign direction",
+  ];
+
+  useEffect(() => {
+    if (!loading) return;
+
+    const timer = window.setInterval(() => {
+      setProcessingStep((current) =>
+        Math.min(current + 1, processingSteps.length - 1),
+      );
+    }, 650);
+
+    return () => window.clearInterval(timer);
+  }, [loading, processingSteps.length]);
+
+  const startAnalysis = (target: string) => {
     setSubmitted(false);
     setLoading(true);
+    setProcessingStep(0);
+    setAnalysisTarget(target);
 
-    setTimeout(() => {
+    window.setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
     }, 3500);
@@ -32,12 +56,12 @@ export default function UploadPage() {
 
     const imageUrl = URL.createObjectURL(file);
     setPreview(imageUrl);
-    startAnalysis();
+    startAnalysis(file.name || "uploaded screenshot");
   };
 
   const handleAnalyzeUrl = () => {
     if (!websiteUrl.trim()) return;
-    startAnalysis();
+    startAnalysis(websiteUrl.trim());
   };
 
   return (
@@ -221,15 +245,21 @@ export default function UploadPage() {
                 Finding the few fixes that matter most
               </h2>
 
+              {analysisTarget && (
+                <p className="mb-7 max-w-2xl truncate rounded-2xl border border-white/10 bg-black/35 px-5 py-3 text-sm text-gray-400">
+                  Target: <span className="text-cyan-300">{analysisTarget}</span>
+                </p>
+              )}
+
               <div className="grid max-w-4xl gap-3 md:grid-cols-3">
-                {[
-                  "Scanning hierarchy",
-                  "Ranking blockers",
-                  "Writing summary",
-                ].map((item) => (
+                {processingSteps.map((item, index) => (
                   <div
                     key={item}
-                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/35 px-5 py-4"
+                    className={`flex items-center gap-3 rounded-2xl border px-5 py-4 transition ${
+                      index <= processingStep
+                        ? "border-cyan-400/30 bg-cyan-400/10"
+                        : "border-white/10 bg-black/35"
+                    }`}
                   >
                     <div className="h-2.5 w-2.5 rounded-full bg-cyan-400 animate-pulse"></div>
                     <p className="text-sm text-gray-300">{item}</p>
@@ -242,7 +272,7 @@ export default function UploadPage() {
 
         {submitted && !loading && (
           <>
-            <AIAnalysisResult />
+            <AIAnalysisResult websiteUrl={analysisTarget} />
             <BeforeAfterPreview />
             <PricingSection />
             <LeadCapture />
