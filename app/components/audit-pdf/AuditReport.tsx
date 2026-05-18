@@ -27,6 +27,14 @@ const headingStyle: CSSProperties = {
   letterSpacing: "-0.05em",
 };
 
+const summaryTitleStyle: CSSProperties = {
+  ...headingStyle,
+  fontSize: 16,
+  fontWeight: 800,
+  lineHeight: 1.28,
+  overflowWrap: "break-word",
+};
+
 const eyebrowStyle: CSSProperties = {
   color: "#22d3ee",
   fontSize: 12,
@@ -252,7 +260,7 @@ export default function AuditReport({ result, websiteUrl, generatedAt }: AuditRe
             </div>
             <div style={{ ...panelStyle, padding: 28 }}>
               <div style={eyebrowStyle}>Executive readout</div>
-              <h2 style={{ ...headingStyle, margin: "12px 0", fontSize: 32, lineHeight: 1.05 }}>{result.summaryTitle}</h2>
+              <h2 style={{ ...summaryTitleStyle, margin: "12px 0" }}>{result.summaryTitle}</h2>
               <p style={{ margin: 0, color: "#b6c3d1", fontSize: 15.5, lineHeight: 1.55 }}>{result.summaryBody}</p>
               <div style={{ marginTop: 24, paddingTop: 18, borderTop: "1px solid rgba(148,163,184,0.18)", color: "#e2e8f0", fontSize: 13.5 }}>
                 <strong style={{ color: "#67e8f9" }}>Source:</strong> {url}
@@ -279,7 +287,7 @@ export default function AuditReport({ result, websiteUrl, generatedAt }: AuditRe
           </div>
           <div style={{ ...panelStyle, marginTop: 24, padding: 28 }}>
             <div style={eyebrowStyle}>Audit interpretation</div>
-            <h3 style={{ ...headingStyle, margin: "10px 0 12px", fontSize: 28 }}>{result.summaryTitle}</h3>
+            <h3 style={{ ...summaryTitleStyle, margin: "10px 0 12px" }}>{result.summaryTitle}</h3>
             <p style={{ margin: 0, color: "#cbd5e1", fontSize: 15.5, lineHeight: 1.58 }}>{result.summaryBody}</p>
           </div>
         </div>
