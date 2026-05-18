@@ -27,20 +27,6 @@ export default function HomePage() {
             <div className="hidden md:flex items-center gap-8 text-gray-300">
 
               <Link
-                href="/best-ai-tools"
-                className="hover:text-cyan-400 transition"
-              >
-                Tools
-              </Link>
-
-              <Link
-                href="/compare"
-                className="hover:text-cyan-400 transition"
-              >
-                Compare
-              </Link>
-
-              <Link
                 href="/generator"
                 className="hover:text-cyan-400 transition"
               >
@@ -59,6 +45,20 @@ export default function HomePage() {
                 className="hover:text-cyan-400 transition"
               >
                 Before / After
+              </Link>
+
+              <Link
+                href="/about"
+                className="hover:text-cyan-400 transition"
+              >
+                About
+              </Link>
+
+              <Link
+                href="/contact"
+                className="hover:text-cyan-400 transition"
+              >
+                Contact
               </Link>
 
             </div>

@@ -17,7 +17,7 @@ export default function Footer() {
           <div>
             <p className="text-white font-bold mb-4">Product</p>
             <div className="space-y-3 text-gray-400">
-              <a href="/generator" className="block hover:text-cyan-400">Generator</a>
+              <a href="/generator" className="block hover:text-cyan-400">Redesign Generator</a>
               <a href="/upload" className="block hover:text-cyan-400">Website Analysis</a>
               <a href="/before-after" className="block hover:text-cyan-400">Before / After</a>
             </div>
@@ -26,8 +26,7 @@ export default function Footer() {
           <div>
             <p className="text-white font-bold mb-4">Resources</p>
             <div className="space-y-3 text-gray-400">
-              <a href="/best-ai-tools" className="block hover:text-cyan-400">AI Tools</a>
-              <a href="/compare" className="block hover:text-cyan-400">Comparisons</a>
+              <a href="/about" className="block hover:text-cyan-400">About</a>
               <a href="/contact" className="block hover:text-cyan-400">Contact</a>
             </div>
           </div>

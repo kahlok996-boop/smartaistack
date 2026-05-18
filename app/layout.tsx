@@ -1,30 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "SmartAIStack - Best AI Tools for Coding, Business and Website Building",
+  title: "SmartAIStack — AI Website Audit & Premium Conversion Redesign Platform",
   description:
-    "Discover and compare the best AI tools for coding, website building, business automation, productivity, and AI-powered workflows.",
+    "Run an AI website audit, diagnose conversion problems, generate premium redesign direction, preview before and after improvements, and capture better leads.",
 
   verification: {
     google: "uikshEcnmLs7sBMB5bE0OwEor7tB1PGdQe_NE4zpWuA",
   },
 
   openGraph: {
-    title: "SmartAIStack - Best AI Tools Reviews 2026",
+    title: "SmartAIStack — AI Website Audit & Premium Conversion Redesign Platform",
     description:
-      "Discover and compare the best AI tools for coding, website building, business automation, productivity, and AI-powered workflows.",
+      "Analyze your website, uncover conversion problems, generate a premium redesign direction, preview before and after improvements, and turn more visitors into leads.",
     url: "https://smartaistack.vercel.app",
     siteName: "SmartAIStack",
     images: [
@@ -32,7 +21,7 @@ export const metadata: Metadata = {
         url: "https://smartaistack.vercel.app/og-image",
         width: 1200,
         height: 630,
-        alt: "SmartAIStack Best AI Tools Reviews 2026",
+        alt: "SmartAIStack AI Website Audit and Premium Conversion Redesign Platform",
       },
     ],
     locale: "en_US",
@@ -41,9 +30,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "SmartAIStack - Best AI Tools Reviews 2026",
+    title: "SmartAIStack — AI Website Audit & Premium Conversion Redesign Platform",
     description:
-      "Discover and compare the best AI tools for coding, website building, business automation, productivity, and AI-powered workflows.",
+      "Run an AI website audit, find conversion gaps, generate premium redesign direction, preview before and after improvements, and capture more qualified leads.",
     images: ["https://smartaistack.vercel.app/og-image"],
   },
 };
@@ -54,10 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
