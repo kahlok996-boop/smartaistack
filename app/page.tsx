@@ -1,26 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-import { tools } from "@/data/tools";
 import TrustSection from "@/app/components/TrustSection";
 
 export default function HomePage() {
   const [heroPrompt, setHeroPrompt] = useState("");
-  const [search, setSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const filteredTools = tools.filter((tool) => {
-    const matchesSearch =
-      tool.name.toLowerCase().includes(search.toLowerCase()) ||
-      tool.description.toLowerCase().includes(search.toLowerCase()) ||
-      tool.category.toLowerCase().includes(search.toLowerCase());
-
-    const matchesCategory =
-      selectedCategory === "All" || tool.category === selectedCategory;
-
-    return matchesSearch && matchesCategory;
-  });
-
   return (
     <main className="min-h-screen bg-black text-white overflow-hidden relative">
       <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-cyan-500/20 blur-[160px] rounded-full"></div>
@@ -32,58 +17,58 @@ export default function HomePage() {
         <nav className="sticky top-4 z-50 mb-16">
           <div className="bg-black/70 backdrop-blur-2xl border border-white/10 rounded-full px-4 md:px-8 py-4 md:py-5 flex justify-between items-center">
 
-            <a
+            <Link
               href="/"
               className="text-xl md:text-2xl font-black tracking-tight"
             >
               SmartAIStack
-            </a>
+            </Link>
 
             <div className="hidden md:flex items-center gap-8 text-gray-300">
 
-              <a
+              <Link
                 href="/best-ai-tools"
                 className="hover:text-cyan-400 transition"
               >
                 Tools
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/compare"
                 className="hover:text-cyan-400 transition"
               >
                 Compare
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/generator"
                 className="hover:text-cyan-400 transition"
               >
                 Generator
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/upload"
                 className="hover:text-cyan-400 transition"
               >
                 Upload
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/before-after"
                 className="hover:text-cyan-400 transition"
               >
                 Before / After
-              </a>
+              </Link>
 
             </div>
 
-            <a
+            <Link
               href="/generator"
               className="bg-cyan-400 text-black px-4 md:px-5 py-3 rounded-full font-bold text-sm md:text-base hover:scale-105 transition premium-hover"
             >
               Try Generator
-            </a>
+            </Link>
 
           </div>
         </nav>
@@ -149,12 +134,12 @@ export default function HomePage() {
 
                     </div>
 
-                    <a
+                    <Link
                       href="/generator"
                       className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black px-6 md:px-8 py-4 rounded-2xl font-bold hover:scale-105 transition premium-hover gradient-motion text-center"
                     >
                       Generate Website
-                    </a>
+                    </Link>
 
                   </div>
                 </div>
@@ -282,41 +267,157 @@ export default function HomePage() {
         {/* TRUST SECTION */}
         <TrustSection />
 
-        {/* SEARCH */}
-        <div className="mb-10">
+        {/* CONVERSION AUDIT */}
+        <section className="mb-20 md:mb-28">
 
-          <input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            type="text"
-            placeholder="Search AI tools..."
-            className="w-full max-w-xl bg-zinc-900 border border-zinc-700 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
-          />
+          <div className="relative overflow-hidden rounded-[32px] md:rounded-[44px] border border-white/10 bg-white/[0.035] p-6 md:p-12 backdrop-blur-2xl premium-hover soft-glow">
 
-        </div>
+            <div className="absolute top-[-180px] right-[-160px] w-[520px] h-[520px] bg-cyan-400/10 blur-[170px] rounded-full"></div>
 
-        {/* CATEGORY FILTER */}
-        <div className="flex flex-wrap gap-3 mb-12">
+            <div className="absolute bottom-[-220px] left-[-160px] w-[520px] h-[520px] bg-purple-500/10 blur-[180px] rounded-full"></div>
 
-          {[
-            "All",
-            "AI Assistant",
-            "AI Coding Tool",
-            "AI Image Generator",
-            "AI Writing Tool",
-          ].map((category) => (
+            <div className="relative z-10 grid lg:grid-cols-12 gap-10 md:gap-14 items-center">
 
-            <button
-              onClick={() => setSelectedCategory(category)}
-              key={category}
-              className="bg-zinc-900 border border-zinc-700 text-gray-300 px-5 py-3 rounded-full hover:border-cyan-400 hover:text-cyan-400 transition premium-hover soft-glow"
-            >
-              {category}
-            </button>
+              <div className="lg:col-span-6">
 
-          ))}
+                <div className="inline-flex items-center gap-3 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-5 py-3 text-sm text-cyan-200 mb-7 backdrop-blur-xl">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full shadow-[0_0_20px_rgba(34,211,238,0.9)]"></div>
 
-        </div>
+                  Premium SaaS Growth System
+                </div>
+
+                <h2 className="text-4xl md:text-6xl font-black leading-[1.02] tracking-tight mb-6">
+                  Turn your website into a
+
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
+                    conversion engine
+                  </span>
+                </h2>
+
+                <p className="text-lg md:text-xl text-gray-400 leading-8 md:leading-9 mb-8 max-w-2xl">
+                  Get an AI Website Audit, conversion optimization priorities,
+                  premium redesign direction, and a before / after transformation
+                  plan built to capture better leads without rebuilding your
+                  entire brand from scratch.
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-4 mb-9">
+
+                  {[
+                    "AI Website Audit",
+                    "Conversion Optimization",
+                    "Premium Redesign Direction",
+                    "Lead Capture Strategy",
+                  ].map((item) => (
+
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-white/10 bg-black/35 px-5 py-4 text-gray-200 backdrop-blur-xl"
+                    >
+                      <span className="mr-3 text-cyan-400">✦</span>
+                      {item}
+                    </div>
+
+                  ))}
+
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+
+                  <Link
+                    href="/upload"
+                    className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black px-7 py-4 rounded-2xl font-bold text-center hover:scale-105 transition premium-hover gradient-motion"
+                  >
+                    Start AI Audit
+                  </Link>
+
+                  <Link
+                    href="/before-after"
+                    className="border border-white/15 bg-white/5 text-white px-7 py-4 rounded-2xl font-bold text-center hover:border-cyan-400/60 hover:text-cyan-200 transition premium-hover"
+                  >
+                    View Transformations
+                  </Link>
+
+                </div>
+
+              </div>
+
+              <div className="lg:col-span-6">
+
+                <div className="relative rounded-[28px] md:rounded-[36px] border border-white/10 bg-black/55 p-4 md:p-5 shadow-2xl">
+
+                  <div className="absolute -top-5 left-8 rounded-2xl border border-cyan-400/20 bg-black/80 px-5 py-3 backdrop-blur-xl shadow-2xl">
+                    <p className="text-xs uppercase tracking-[0.28em] text-cyan-300">Before / After</p>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4 pt-8">
+
+                    <div className="rounded-[24px] border border-red-400/10 bg-white/[0.03] p-5">
+                      <p className="text-sm uppercase tracking-[0.24em] text-gray-500 mb-5">Before</p>
+
+                      <div className="space-y-4">
+                        <div className="h-4 w-3/4 rounded-full bg-white/10"></div>
+                        <div className="h-4 w-1/2 rounded-full bg-white/10"></div>
+                        <div className="h-24 rounded-2xl bg-white/[0.06] border border-white/5"></div>
+                        <div className="h-10 rounded-xl bg-white/10"></div>
+                      </div>
+
+                      <div className="mt-6 rounded-2xl border border-red-400/10 bg-red-500/5 p-4 text-sm text-gray-400 leading-6">
+                        Unclear offer, weak visual hierarchy, and missed lead
+                        capture moments.
+                      </div>
+                    </div>
+
+                    <div className="relative overflow-hidden rounded-[24px] border border-cyan-400/20 bg-cyan-400/[0.06] p-5">
+                      <div className="absolute top-[-80px] right-[-80px] h-48 w-48 rounded-full bg-cyan-400/20 blur-[70px]"></div>
+
+                      <p className="relative text-sm uppercase tracking-[0.24em] text-cyan-300 mb-5">After</p>
+
+                      <div className="relative space-y-4">
+                        <div className="h-4 w-5/6 rounded-full bg-cyan-300/70 shadow-[0_0_22px_rgba(103,232,249,0.4)]"></div>
+                        <div className="h-4 w-2/3 rounded-full bg-blue-300/40"></div>
+                        <div className="rounded-2xl border border-cyan-300/20 bg-black/35 p-4">
+                          <div className="h-20 rounded-xl bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-purple-500/25"></div>
+                        </div>
+                        <div className="h-10 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500"></div>
+                      </div>
+
+                      <div className="relative mt-6 rounded-2xl border border-cyan-300/20 bg-black/35 p-4 text-sm text-cyan-50 leading-6">
+                        Premium positioning, sharper conversion path, and a
+                        lead capture CTA engineered for action.
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div className="mt-4 grid sm:grid-cols-3 gap-4">
+
+                    {[
+                      ["01", "Audit friction"],
+                      ["02", "Redesign priority"],
+                      ["03", "Capture leads"],
+                    ].map(([step, label]) => (
+
+                      <div
+                        key={step}
+                        className="rounded-2xl border border-white/10 bg-white/[0.04] p-4"
+                      >
+                        <p className="text-cyan-400 font-black mb-1">{step}</p>
+                        <p className="text-sm text-gray-300">{label}</p>
+                      </div>
+
+                    ))}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
 
       </div>
     </main>
