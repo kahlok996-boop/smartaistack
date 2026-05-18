@@ -1,3 +1,6 @@
+import Navbar from "@/app/components/Navbar";
+import Footer from "@/app/components/Footer";
+
 export default function BeforeAfterPage() {
   return (
     <main className="min-h-screen bg-black text-white overflow-hidden relative px-8 py-16">
@@ -5,6 +8,8 @@ export default function BeforeAfterPage() {
       <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-blue-500/10 blur-[180px] rounded-full"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
+        <Navbar />
+
         <div className="inline-flex items-center gap-3 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-5 py-3 text-cyan-300 text-sm font-semibold mb-8">
           <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
           Before / After Premium Preview
@@ -169,6 +174,8 @@ export default function BeforeAfterPage() {
             </a>
           </div>
         </section>
+
+        <Footer />
       </div>
     </main>
   );
