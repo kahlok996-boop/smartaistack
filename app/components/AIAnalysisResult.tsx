@@ -37,6 +37,14 @@ type ConfidenceMetric = {
   note: string;
 };
 
+type ParsedAuditSource = {
+  hostname: string;
+  pathname: string;
+  normalized: string;
+  tokens: string[];
+  isUploadedScreenshot: boolean;
+};
+
 type AuditResult = {
   sourceLabel: string;
   tier: AuditTier;
@@ -172,6 +180,14 @@ const processingSteps = [
   "Generating premium redesign direction and priority fixes",
 ];
 
+const uploadedScreenshotLabel = "Screenshot-based preview analysis";
+
+const fallbackAuditSignals: AuditSignal[] = [
+  "weakConversionFlow",
+  "weakTrust",
+  "poorMobileHierarchy",
+];
+
 function clampScore(score: number) {
   return Math.max(38, Math.min(96, Math.round(score)));
 }
@@ -186,15 +202,16 @@ function getStableVariance(input: string) {
   return (hash % 11) - 5;
 }
 
-function parseWebsiteUrl(websiteUrl?: string) {
+function parseWebsiteUrl(websiteUrl?: string): ParsedAuditSource {
   const trimmed = websiteUrl?.trim() ?? "";
 
-  if (!trimmed) {
+  if (!trimmed || trimmed === uploadedScreenshotLabel) {
     return {
-      hostname: "uploaded screenshot",
+      hostname: uploadedScreenshotLabel,
       pathname: "",
-      normalized: "uploaded screenshot",
-      tokens: ["uploaded", "screenshot"],
+      normalized: "uploaded screenshot preview",
+      tokens: ["uploaded", "screenshot", "preview"],
+      isUploadedScreenshot: true,
     };
   }
 
@@ -207,7 +224,7 @@ function parseWebsiteUrl(websiteUrl?: string) {
     const normalized = `${hostname}${pathname}`;
     const tokens = normalized.split(/[^a-z0-9]+/).filter(Boolean);
 
-    return { hostname, pathname, normalized, tokens };
+    return { hostname, pathname, normalized, tokens, isUploadedScreenshot: false };
   } catch {
     const normalized = trimmed.toLowerCase();
 
@@ -216,6 +233,7 @@ function parseWebsiteUrl(websiteUrl?: string) {
       pathname: "",
       normalized,
       tokens: normalized.split(/[^a-z0-9]+/).filter(Boolean),
+      isUploadedScreenshot: false,
     };
   }
 }
@@ -424,16 +442,32 @@ function recommendationCopy(signal: AuditSignal): Recommendation {
   return copy[signal];
 }
 
+function getPrioritySignals(signals: AuditSignal[]) {
+  const prioritySignals = [...signals];
+
+  fallbackAuditSignals.forEach((signal) => {
+    if (!prioritySignals.includes(signal)) {
+      prioritySignals.push(signal);
+    }
+  });
+
+  return prioritySignals.slice(0, 3);
+}
+
 function buildAuditResult(websiteUrl?: string): AuditResult {
   const parsed = parseWebsiteUrl(websiteUrl);
-  const tier = getTier(parsed.tokens, parsed.normalized);
-  const variance = getStableVariance(parsed.normalized);
-  const signals = detectSignals(parsed.tokens, parsed.normalized, tier);
+  const tier = parsed.isUploadedScreenshot
+    ? "basic"
+    : getTier(parsed.tokens, parsed.normalized);
+  const variance = parsed.isUploadedScreenshot ? 0 : getStableVariance(parsed.normalized);
+  const signals = parsed.isUploadedScreenshot
+    ? [...fallbackAuditSignals]
+    : detectSignals(parsed.tokens, parsed.normalized, tier);
   const scores = createScores(tier, signals, variance);
   const overallScore = clampScore(
     scores.reduce((total, score) => total + score.value, 0) / scores.length,
   );
-  const topSignals = signals.length ? signals.slice(0, 3) : (["weakConversionFlow"] as AuditSignal[]);
+  const topSignals = getPrioritySignals(signals);
   const priorities = topSignals.map((signal, index) => ({
     ...signalCopy(signal),
     label: String(index + 1),
@@ -509,14 +543,18 @@ function buildAuditResult(websiteUrl?: string): AuditResult {
     tier,
     overallScore,
     summaryTitle:
-      tier === "premium"
-        ? "Strong premium signal. The biggest upside is conversion precision."
+      parsed.isUploadedScreenshot
+        ? "Screenshot-based preview analysis"
+        : tier === "premium"
+          ? "Strong premium signal. The biggest upside is conversion precision."
         : tier === "outdated"
           ? "The offer may be stronger than the website currently makes it feel."
           : "Solid baseline. The audit found clear ways to make the site feel more decisive.",
     summaryBody:
-      tier === "premium"
-        ? "This looks like a brand that can support an upmarket experience, but the page still needs tighter proof placement, cleaner CTA sequencing, and a more deliberate mobile decision path."
+      parsed.isUploadedScreenshot
+        ? "This neutral preview uses a standard screenshot audit profile rather than filename-based scoring. Real visual analysis is not running yet, so treat these priorities as a starting point for reviewing hierarchy, proof, and mobile flow."
+        : tier === "premium"
+          ? "This looks like a brand that can support an upmarket experience, but the page still needs tighter proof placement, cleaner CTA sequencing, and a more deliberate mobile decision path."
         : tier === "outdated"
           ? "The current digital signal appears to under-sell the business. Modernizing the brand layer, moving trust earlier, and simplifying the first action should create a more believable premium impression."
           : "The site does not need a full reinvention. It needs sharper positioning, earlier proof, and a clearer conversion path so visitors understand the value before they start comparing alternatives.",

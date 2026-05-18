@@ -56,7 +56,7 @@ export default function UploadPage() {
 
     const imageUrl = URL.createObjectURL(file);
     setPreview(imageUrl);
-    startAnalysis(file.name || "uploaded screenshot");
+    startAnalysis("Screenshot-based preview analysis");
   };
 
   const handleAnalyzeUrl = () => {
