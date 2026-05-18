@@ -38,8 +38,8 @@ export async function GET() {
             lineHeight: 1.05,
           }}
         >
-          <span>Best AI Tools</span>
-          <span>Reviews 2026</span>
+          <span>AI Website Audit</span>
+          <span>Premium Redesign</span>
         </div>
 
         <div
@@ -50,7 +50,7 @@ export async function GET() {
             marginTop: "40px",
           }}
         >
-          ChatGPT • Claude • Gemini • Cursor • Perplexity
+          Conversion Audit • Before / After • Lead Capture
         </div>
       </div>
     ),
