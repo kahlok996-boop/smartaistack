@@ -11,7 +11,11 @@
   "dependencies": {
     "next": "16.2.6",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "@fontsource/inter": "file:vendor/fontsource-inter",
+    "@fontsource/space-grotesk": "file:vendor/fontsource-space-grotesk",
+    "html2canvas": "file:vendor/html2canvas",
+    "jspdf": "file:vendor/jspdf"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
