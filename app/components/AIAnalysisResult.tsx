@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { submitAuditLead } from "@/app/lib/audit-leads";
+import { createAuditPdfBlob } from "@/app/lib/audit-pdf";
 
 type AuditSignal =
   | "missingCta"
@@ -581,6 +582,8 @@ export default function AIAnalysisResult({ websiteUrl }: { websiteUrl?: string }
   const [leadLoading, setLeadLoading] = useState(false);
   const [leadSuccess, setLeadSuccess] = useState(false);
   const [leadError, setLeadError] = useState("");
+  const [pdfLoading, setPdfLoading] = useState(false);
+  const [pdfError, setPdfError] = useState("");
   const result = useMemo(() => buildAuditResult(websiteUrl), [websiteUrl]);
 
   useEffect(() => {
@@ -598,6 +601,29 @@ export default function AIAnalysisResult({ websiteUrl }: { websiteUrl?: string }
       window.clearInterval(stepTimer);
     };
   }, [websiteUrl]);
+
+  const handleDownloadPremiumPdf = async () => {
+    setPdfLoading(true);
+    setPdfError("");
+
+    try {
+      await new Promise((resolve) => window.setTimeout(resolve, 120));
+      const pdfBlob = createAuditPdfBlob(result, websiteUrl);
+      const downloadUrl = URL.createObjectURL(pdfBlob);
+      const link = document.createElement("a");
+
+      link.href = downloadUrl;
+      link.download = "SmartAIStack-Audit-Report.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
+    } catch {
+      setPdfError("PDF generation failed. Please try again.");
+    } finally {
+      setPdfLoading(false);
+    }
+  };
 
   const handleBriefRequest = async () => {
     setLeadLoading(true);
@@ -693,8 +719,22 @@ export default function AIAnalysisResult({ websiteUrl }: { websiteUrl?: string }
           </p>
         </div>
 
-        <div className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-200">
-          Score {result.overallScore}/100
+        <div className="flex flex-col items-start gap-3 md:items-end">
+          <div className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 text-sm font-semibold text-emerald-200">
+            Score {result.overallScore}/100
+          </div>
+          <button
+            onClick={handleDownloadPremiumPdf}
+            disabled={pdfLoading}
+            className="rounded-2xl border border-cyan-400/30 bg-cyan-300 px-5 py-3 text-sm font-black text-black shadow-[0_0_40px_rgba(34,211,238,0.16)] transition hover:scale-[1.02] disabled:cursor-wait disabled:opacity-70"
+          >
+            {pdfLoading ? "Generating premium PDF..." : "Download Premium Audit PDF"}
+          </button>
+          {pdfError && (
+            <p className="max-w-xs rounded-2xl border border-red-400/20 bg-red-500/10 px-4 py-2 text-sm text-red-200">
+              {pdfError}
+            </p>
+          )}
         </div>
       </div>
 
