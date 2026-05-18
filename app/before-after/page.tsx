@@ -1,4 +1,42 @@
+"use client";
+
+import { useState } from "react";
+import { submitAuditLead } from "@/app/lib/audit-leads";
+
 export default function BeforeAfterPage() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    setSuccess(false);
+    setError("");
+
+    const response = await submitAuditLead({
+      email: form.email,
+      audit_type: "before_after_page_request",
+      source_page: "/before-after",
+      notes: [
+        form.name && `Name: ${form.name}`,
+        form.message && `Message: ${form.message}`,
+      ]
+        .filter(Boolean)
+        .join("\n"),
+    });
+
+    setLoading(false);
+
+    if (!response.ok) {
+      setError(response.message);
+      return;
+    }
+
+    setSuccess(true);
+    setForm({ name: "", email: "", message: "" });
+  };
+
   return (
     <>
       <div className="inline-flex items-center gap-3 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-5 py-3 text-cyan-300 text-sm font-semibold mb-8">
@@ -89,23 +127,56 @@ export default function BeforeAfterPage() {
               <input
                 type="text"
                 placeholder="Your Name"
+                value={form.name}
+                onChange={(event) =>
+                  setForm({ ...form, name: event.target.value })
+                }
                 className="w-full bg-black border border-zinc-700 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
               />
 
               <input
                 type="email"
                 placeholder="Your Email"
+                required
+                value={form.email}
+                onChange={(event) =>
+                  setForm({ ...form, email: event.target.value })
+                }
                 className="w-full bg-black border border-zinc-700 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
               />
 
               <textarea
                 placeholder="Tell us about your website..."
                 rows={4}
+                value={form.message}
+                onChange={(event) =>
+                  setForm({ ...form, message: event.target.value })
+                }
                 className="w-full bg-black border border-zinc-700 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
               />
 
-              <button className="w-full bg-cyan-400 text-black px-6 py-4 rounded-2xl font-bold hover:scale-[1.02] transition shadow-[0_0_40px_rgba(34,211,238,0.25)]">
-                Get Premium Direction
+              {error && (
+                <p className="rounded-2xl border border-red-400/20 bg-red-500/10 px-5 py-4 text-sm text-red-200">
+                  {error}
+                </p>
+              )}
+
+              {success && (
+                <p className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-5 py-4 text-sm text-cyan-100">
+                  Request saved.
+                </p>
+              )}
+
+              <button
+                onClick={handleSubmit}
+                disabled={loading}
+                className="w-full bg-cyan-400 text-black px-6 py-4 rounded-2xl font-bold hover:scale-[1.02] transition shadow-[0_0_40px_rgba(34,211,238,0.25)] disabled:opacity-60"
+              >
+                {loading
+                  ? "Saving request..."
+                  : success
+                    ? "Request saved"
+                    : "Get Premium Direction"}
               </button>
             </div>
           </div>

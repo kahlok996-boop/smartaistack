@@ -1,9 +1,38 @@
 "use client";
 
 import { useState } from "react";
+import { submitAuditLead } from "@/app/lib/audit-leads";
 
 export default function BeforeAfterPreview() {
   const [showForm, setShowForm] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", websiteUrl: "" });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    setSuccess(false);
+    setError("");
+
+    const response = await submitAuditLead({
+      email: form.email,
+      website_url: form.websiteUrl,
+      audit_type: "before_after_preview_request",
+      source_page: "/upload",
+      notes: form.name ? `Name: ${form.name}` : null,
+    });
+
+    setLoading(false);
+
+    if (!response.ok) {
+      setError(response.message);
+      return;
+    }
+
+    setSuccess(true);
+    setForm({ name: "", email: "", websiteUrl: "" });
+  };
 
   return (
     <section className="mt-16 rounded-[40px] border border-cyan-400/20 bg-white/[0.03] p-6 md:p-10 overflow-hidden">
@@ -105,24 +134,53 @@ export default function BeforeAfterPreview() {
             <input
               type="text"
               placeholder="Your Name"
+              value={form.name}
+              onChange={(event) =>
+                setForm({ ...form, name: event.target.value })
+              }
               className="bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
             />
 
             <input
               type="email"
               placeholder="Your Email"
+              required
+              value={form.email}
+              onChange={(event) =>
+                setForm({ ...form, email: event.target.value })
+              }
               className="bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
             />
 
             <input
               type="text"
               placeholder="Website URL"
+              value={form.websiteUrl}
+              onChange={(event) =>
+                setForm({ ...form, websiteUrl: event.target.value })
+              }
               className="bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400"
             />
           </div>
 
-          <button className="w-full md:w-auto bg-cyan-400 text-black px-8 py-4 rounded-2xl font-black hover:scale-[1.02] transition">
-            Submit Request
+          {error && (
+            <p className="mb-5 rounded-2xl border border-red-400/20 bg-red-500/10 px-5 py-4 text-sm text-red-200">
+              {error}
+            </p>
+          )}
+
+          {success && (
+            <p className="mb-5 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-5 py-4 text-sm text-cyan-100">
+              Request saved.
+            </p>
+          )}
+
+          <button
+            onClick={handleSubmit}
+            disabled={loading}
+            className="w-full md:w-auto bg-cyan-400 text-black px-8 py-4 rounded-2xl font-black hover:scale-[1.02] transition disabled:opacity-60"
+          >
+            {loading ? "Submitting..." : success ? "Submitted" : "Submit Request"}
           </button>
         </div>
       )}

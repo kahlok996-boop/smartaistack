@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { submitAuditLead } from "@/app/lib/audit-leads";
 
 type AuditSignal =
   | "missingCta"
@@ -576,6 +577,10 @@ function buildAuditResult(websiteUrl?: string): AuditResult {
 export default function AIAnalysisResult({ websiteUrl }: { websiteUrl?: string }) {
   const [loading, setLoading] = useState(true);
   const [activeStep, setActiveStep] = useState(0);
+  const [leadForm, setLeadForm] = useState({ name: "", email: "" });
+  const [leadLoading, setLeadLoading] = useState(false);
+  const [leadSuccess, setLeadSuccess] = useState(false);
+  const [leadError, setLeadError] = useState("");
   const result = useMemo(() => buildAuditResult(websiteUrl), [websiteUrl]);
 
   useEffect(() => {
@@ -593,6 +598,37 @@ export default function AIAnalysisResult({ websiteUrl }: { websiteUrl?: string }
       window.clearInterval(stepTimer);
     };
   }, [websiteUrl]);
+
+  const handleBriefRequest = async () => {
+    setLeadLoading(true);
+    setLeadSuccess(false);
+    setLeadError("");
+
+    const response = await submitAuditLead({
+      email: leadForm.email,
+      website_url: websiteUrl,
+      audit_type: "upload_redesign_brief",
+      source_page: "/upload",
+      notes: [
+        leadForm.name && `Name: ${leadForm.name}`,
+        `Audit source: ${result.sourceLabel}`,
+        `Overall score: ${result.overallScore}`,
+        `Top priority: ${result.priorities[0]}`,
+      ]
+        .filter(Boolean)
+        .join("\n"),
+    });
+
+    setLeadLoading(false);
+
+    if (!response.ok) {
+      setLeadError(response.message);
+      return;
+    }
+
+    setLeadSuccess(true);
+    setLeadForm({ name: "", email: "" });
+  };
 
   if (loading) {
     return (
@@ -869,15 +905,42 @@ export default function AIAnalysisResult({ websiteUrl }: { websiteUrl?: string }
             <input
               type="text"
               placeholder="Your name"
+              value={leadForm.name}
+              onChange={(event) =>
+                setLeadForm({ ...leadForm, name: event.target.value })
+              }
               className="rounded-2xl border border-white/10 bg-black/55 px-5 py-4 text-white outline-none focus:border-cyan-400"
             />
             <input
               type="email"
               placeholder="Work email"
+              required
+              value={leadForm.email}
+              onChange={(event) =>
+                setLeadForm({ ...leadForm, email: event.target.value })
+              }
               className="rounded-2xl border border-white/10 bg-black/55 px-5 py-4 text-white outline-none focus:border-cyan-400"
             />
-            <button className="rounded-2xl bg-cyan-300 px-8 py-4 font-black text-black transition hover:scale-[1.01]">
-              Request redesign brief
+            {leadError && (
+              <p className="rounded-2xl border border-red-400/20 bg-red-500/10 px-5 py-3 text-sm text-red-200">
+                {leadError}
+              </p>
+            )}
+            {leadSuccess && (
+              <p className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-5 py-3 text-sm text-cyan-100">
+                Brief request saved.
+              </p>
+            )}
+            <button
+              onClick={handleBriefRequest}
+              disabled={leadLoading}
+              className="rounded-2xl bg-cyan-300 px-8 py-4 font-black text-black transition hover:scale-[1.01] disabled:opacity-60"
+            >
+              {leadLoading
+                ? "Saving request..."
+                : leadSuccess
+                  ? "Request saved"
+                  : "Request redesign brief"}
             </button>
           </div>
         </div>

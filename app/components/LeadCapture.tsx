@@ -1,8 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { submitAuditLead } from "@/app/lib/audit-leads";
 
-export default function LeadCapture() {
+type LeadCaptureProps = {
+  auditType?: string;
+  sourcePage?: string;
+};
+
+export default function LeadCapture({
+  auditType = "premium_redesign_quote",
+  sourcePage = "/upload",
+}: LeadCaptureProps) {
 
   const [form, setForm] = useState({
     name: "",
@@ -17,21 +26,35 @@ export default function LeadCapture() {
   const [loading, setLoading] = useState(false);
 
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async () => {
-
     setLoading(true);
+    setSuccess(false);
+    setError("");
 
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbyPiPzFebibfl7gEpxIYIeFmH29MiuEL57z7GtWcX2fJ92Ztd1ScsdXXjmxZVAARSOYsA/exec",
-      {
-        method: "POST",
-        mode: "no-cors",
-        body: JSON.stringify(form),
-      }
-    );
+    const result = await submitAuditLead({
+      email: form.email,
+      website_url: form.websiteUrl,
+      audit_type: auditType,
+      source_page: sourcePage,
+      notes: [
+        form.name && `Name: ${form.name}`,
+        form.whatsapp && `WhatsApp: ${form.whatsapp}`,
+        form.websiteType && `Website type: ${form.websiteType}`,
+        form.budget && `Budget: ${form.budget}`,
+        form.message && `Message: ${form.message}`,
+      ]
+        .filter(Boolean)
+        .join("\n"),
+    });
 
     setLoading(false);
+
+    if (!result.ok) {
+      setError(result.message);
+      return;
+    }
 
     setSuccess(true);
 
@@ -80,6 +103,7 @@ export default function LeadCapture() {
         <input
           type="email"
           placeholder="Your Email"
+          required
           value={form.email}
           onChange={(e) =>
             setForm({
@@ -166,6 +190,18 @@ export default function LeadCapture() {
         }
         className="w-full bg-black/60 border border-white/10 rounded-2xl px-5 py-4 text-white outline-none focus:border-cyan-400 mb-6 resize-none"
       />
+
+      {error && (
+        <p className="mb-5 rounded-2xl border border-red-400/20 bg-red-500/10 px-5 py-4 text-sm text-red-200">
+          {error}
+        </p>
+      )}
+
+      {success && (
+        <p className="mb-5 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-5 py-4 text-sm text-cyan-100">
+          Request saved. We will review your website direction next.
+        </p>
+      )}
 
       <button
         onClick={handleSubmit}

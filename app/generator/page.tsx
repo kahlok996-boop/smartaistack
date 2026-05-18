@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import LeadCapture from "@/app/components/LeadCapture";
 
 export default function GeneratorPage() {
   const [loading, setLoading] = useState(false);
@@ -330,6 +331,8 @@ export default function GeneratorPage() {
             )}
           </div>
         </section>
+
+        <LeadCapture auditType="generator_direction_request" sourcePage="/generator" />
 
         <Footer />
       </div>
