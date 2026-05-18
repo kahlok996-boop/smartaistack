@@ -1,0 +1,2 @@
+:root { --font-space-grotesk: 'Space Grotesk', Inter, Arial, Helvetica, sans-serif; }
+@font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: local('Space Grotesk'); }
