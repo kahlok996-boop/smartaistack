@@ -10,6 +10,7 @@ export type AuditLeadInsert = {
 };
 
 type SupabaseInsertResult = {
+  ok: boolean;
   error: { message: string } | null;
 };
 
@@ -20,6 +21,7 @@ export function isSupabaseConfigured() {
 async function insertRows(table: string, payload: AuditLeadInsert): Promise<SupabaseInsertResult> {
   if (!supabaseUrl || !supabaseAnonKey) {
     return {
+      ok: false,
       error: {
         message:
           "Supabase is not configured yet. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your environment.",
@@ -27,19 +29,31 @@ async function insertRows(table: string, payload: AuditLeadInsert): Promise<Supa
     };
   }
 
-  const response = await fetch(`${supabaseUrl}/rest/v1/${table}`, {
-    method: "POST",
-    headers: {
-      apikey: supabaseAnonKey,
-      Authorization: `Bearer ${supabaseAnonKey}`,
-      "Content-Type": "application/json",
-      Prefer: "return=minimal",
-    },
-    body: JSON.stringify(payload),
-  });
+  let response: Response;
+
+  try {
+    response = await fetch(`${supabaseUrl}/rest/v1/${table}`, {
+      method: "POST",
+      headers: {
+        apikey: supabaseAnonKey,
+        Authorization: `Bearer ${supabaseAnonKey}`,
+        "Content-Type": "application/json",
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch {
+    return {
+      ok: false,
+      error: {
+        message:
+          "Could not connect to the request service. Please check your connection and try again.",
+      },
+    };
+  }
 
   if (response.ok) {
-    return { error: null };
+    return { ok: true, error: null };
   }
 
   let message = "Could not save your request. Please try again.";
@@ -51,7 +65,7 @@ async function insertRows(table: string, payload: AuditLeadInsert): Promise<Supa
     message = response.statusText || message;
   }
 
-  return { error: { message } };
+  return { ok: false, error: { message } };
 }
 
 export const supabase = isSupabaseConfigured()
