@@ -275,7 +275,7 @@ export default function UploadPage() {
             <AIAnalysisResult websiteUrl={analysisTarget} />
             <BeforeAfterPreview />
             <PricingSection />
-            <LeadCapture />
+            <LeadCapture auditType="upload_audit_request" sourcePage="/upload" />
           </>
         )}
 
