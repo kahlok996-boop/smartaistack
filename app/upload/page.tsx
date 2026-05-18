@@ -48,26 +48,24 @@ export default function UploadPage() {
       <div className="relative z-10 max-w-6xl mx-auto">
         <Navbar />
 
-        <div className="inline-flex items-center gap-3 bg-cyan-400/10 border border-cyan-400/20 rounded-full px-5 py-3 text-cyan-300 text-sm font-semibold mb-8">
-          <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-          AI Website Screenshot Analysis
+        <div className="inline-flex items-center gap-3 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-5 py-3 text-sm font-semibold text-cyan-300 mb-8">
+          <div className="h-2 w-2 rounded-full bg-cyan-400"></div>
+          AI Website Audit
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-8 leading-[0.95] max-w-5xl">
-          Analyze Your Website
-          <br />
-          With AI
+        <h1 className="max-w-5xl text-4xl font-black leading-[0.98] sm:text-5xl md:text-7xl mb-7">
+          Get a clear website audit in minutes
         </h1>
 
-        <p className="text-base md:text-xl text-gray-400 leading-8 md:leading-9 mb-12 md:mb-14 max-w-3xl">
-          Paste your website link or upload a screenshot. SmartAIStack will
-          simulate a premium redesign direction, conversion review, and visual
-          improvement analysis.
+        <p className="mb-12 max-w-3xl text-base leading-8 text-gray-400 md:mb-16 md:text-xl md:leading-9">
+          Paste a link or upload a screenshot. SmartAIStack turns the analysis
+          into a simple executive summary, prioritized fixes, and a conversion
+          focused redesign direction.
         </p>
 
-        <section className="grid lg:grid-cols-2 gap-6 md:gap-10 mb-14">
-        <div className="bg-zinc-900/70 border border-zinc-800 rounded-[28px] p-4 md:p-10 backdrop-blur-xl">
-          <div className="grid grid-cols-2 gap-3 mb-6">
+        <section className="grid gap-6 md:gap-10 lg:grid-cols-[1fr_0.9fr] mb-16">
+          <div className="rounded-[30px] border border-white/10 bg-white/[0.04] p-4 backdrop-blur-xl md:p-8">
+            <div className="grid grid-cols-2 gap-3 mb-6">
               <button
                 onClick={() => setMode("url")}
                 className={`px-3 md:px-5 py-3 md:py-3 rounded-full font-bold text-sm md:text-base transition ${
@@ -92,9 +90,9 @@ export default function UploadPage() {
             </div>
 
             {mode === "url" ? (
-              <div className="border border-cyan-400/20 rounded-[28px] p-5 md:p-10 bg-black/40">
-                <p className="text-cyan-400 font-semibold mb-4">
-                  Paste Website Link
+              <div className="rounded-[26px] border border-white/10 bg-black/35 p-5 md:p-8">
+                <p className="mb-4 font-semibold text-cyan-300">
+                  Website link
                 </p>
 
                 <input
@@ -114,16 +112,16 @@ export default function UploadPage() {
                 </button>
 
                 {websiteUrl && (
-                  <p className="text-gray-400 mt-6 leading-7">
-                    Ready to analyze:{" "}
-                    <span className="text-cyan-300">{websiteUrl}</span>
+                  <p className="mt-5 truncate rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-gray-400">
+                    Ready: <span className="text-cyan-300">{websiteUrl}</span>
                   </p>
                 )}
               </div>
             ) : (
-              <div className="border-2 border-dashed border-cyan-400/30 rounded-[32px] p-6 md:p-12 text-center bg-black/40">
+              <div className="rounded-[28px] border border-dashed border-cyan-400/30 bg-black/35 p-6 text-center md:p-10">
                 {preview ? (
                   <div className="space-y-6">
+                    {/* eslint-disable-next-line @next/next/no-img-element -- Blob previews from uploads are not served through the Next.js image optimizer. */}
                     <img
                       src={preview}
                       alt="Uploaded Website Screenshot"
@@ -169,16 +167,21 @@ export default function UploadPage() {
             )}
           </div>
 
-          <div className="bg-gradient-to-br from-cyan-500/20 to-blue-500/10 border border-cyan-400/20 rounded-[32px] p-6 md:p-10 backdrop-blur-xl">
-            <p className="text-cyan-400 font-semibold mb-4">
-              Premium Direction Preview
+          <div className="rounded-[32px] border border-white/10 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 p-6 backdrop-blur-xl md:p-8">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">
+              Audit preview
             </p>
 
-            <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight">
-              What SmartAIStack Will Analyze
+            <h2 className="mb-5 text-3xl font-black leading-tight md:text-4xl">
+              Clear signal, not a wall of data
             </h2>
 
-            <div className="space-y-5">
+            <p className="mb-7 text-gray-400 leading-7">
+              The audit keeps the full scoring engine underneath, then surfaces
+              only the few insights your team should act on first.
+            </p>
+
+            <div className="space-y-3">
               {[
                 [
                   "Visual Hierarchy",
@@ -195,10 +198,10 @@ export default function UploadPage() {
               ].map(([title, desc]) => (
                 <div
                   key={title}
-                  className="bg-black/40 border border-zinc-800 rounded-3xl p-6"
+                  className="rounded-2xl border border-white/10 bg-black/30 p-5"
                 >
-                  <p className="text-gray-500 mb-2">{title}</p>
-                  <p className="text-gray-300 leading-7">{desc}</p>
+                  <p className="mb-2 text-sm font-semibold text-white">{title}</p>
+                  <p className="text-sm leading-6 text-gray-400">{desc}</p>
                 </div>
               ))}
             </div>
@@ -206,36 +209,30 @@ export default function UploadPage() {
         </section>
 
         {loading && (
-          <section className="mt-16 rounded-[40px] border border-cyan-400/20 bg-cyan-400/[0.04] p-8 md:p-14 overflow-hidden relative">
+          <section className="mt-14 overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.03] p-6 relative md:p-10">
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 animate-pulse"></div>
 
             <div className="relative z-10">
-              <p className="text-cyan-400 font-semibold mb-6">
-                AI Generation In Progress
+              <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">
+                Audit in progress
               </p>
 
-              <h2 className="text-3xl md:text-6xl font-black leading-tight mb-8">
-                Creating Your
-                <br />
-                Premium Website Direction
+              <h2 className="mb-7 text-3xl font-black leading-tight md:text-5xl">
+                Finding the few fixes that matter most
               </h2>
 
-              <div className="space-y-5 max-w-2xl">
+              <div className="grid max-w-4xl gap-3 md:grid-cols-3">
                 {[
-                  "Analyzing visual hierarchy...",
-                  "Detecting conversion issues...",
-                  "Generating premium redesign direction...",
-                  "Building cinematic UI structure...",
-                  "Optimizing CTA placement...",
+                  "Scanning hierarchy",
+                  "Ranking blockers",
+                  "Writing summary",
                 ].map((item) => (
                   <div
                     key={item}
-                    className="bg-black/40 border border-white/10 rounded-2xl px-5 md:px-6 py-4 md:py-5 flex items-center gap-4"
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/35 px-5 py-4"
                   >
-                    <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
-                    <p className="text-gray-300 text-base md:text-lg">
-                      {item}
-                    </p>
+                    <div className="h-2.5 w-2.5 rounded-full bg-cyan-400 animate-pulse"></div>
+                    <p className="text-sm text-gray-300">{item}</p>
                   </div>
                 ))}
               </div>
