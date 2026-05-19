@@ -158,6 +158,11 @@ class PremiumPdfDocument {
       color: mutedText,
       font: "bold",
     });
+    this.text(page, "SmartAIStack PDF Engine v2.1", margin + 190, 20, {
+      size: 8.5,
+      color: mutedText,
+      font: "bold",
+    });
     this.text(page, `Page ${pageNumber}`, page.width - margin - 34, 20, {
       size: 8.5,
       color: mutedText,
