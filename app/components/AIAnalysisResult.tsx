@@ -608,7 +608,7 @@ export default function AIAnalysisResult({ websiteUrl }: { websiteUrl?: string }
 
     try {
       await new Promise((resolve) => window.setTimeout(resolve, 120));
-      const pdfBlob = await createAuditPdfBlob(result, websiteUrl);
+      const pdfBlob = createAuditPdfBlob(result, websiteUrl);
       const downloadUrl = URL.createObjectURL(pdfBlob);
       const link = document.createElement("a");
 
