@@ -159,12 +159,12 @@ class PremiumPdfDocument {
       color: mutedText,
       font: "bold",
     });
-    this.text(page, "SmartAIStack PDF Engine v2.1", margin + 188, 24, {
+    this.text(page, "SmartAIStack PDF Engine v2.1", margin + 220, 24, {
       size: 8.2,
       color: mutedText,
       font: "bold",
     });
-    this.text(page, `Page ${pageNumber}`, page.width - margin - 30, 24, {
+    this.text(page, `Page ${pageNumber}`, page.width - margin - 48, 24, {
       size: 8.2,
       color: mutedText,
     });
@@ -530,7 +530,22 @@ function drawBeforeAfterPage(doc: PremiumPdfDocument, result: AuditPdfResult) {
     font: "bold",
   });
 
-  result.sections.slice(0, 8).forEach((section, index) => {
+  const maxSequenceItems = 8;
+  const compactSequenceItems = 6;
+  const sequenceStartY = 356;
+  const sequenceStep = 31;
+  const sequenceHeight = 22;
+  const sequenceBottomPadding = 20;
+  const ctaHeight = 86;
+  const ctaGap = 14;
+  const footerTopY = 42;
+  const availableCtaTop = footerTopY + ctaGap + ctaHeight;
+  const fullSequenceBottomY =
+    sequenceStartY - (maxSequenceItems - 1) * sequenceStep - sequenceBottomPadding;
+  const sequenceItemsCount =
+    fullSequenceBottomY - ctaGap >= availableCtaTop ? maxSequenceItems : compactSequenceItems;
+
+  result.sections.slice(0, sequenceItemsCount).forEach((section, index) => {
     const y = 356 - index * 31;
     doc.rect(page, margin, y, 507, 22, index % 2 === 0 ? [10, 23, 34] : [8, 19, 29]);
     doc.text(page, `${index + 1}. ${section}`, margin + 14, y + 7, {
@@ -540,13 +555,15 @@ function drawBeforeAfterPage(doc: PremiumPdfDocument, result: AuditPdfResult) {
     });
   });
 
+  const lastSequenceY = sequenceStartY - (sequenceItemsCount - 1) * sequenceStep;
+  const ctaTopY = Math.max(availableCtaTop, lastSequenceY - sequenceHeight - sequenceBottomPadding - ctaHeight);
+  const ctaBottomY = ctaTopY - ctaHeight;
 
-
-  doc.rect(page, margin, 58, 507, 86, [8, 20, 31]);
-  doc.strokeRect(page, margin, 58, 507, 86, [35, 129, 152], 1.2);
-  doc.rect(page, margin, 140, 507, 4, [44, 122, 146]);
-  doc.rect(page, margin + 14, 70, 4, 58, cyanSoft);
-  doc.text(page, "Want SmartAIStack to redesign this conversion flow?", margin + 28, 118, {
+  doc.rect(page, margin, ctaBottomY, 507, ctaHeight, [8, 20, 31]);
+  doc.strokeRect(page, margin, ctaBottomY, 507, ctaHeight, [35, 129, 152], 1.2);
+  doc.rect(page, margin, ctaTopY - 4, 507, 4, [44, 122, 146]);
+  doc.rect(page, margin + 14, ctaBottomY + 12, 4, 58, cyanSoft);
+  doc.text(page, "Want SmartAIStack to redesign this conversion flow?", margin + 28, ctaTopY - 26, {
     size: 13.2,
     color: softWhite,
     font: "bold",
@@ -555,12 +572,12 @@ function drawBeforeAfterPage(doc: PremiumPdfDocument, result: AuditPdfResult) {
     page,
     "Turn this audit into a high-converting premium landing page with sharper positioning, stronger proof, and a clearer revenue path.",
     margin + 28,
-    96,
+    ctaTopY - 48,
     { size: 9.3, color: [193, 208, 220], maxWidth: 456, lineHeight: 12.8 },
   );
-  doc.rect(page, margin + 28, 64, 236, 18, [14, 50, 66]);
-  doc.strokeRect(page, margin + 28, 64, 236, 18, brandCyan, 0.9);
-  doc.text(page, "Book a Premium Conversion Review", margin + 40, 69, {
+  doc.rect(page, margin + 28, ctaBottomY + 6, 236, 18, [14, 50, 66]);
+  doc.strokeRect(page, margin + 28, ctaBottomY + 6, 236, 18, brandCyan, 0.9);
+  doc.text(page, "Book a Premium Conversion Review", margin + 40, ctaBottomY + 11, {
     size: 9,
     color: [210, 246, 252],
     font: "bold",
