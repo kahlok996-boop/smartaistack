@@ -227,17 +227,18 @@ function scoreNote(result: AuditPdfResult, matcher: RegExp) {
 
 function sectionHeader(doc: PremiumPdfDocument, page: PdfPage, eyebrow: string, title: string, y: number) {
   doc.text(page, eyebrow.toUpperCase(), margin, y, {
-    size: 8.5,
-    color: brandCyan,
+    size: 7.4,
+    color: [139, 222, 236],
     font: "bold",
   });
+  doc.line(page, margin, y - 7, margin + 90, y - 7, [32, 86, 104], 0.9);
   doc.text(page, title, margin, y - 26, {
-    size: 23,
+    size: 24,
     color: softWhite,
     font: "bold",
   });
-  doc.line(page, margin, y - 44, page.width - margin, y - 44, [32, 52, 74], 1.3);
-  doc.line(page, margin, y - 49, margin + 118, y - 49, brandCyan, 1.1);
+  doc.line(page, margin, y - 49, page.width - margin, y - 49, [29, 45, 63], 1.1);
+  doc.line(page, margin, y - 53, margin + 146, y - 53, brandCyan, 1.2);
 }
 
 function scoreCard(
@@ -252,14 +253,14 @@ function scoreCard(
 ) {
   doc.rect(page, x, y, width, 104, [12, 20, 31]);
   doc.strokeRect(page, x, y, width, 104, [52, 74, 97]);
-  doc.rect(page, x + 12, y + 12, 3, 80, brandCyan);
-  doc.text(page, label, x + 22, y + 76, { size: 9.2, color: [168, 185, 198], font: "bold" });
-  doc.text(page, `${value}%`, x + 22, y + 37, { size: 34, color: softWhite, font: "bold" });
-  doc.paragraph(page, note, x + 104, y + 58, {
-    size: 7.7,
+  doc.rect(page, x, y + 98, width, 3, brandCyan);
+  doc.text(page, label, x + 18, y + 80, { size: 8.8, color: [168, 185, 198], font: "bold" });
+  doc.text(page, `${value}%`, x + 18, y + 31, { size: 38, color: softWhite, font: "bold" });
+  doc.paragraph(page, note, x + 110, y + 59, {
+    size: 7.1,
     color: mutedText,
-    maxWidth: width - 126,
-    lineHeight: 10,
+    maxWidth: width - 128,
+    lineHeight: 9.3,
   });
 }
 
@@ -280,8 +281,10 @@ function drawCover(doc: PremiumPdfDocument, result: AuditPdfResult, websiteUrl: 
     color: brandCyan,
     font: "bold",
   });
+  doc.line(page, margin, 748, margin + 188, 748, [32, 92, 110], 1.2);
+  doc.line(page, margin, 742, margin + 98, 742, brandCyan, 1.2);
   doc.text(page, "Premium AI Website Audit", margin, 703, {
-    size: 37,
+    size: 39,
     color: softWhite,
     font: "bold",
   });
@@ -289,44 +292,52 @@ function drawCover(doc: PremiumPdfDocument, result: AuditPdfResult, websiteUrl: 
     page,
     "A conversion-focused agency report generated from the submitted website audit data, designed to identify the highest-leverage premium redesign moves before implementation.",
     margin,
-    634,
+    626,
     { size: 12.5, color: [196, 210, 222], maxWidth: 438, lineHeight: 19 },
   );
 
-  doc.rect(page, margin, 470, 260, 116, [9, 27, 40]);
-  doc.strokeRect(page, margin, 470, 260, 116, [42, 106, 128], 1.2);
-  doc.rect(page, margin + 14, 482, 4, 88, brandCyan);
-  doc.text(page, "AUDIT SCORE", margin + 28, 554, { size: 9, color: brandCyan, font: "bold" });
-  doc.text(page, `${result.overallScore}/100`, margin + 28, 505, {
-    size: 42,
+  doc.rect(page, margin, 452, 268, 134, [8, 24, 37]);
+  doc.strokeRect(page, margin, 452, 268, 134, [42, 106, 128], 1.3);
+  doc.rect(page, margin + 16, 464, 236, 3, brandCyan);
+  doc.rect(page, margin + 16, 464, 4, 106, [88, 235, 255]);
+  doc.text(page, "AUDIT SCORE", margin + 30, 556, { size: 8.8, color: [160, 232, 244], font: "bold" });
+  doc.text(page, `${result.overallScore}/100`, margin + 30, 500, {
+    size: 46,
     color: softWhite,
     font: "bold",
   });
+  doc.text(page, "Overall premium readiness index", margin + 30, 478, {
+    size: 8,
+    color: mutedText,
+  });
 
-  doc.rect(page, margin + 282, 470, 225, 116, panelBlack);
-  doc.strokeRect(page, margin + 282, 470, 225, 116, [47, 71, 96], 1.1);
-  doc.text(page, "WEBSITE URL", margin + 302, 554, { size: 9, color: brandCyan, font: "bold" });
-  doc.paragraph(page, websiteUrl || result.sourceLabel, margin + 302, 521, {
+  doc.rect(page, margin + 286, 452, 221, 134, panelBlack);
+  doc.strokeRect(page, margin + 286, 452, 221, 134, [47, 71, 96], 1.1);
+  doc.rect(page, margin + 286, 576, 221, 2, [52, 112, 132]);
+  doc.text(page, "WEBSITE URL", margin + 304, 556, { size: 8.8, color: [160, 232, 244], font: "bold" });
+  doc.paragraph(page, websiteUrl || result.sourceLabel, margin + 304, 525, {
     size: 13,
     color: softWhite,
     font: "bold",
-    maxWidth: 178,
+    maxWidth: 181,
     lineHeight: 16,
   });
 
-  doc.text(page, "Executive readout", margin, 384, { size: 18, color: softWhite, font: "bold" });
-  const summaryBodyY = doc.paragraph(page, result.summaryTitle, margin, 350, {
+  doc.line(page, margin, 414, page.width - margin, 414, [27, 45, 61], 1);
+  doc.line(page, margin, 408, margin + 136, 408, brandCyan, 1.1);
+  doc.text(page, "Executive readout", margin, 384, { size: 19, color: softWhite, font: "bold" });
+  const summaryBodyY = doc.paragraph(page, result.summaryTitle, margin, 346, {
     size: 11.5,
     color: softWhite,
     font: "bold",
     maxWidth: 490,
-    lineHeight: 16,
+    lineHeight: 17,
   });
-  doc.paragraph(page, result.summaryBody, margin, summaryBodyY - 10, {
+  doc.paragraph(page, result.summaryBody, margin, summaryBodyY - 8, {
     size: 11.5,
     color: [188, 201, 214],
     maxWidth: 490,
-    lineHeight: 17,
+    lineHeight: 16.5,
   });
 
   doc.rect(page, margin, 124, 507, 92, [7, 18, 28]);
@@ -361,7 +372,7 @@ function drawScoresPage(doc: PremiumPdfDocument, result: AuditPdfResult, website
 
   cards.forEach(([label, value, note], index) => {
     const x = index % 2 === 0 ? margin : margin + 258;
-    const y = 530 - Math.floor(index / 2) * 134;
+    const y = 534 - Math.floor(index / 2) * 138;
     scoreCard(doc, page, label, value, note, x, y, index === 4 ? 507 : 234);
   });
 
@@ -395,17 +406,18 @@ function drawProblemsPage(doc: PremiumPdfDocument, result: AuditPdfResult) {
   sectionHeader(doc, page, "Detected problems", "Top 3 conversion blockers", 748);
 
   result.priorities.slice(0, 3).forEach((priority, index) => {
-    const y = 604 - index * 145;
-    doc.rect(page, margin, y, 507, 110, index === 0 ? [12, 31, 45] : panelBlack);
-    doc.strokeRect(page, margin, y, 507, 110, index === 0 ? [30, 108, 132] : borderSlate);
-    doc.text(page, `0${index + 1}`, margin + 18, y + 74, { size: 24, color: brandCyan, font: "bold" });
-    doc.text(page, priority.impact, margin + 70, y + 78, { size: 8.5, color: emerald, font: "bold" });
-    doc.text(page, priority.title, margin + 70, y + 55, { size: 15, color: softWhite, font: "bold" });
-    doc.paragraph(page, priority.action, margin + 70, y + 31, {
+    const y = 612 - index * 148;
+    doc.rect(page, margin, y, 507, 114, index === 0 ? [13, 34, 49] : panelBlack);
+    doc.strokeRect(page, margin, y, 507, 114, index === 0 ? [42, 126, 152] : borderSlate, index === 0 ? 1.4 : 1);
+    if (index === 0) doc.rect(page, margin, y + 110, 507, 4, [58, 188, 210]);
+    doc.text(page, `0${index + 1}`, margin + 18, y + 76, { size: 25, color: brandCyan, font: "bold" });
+    doc.text(page, priority.impact, margin + 74, y + 84, { size: 8.4, color: emerald, font: "bold" });
+    doc.text(page, priority.title, margin + 74, y + 57, { size: 15, color: softWhite, font: "bold" });
+    doc.paragraph(page, priority.action, margin + 74, y + 29, {
       size: 9.5,
       color: [188, 201, 214],
-      maxWidth: 405,
-      lineHeight: 13,
+      maxWidth: 398,
+      lineHeight: 13.2,
     });
   });
 
@@ -486,8 +498,10 @@ function drawBeforeAfterPage(doc: PremiumPdfDocument, result: AuditPdfResult) {
 
   notes.forEach((note, index) => {
     const x = index === 0 ? margin : margin + 258;
-    doc.rect(page, x, 488, 234, 180, index === 0 ? [22, 21, 28] : [7, 33, 45]);
-    doc.strokeRect(page, x, 488, 234, 180, index === 0 ? [70, 58, 67] : [29, 108, 132]);
+    doc.rect(page, x, 484, 234, 184, index === 0 ? [24, 20, 26] : [6, 37, 50]);
+    doc.strokeRect(page, x, 484, 234, 184, index === 0 ? [90, 72, 80] : [38, 132, 156], index === 0 ? 1 : 1.3);
+    doc.rect(page, x, 664, 234, 4, index === 0 ? [182, 122, 128] : brandCyan);
+    if (index === 1) doc.rect(page, x + 12, 498, 4, 156, [88, 235, 255]);
     doc.text(page, note.label.toUpperCase(), x + 18, 630, {
       size: 8.5,
       color: index === 0 ? [248, 170, 170] : brandCyan,
